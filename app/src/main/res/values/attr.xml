@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CapCircleprogressView">
+        <attr name="ringWidth" format="dimension" />
+        <attr name="ceterTextSize" format="dimension" />
+        <attr name="maxProgress" format="integer" />
+        <attr name="ceterTextcolor" format="color" />
+        <attr name="progressColor" format="color" />
+    </declare-styleable>
+</resources>
