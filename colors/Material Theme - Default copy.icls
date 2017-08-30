@@ -1,22 +1,9 @@
 <scheme name="Material Theme - Default copy" version="142" parent_scheme="Default">
-  <metaInfo>
-    <property name="created">2017-08-30T09:29:07</property>
-    <property name="ide">AndroidStudio</property>
-    <property name="ideVersion">2.3.3.0</property>
-    <property name="modified">2017-08-30T09:30:30</property>
-    <property name="originalScheme">Material Theme - Default</property>
-  </metaInfo>
   <option name="LINE_SPACING" value="1.6" />
-  <font>
-    <option name="EDITOR_FONT_NAME" value="Monospaced" />
-    <option name="EDITOR_FONT_SIZE" value="12" />
-  </font>
-  <font>
-    <option name="EDITOR_FONT_NAME" value="Source Code Pro" />
-    <option name="EDITOR_FONT_SIZE" value="12" />
-  </font>
+  <option name="EDITOR_FONT_SIZE" value="18" />
   <option name="CONSOLE_FONT_NAME" value="Monospaced" />
   <option name="CONSOLE_FONT_SIZE" value="20" />
+  <option name="EDITOR_FONT_NAME" value="Consolas" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="212c32" />
     <option name="ANNOTATIONS_COLOR" value="8b999f" />
@@ -394,7 +381,7 @@
     </option>
     <option name="DEFAULT_BLOCK_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="27e854" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -421,7 +408,7 @@
     </option>
     <option name="DEFAULT_DOC_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="27e854" />
       </value>
     </option>
     <option name="DEFAULT_DOC_COMMENT_TAG">
@@ -793,7 +780,7 @@
     </option>
     <option name="JAVA_DOC_COMMENT">
       <value>
-        <option name="FOREGROUND" value="505c63" />
+        <option name="FOREGROUND" value="27e854" />
       </value>
     </option>
     <option name="JAVA_DOC_TAG">
