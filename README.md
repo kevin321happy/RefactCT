@@ -1,0 +1,9 @@
+# MVPSimple
+关于MVP模式的学习
+
+
+simple1中,通过泛型设计抽取BasePresenter和BaseView 来规避在每一个Presenter去定义绑定和解绑方法,从而避免了代码的冗余
+
+
+
+simple2中在simple的基础上改进,通过抽取泛型设计抽取BaseActivty,从而避免在每一个Activity中去做绑定和解绑的操作
