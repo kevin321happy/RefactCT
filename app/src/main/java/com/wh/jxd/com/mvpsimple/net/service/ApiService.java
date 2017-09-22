@@ -1,7 +1,10 @@
 package com.wh.jxd.com.mvpsimple.net.service;
 
 import com.wh.jxd.com.mvpsimple.modle.SecretModel;
+import com.wh.jxd.com.mvpsimple.modle.UserLoginBean;
 
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -17,4 +20,11 @@ public interface ApiService {
      */
     @POST("app/getSecret")
     Observable<SecretModel> getSecret();
+    /*
+     * 用户登陆
+     */
+    @FormUrlEncoded
+    @POST("user_login")
+    Observable<UserLoginBean> login(@Field("phone") String phone, @Field("password") String psw, @Field("timestamp") String timestamp
+            , @Field("str") String str, @Field("sign") String sign);
 }

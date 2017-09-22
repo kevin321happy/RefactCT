@@ -33,22 +33,18 @@ public class RetrofitHelper {
         init();
     }
 
-    public RetrofitHelper(Context context) {
-        this.context = context;
 
-    }
 
     private void init() {
+//            .client(mOkHttpClient)
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(Constance.BASE_URL)
                 .addConverterFactory(mGsonConverterFactory)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .client(mOkHttpClient)
                 .build();
     }
 
     public ApiService getService() {
         return mRetrofit.create(ApiService.class);
     }
-
 }

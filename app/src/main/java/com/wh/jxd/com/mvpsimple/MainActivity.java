@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity<LoginPresenter_1, LoginView_1> im
 //        loginPresenter.attachView(this);
 //        loginPresenter.login("xx", "123456");
         //通过抽取BaseActivity,精简代码避免去每一个Activity里面去做绑定和解绑操作
-        getPresenter().login("xx", "123");
+        getPresenter().login(this,"15623374595", "123456");
 
 
     }

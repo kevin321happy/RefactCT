@@ -5,5 +5,5 @@ package com.wh.jxd.com.mvpsimple.common;
  */
 
 public class Constance {
-    public static final String BASE_URL="http://172.16.3.30/";
+    public static final String BASE_URL="http://v2api.52qmct.com/";
 }
