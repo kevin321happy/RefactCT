@@ -11,7 +11,6 @@ import com.wh.jxd.com.mvpsimple.simple2.LoginView_1;
 public class MainActivity extends BaseActivity<LoginPresenter_1, LoginView_1> implements LoginView_1 {
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity<LoginPresenter_1, LoginView_1> im
     @Override
     public void onLoginSuccess(String result) {
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-
     }
 
     /**
@@ -43,10 +41,9 @@ public class MainActivity extends BaseActivity<LoginPresenter_1, LoginView_1> im
      */
     public void login(View view) {
         //泛型设计,抽取BasePresenter 和BaseView  避免在每一个Presenter里面去定义attachView和detachView方法,减少代码冗余
-//        mLoginPresenter = new LoginPresenter_1();
-//        mLoginPresenter.attachView(this);
-//        mLoginPresenter.login("xx", "123");
-
+//        LoginPresenter loginPresenter = new LoginPresenter();
+//        loginPresenter.attachView(this);
+//        loginPresenter.login("xx", "123456");
         //通过抽取BaseActivity,精简代码避免去每一个Activity里面去做绑定和解绑操作
         getPresenter().login("xx", "123");
 
@@ -56,7 +53,7 @@ public class MainActivity extends BaseActivity<LoginPresenter_1, LoginView_1> im
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (getPresenter()!=null) {
+        if (getPresenter() != null) {
             getPresenter().detachView();
         }
     }

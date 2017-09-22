@@ -16,6 +16,7 @@ public abstract class BaseActivity<P extends BasePresenter_1, V extends BaseView
     private P mPresenter;
     private V mView;
 
+
     public P getPresenter() {
         return mPresenter;
     }
@@ -23,6 +24,7 @@ public abstract class BaseActivity<P extends BasePresenter_1, V extends BaseView
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (this.mPresenter == null) {
             mPresenter = creatPresenter();
         }
@@ -37,6 +39,7 @@ public abstract class BaseActivity<P extends BasePresenter_1, V extends BaseView
             throw new NullPointerException("view对象不能为空");
         }
         mPresenter.attachView(mView);
+
     }
 
     /**
@@ -45,18 +48,21 @@ public abstract class BaseActivity<P extends BasePresenter_1, V extends BaseView
      * @return
      */
     protected abstract V creatMvpView();
+
     /**
      * 获得p层的对象
      *
      * @return
      */
     public abstract P creatPresenter();
+
     /**
      * 解除绑定
      */
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         if (mPresenter != null) {
             mPresenter.detachView();
         }

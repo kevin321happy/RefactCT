@@ -8,8 +8,6 @@ public class BasePresenter<V extends BaseView> {
 
     private V mView;
 
-
-
     public V getView() {
         return mView;
     }
