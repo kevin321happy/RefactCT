@@ -3,7 +3,7 @@
     <property name="created">2017-09-29T14:02:06</property>
     <property name="ide">AndroidStudio</property>
     <property name="ideVersion">2.3.3.0</property>
-    <property name="modified">2017-09-29T14:02:33</property>
+    <property name="modified">2017-09-29T14:40:43</property>
     <property name="originalScheme">Material Theme - Default</property>
   </metaInfo>
   <option name="LINE_SPACING" value="1.2" />
@@ -794,7 +794,7 @@
     </option>
     <option name="JAVA_DOC_COMMENT">
       <value>
-        <option name="FOREGROUND" value="505c63" />
+        <option name="FOREGROUND" value="27e854" />
       </value>
     </option>
     <option name="JAVA_DOC_TAG">
@@ -805,6 +805,11 @@
     <option name="JAVA_KEYWORD">
       <value>
         <option name="FOREGROUND" value="c792ea" />
+      </value>
+    </option>
+    <option name="JAVA_LINE_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="9cc711" />
       </value>
     </option>
     <option name="JAVA_NUMBER">
