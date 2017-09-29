@@ -1,15 +1,14 @@
 package com.wh.jxd.com.refactorqm.base;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.KeyEvent;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.TextView;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.wh.jxd.com.refactorqm.R;
@@ -20,7 +19,6 @@ import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import butterknife.ButterKnife;
-
 /**
  * Created by kevin321vip on 2017/9/27.
  */
@@ -33,16 +31,9 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
     protected SystemBarTintManager tintManager;
     private SparseArray<Long> mLastClickTimes;
     public static NetBroadcastReceiver.NetEvevt evevt;
-    private LinearLayout mRootLayout;
-    /**
-     * Toolbar instance
-     */
-    protected Toolbar mToolbar;
-
-    public Toolbar getToolbar() {
-        return mToolbar;
-    }
-
+    private TextView mToolbarTitle;
+    private TextView mToolbarSubTitle;
+    private Toolbar mToolbar;
     /**
      * 网络类型
      */
@@ -51,17 +42,7 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_base);
-        if (!isTaskRoot()) {
-            Intent intent = getIntent();
-            String action = intent.getAction();
-            if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
-                //Logger.w("Activity is not the root.  Finishing Activity instead of launching.");
-                Log.w(TAG, "Activity is not the root.  Finishing Activity instead of launching.");
-                finish();
-                return;
-            }
-        }
+        super.setContentView(getLayoutId());
         ButterKnife.bind(this);
         init();
         evevt = this;
@@ -81,6 +62,14 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
         mpersenter.attachView(mView);
         initView();
     }
+
+    /**
+     * 抽象方法获取布局ID
+     *
+     * @return
+     */
+    protected abstract int getLayoutId();
+
 
     /**
      * 网络监听
@@ -104,7 +93,7 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
     }
 
     /**
-     * 判断有无网络 。
+     * 判断有无网络
      *
      * @return true 有网, false 没有网络.
      */
@@ -115,13 +104,9 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
             return true;
         } else if (netMobile == -1) {
             return false;
-
         }
         return false;
     }
-
-
-    protected abstract int creatLayout();
 
     protected abstract void initView();
 
@@ -133,7 +118,98 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
         //设置状态栏颜色
         StatusBarUtil.setStatusBarColor(this, R.color.white);
         StatusBarUtil.StatusBarLightMode(this);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        mToolbarSubTitle = (TextView) findViewById(R.id.toolbar_subtitle);
+
+        if (mToolbar != null) {
+            //将Toolbar显示到界面
+            setSupportActionBar(mToolbar);
+        }
+        if (mToolbarTitle != null) {
+            //getTitle()的值是activity的android:lable属性值
+            mToolbarTitle.setText(getTitle());
+            //设置默认的标题不显示
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        if (mToolbarSubTitle!=null){
+            mToolbarSubTitle.setVisibility(View.INVISIBLE);
+        }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (null != getToolBar() && isShowBacking()) {
+            showBack();
+        }
+    }
+
+    /**
+     * 显示返回键
+     */
+    private void showBack() {
+        //setNavigationIcon必须在setSupportActionBar(toolbar);方法后面加入
+        getToolBar().setNavigationIcon(R.drawable.ic_back);
+        getToolBar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    /**
+     * 获取头部标题的TextView
+     *
+     * @return
+     */
+    public TextView getToolbarTitle() {
+        return mToolbarTitle;
+    }
+
+    /**
+     * 获取头部标题的TextView
+     *
+     * @return
+     */
+    public TextView getSubTitle() {
+        return mToolbarSubTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        TextView subTitle1 = getSubTitle();
+        if (subTitle1 != null) {
+            subTitle1.setVisibility(View.VISIBLE);
+            subTitle1.setText(subTitle);
+        }
+    }
+
+    /**
+     * 设置头部标题
+     *
+     * @param title
+     */
+    public void setToolBarTitle(CharSequence title) {
+        if (mToolbarTitle != null) {
+            mToolbarTitle.setText(title);
+        } else {
+            getToolBar().setTitle(title);
+            setSupportActionBar(getToolBar());
+        }
+    }
+
+    /**
+     * 是否显示后退按钮,默认显示,可在子类重写该方法.
+     *
+     * @return
+     */
+    protected boolean isShowBacking() {
+        return true;
+    }
+
 
     /**
      * 获取View对象
@@ -170,6 +246,7 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
         res.updateConfiguration(config, res.getDisplayMetrics());
         return res;
     }
+
     /**
      * 检查是否可执行点击操作 防重复点击
      *
@@ -191,13 +268,20 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
         return super.onKeyDown(keyCode, event);
     }
 
-
     public abstract boolean isSystemBarTranclucent();
-
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mpersenter.attachView(mView);
+    }
+
+    /**
+     * 获得toolbar
+     *
+     * @return
+     */
+    public Toolbar getToolBar() {
+        return (Toolbar) findViewById(R.id.toolbar);
     }
 }

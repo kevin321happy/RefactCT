@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
@@ -63,7 +63,7 @@
     <color name="common_item_pressed_gray">#f7f7f7</color>
     <!--字体-->
     <color name="text_black">#3d3b3b</color>
-    <color name="text__defaulttext">#333333</color>
+    <color name="text_defaulttext">#333333</color>
     <color name="pickerview_timebtn_nor">#DF1E3D</color>
     <color name="pickerview_timebtn_pre">#55DF1E3D</color>
     <!-- 红色选择器

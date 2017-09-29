@@ -22,7 +22,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/CAppTheme">
+        android:theme="@style/AppTheme">
         <!--百分比布局-->
         <!--宽-->
         <meta-data

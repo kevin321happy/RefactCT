@@ -52,6 +52,12 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
         super.onCreate(savedInstanceState);
         clickMenu(mLlMenuHome);
 
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     /**
@@ -80,6 +86,7 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
     private void setFragment(int viewId, FragmentTransaction ft) {
         switch (viewId) {
             case R.id.ll_menu_home:
+                setToolBarTitle("大厅");
                 if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
                     ft.add(R.id.rm_content, mHomeFragment);
@@ -88,6 +95,7 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
                 }
                 break;
             case R.id.ll_menu_enterprise:
+                setToolBarTitle("企业");
                 if (mEnterpriseFragment == null) {
                     mEnterpriseFragment = new EnterpriseFragment();
                     ft.add(R.id.rm_content, mEnterpriseFragment);
@@ -96,6 +104,7 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
                 }
                 break;
             case R.id.ll_menu_personal:
+                setToolBarTitle("个人");
                 if (mPersonalFragment == null) {
                     mPersonalFragment = new PersonalFragment();
                     ft.add(R.id.rm_content, mPersonalFragment);
@@ -151,11 +160,6 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
             mIvMenuPersonal.setImageDrawable(getResources().getDrawable(R.drawable.three));
             mTvMenuPersonal.setTextColor(getResources().getColor(R.color.color_999));
         }
-    }
-
-    @Override
-    protected int creatLayout() {
-        return R.layout.activity_main;
     }
 
     @Override

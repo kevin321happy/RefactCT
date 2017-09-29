@@ -34,7 +34,6 @@ public abstract class BaseFragment<P extends BasePersenterImpl, V extends BaseVi
         if (mPersenter!=null&&mView!=null){
             mPersenter.attachView(mView);
         }
-
     }
 
     @Nullable
