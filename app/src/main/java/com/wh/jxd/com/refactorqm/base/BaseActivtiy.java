@@ -19,6 +19,7 @@ import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import butterknife.ButterKnife;
+
 /**
  * Created by kevin321vip on 2017/9/27.
  */
@@ -133,7 +134,7 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
             //设置默认的标题不显示
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        if (mToolbarSubTitle!=null){
+        if (mToolbarSubTitle != null) {
             mToolbarSubTitle.setVisibility(View.INVISIBLE);
         }
     }
@@ -257,6 +258,16 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
         Long thisTime = System.currentTimeMillis();
         mLastClickTimes.put(id, thisTime);
         return !(lastTime != null && thisTime - lastTime < 800);
+    }
+
+    /**
+     * 隐藏ToolBar
+     */
+    public void hideToolBar() {
+        Toolbar toolBar = getToolBar();
+        if (toolBar != null) {
+            toolBar.setVisibility(View.GONE);
+        }
     }
 
 

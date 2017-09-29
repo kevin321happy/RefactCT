@@ -21,4 +21,6 @@ public class BasePersenterImpl<V extends BaseView> implements BasePersenter {
         this.mView = null;
 
     }
+
+
 }

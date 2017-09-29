@@ -2,4 +2,18 @@
     <string name="app_name">RefactorQM</string>
     <string name="qiuma">裘马</string>
     <string name="caotang">草堂</string>
+
+
+    <string name="手机号">phone</string>
+    <string name="时间戳">timestamp</string>
+    <string name="签名str">str</string>
+    <string name="签名">sign</string>
+    <string name="手机验证码">code</string>
+    <string name="密码">password</string>
+    <string name="用户ID">userid</string>
+    <string name="企业ID">company_id</string>
+    <string name="裘马Token">qmct_token</string>
+    <string name="课程ID">courseId</string>
+    <string name="账号已登录">该账号已在其他设备登录了！</string>
+    <string name="课程id">courseid</string>
 </resources>

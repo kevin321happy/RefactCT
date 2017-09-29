@@ -10,6 +10,19 @@ import com.zhy.autolayout.config.AutoLayoutConifg;
  */
 
 public class AppcationEx extends Application {
+    private static AppcationEx instance;
+
+    /**
+     * 单例获取实例
+     * @return
+     */
+    public static AppcationEx getInstance() {
+        if (instance == null) {
+            instance = new AppcationEx();
+        }
+        return instance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

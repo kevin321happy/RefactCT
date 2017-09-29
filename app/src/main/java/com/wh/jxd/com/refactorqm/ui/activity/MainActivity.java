@@ -1,5 +1,6 @@
 package com.wh.jxd.com.refactorqm.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -45,6 +46,7 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
     private HomeFragment mHomeFragment;
     private EnterpriseFragment mEnterpriseFragment;
     private PersonalFragment mPersonalFragment;
+    private MainPersenter mMainPersenter;
 
 
     @Override
@@ -52,7 +54,18 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
         super.onCreate(savedInstanceState);
         clickMenu(mLlMenuHome);
 
+        sendLocation();
 
+
+    }
+
+    /**
+     * 发送定位信息
+     */
+    private void sendLocation() {
+        if (mMainPersenter != null) {
+//            mMainPersenter.sendLocation(this);
+        }
     }
 
     @Override
@@ -104,6 +117,11 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
                 }
                 break;
             case R.id.ll_menu_personal:
+                //如果用户ID为空先跳转到登陆
+//                PreferenceUtils.getUserId() == null
+                if (1!=0) {
+                    startActivity(new Intent(this,LoginActivity.class));
+                }
                 setToolBarTitle("个人");
                 if (mPersonalFragment == null) {
                     mPersonalFragment = new PersonalFragment();
@@ -174,7 +192,10 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
 
     @Override
     public MainPersenter creatPersenter() {
-        return new MainPersenter();
+        if (mMainPersenter == null) {
+            mMainPersenter = new MainPersenter();
+        }
+        return mMainPersenter;
     }
 
     @Override

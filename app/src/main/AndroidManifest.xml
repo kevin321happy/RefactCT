@@ -48,6 +48,8 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ui.activity.LoginActivity"/>
+
     </application>
 
 </manifest>
