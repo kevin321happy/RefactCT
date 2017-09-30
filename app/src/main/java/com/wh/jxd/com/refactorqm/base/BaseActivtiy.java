@@ -24,11 +24,10 @@ import butterknife.ButterKnife;
  * Created by kevin321vip on 2017/9/27.
  */
 
-public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseView> extends AutoLayoutActivity implements BaseView, NetBroadcastReceiver.NetEvevt {
+public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBroadcastReceiver.NetEvevt {
 
     private static final String TAG = "BaseActivtiy";
-    private P mpersenter;
-    private V mView;
+
     protected SystemBarTintManager tintManager;
     private SparseArray<Long> mLastClickTimes;
     public static NetBroadcastReceiver.NetEvevt evevt;
@@ -48,19 +47,7 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
         init();
         evevt = this;
         inspectNet();
-        if (this.mpersenter == null) {
-            mpersenter = creatPersenter();
-        }
-        if (mpersenter == null) {
-            throw new NullPointerException("mpersenter不能为空~");
-        }
-        if (this.mView == null) {
-            mView = creatView();
-        }
-        if (this.mView == null) {
-            throw new NullPointerException("mView不能为空~");
-        }
-        mpersenter.attachView(mView);
+
         initView();
     }
 
@@ -212,20 +199,7 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
     }
 
 
-    /**
-     * 获取View对象
-     *
-     * @return
-     */
 
-    protected abstract V creatView();
-
-    /**
-     * 获取子类的Persenter对象
-     *
-     * @return
-     */
-    public abstract P creatPersenter();
 
     /**
      * 双击监听
@@ -284,7 +258,6 @@ public abstract class BaseActivtiy<P extends BasePersenterImpl, V extends BaseVi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mpersenter.attachView(mView);
     }
 
     /**

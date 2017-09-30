@@ -35,7 +35,6 @@ public class PreferenceUtils {
         return ctx.getSharedPreferences("easycode", Context.MODE_PRIVATE);
     }
     //设置最新的版本
-
     public static void set_Version(String version) {
         getSharedPreferences(AppcationEx.getInstance()).edit().putString(NEW_VERSION, version).apply();
     }

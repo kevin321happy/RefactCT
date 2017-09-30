@@ -50,4 +50,15 @@ public class HttpBean<T> {
     public void setData(T data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "HttpBean{" +
+                "status='" + status + '\'' +
+                ", info='" + info + '\'' +
+                ", is_login='" + is_login + '\'' +
+                ", suc='" + suc + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

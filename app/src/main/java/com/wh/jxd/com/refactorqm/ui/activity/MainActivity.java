@@ -1,5 +1,6 @@
 package com.wh.jxd.com.refactorqm.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -11,17 +12,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wh.jxd.com.refactorqm.R;
-import com.wh.jxd.com.refactorqm.base.BaseActivtiy;
+import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
 import com.wh.jxd.com.refactorqm.persenter.MainPersenter;
 import com.wh.jxd.com.refactorqm.ui.fragment.EnterpriseFragment;
 import com.wh.jxd.com.refactorqm.ui.fragment.HomeFragment;
 import com.wh.jxd.com.refactorqm.ui.fragment.PersonalFragment;
+import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
+import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.MainView;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implements MainView {
+public class MainActivity extends BaseMvpActivity<MainPersenter, MainView> implements MainView {
     @Bind(R.id.rm_content)
     FrameLayout mRmContent;
     @Bind(R.id.iv_menu_home)
@@ -119,9 +122,11 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
             case R.id.ll_menu_personal:
                 //如果用户ID为空先跳转到登陆
 //                PreferenceUtils.getUserId() == null
-                if (1!=0) {
-                    startActivity(new Intent(this,LoginActivity.class));
+                String userId = PreferenceUtils.getUserId();
+                if (userId == null || "".equals(userId)) {
+                    startActivity(new Intent(this, LoginActivity.class));
                 }
+                ToastUtils.showShortToast(this, "用户ID:" + userId);
                 setToolBarTitle("个人");
                 if (mPersonalFragment == null) {
                     mPersonalFragment = new PersonalFragment();
@@ -191,9 +196,9 @@ public class MainActivity extends BaseActivtiy<MainPersenter, MainView> implemen
     }
 
     @Override
-    public MainPersenter creatPersenter() {
+    public MainPersenter creatPersenter(Context context) {
         if (mMainPersenter == null) {
-            mMainPersenter = new MainPersenter();
+            mMainPersenter = new MainPersenter(context);
         }
         return mMainPersenter;
     }

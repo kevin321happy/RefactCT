@@ -13,8 +13,10 @@ import com.wh.jxd.com.refactorqm.view.MainView;
 public class MainPersenter extends BasePersenterImpl<MainView> {
 
     private final MainView mMainView;
+    private Context mContext;
 
-    public MainPersenter() {
+    public MainPersenter(Context context) {
+        this.mContext=context;
         mMainView = getView();
     }
     /**

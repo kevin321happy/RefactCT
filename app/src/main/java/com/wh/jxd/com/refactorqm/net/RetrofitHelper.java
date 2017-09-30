@@ -2,7 +2,7 @@ package com.wh.jxd.com.refactorqm.net;
 
 import com.google.gson.GsonBuilder;
 import com.wh.jxd.com.refactorqm.common.Constance;
-import com.wh.jxd.com.refactorqm.net.service.BaseService;
+import com.wh.jxd.com.refactorqm.net.service.ApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -47,11 +47,11 @@ public class RetrofitHelper {
 
     /**
      * 获取Service对象
-     * @param clazz
+     * @param
      * @return
      */
 
-    public BaseService getService(Class< ? extends BaseService> clazz) {
-        return mRetrofit.create(clazz);
+    public ApiService getService() {
+        return mRetrofit.create(ApiService.class);
     }
 }
