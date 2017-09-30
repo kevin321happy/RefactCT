@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.wh.jxd.com.refactorqm.R;
-import com.wh.jxd.com.refactorqm.base.BaseFragment;
+import com.wh.jxd.com.refactorqm.base.BaseMvpFragment;
 import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
 import com.wh.jxd.com.refactorqm.base.BaseView;
 
@@ -12,7 +12,7 @@ import com.wh.jxd.com.refactorqm.base.BaseView;
  * Created by kevin321vip on 2017/9/28.
  */
 
-public class PersonalFragment extends BaseFragment {
+public class PersonalFragment extends BaseMvpFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {

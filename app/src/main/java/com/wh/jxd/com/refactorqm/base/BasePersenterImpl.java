@@ -18,8 +18,5 @@ public class BasePersenterImpl<V extends BaseView> implements BasePersenter {
 
     public void detachView() {
         this.mView = null;
-
     }
-
-
 }

@@ -19,11 +19,6 @@ public interface ApiService {
     /**
      * 用户登陆
      */
-// .params(getString(R.string.手机号), phone)
-//            .params(getString(R.string.密码), password)
-//            .params(getString(R.string.时间戳), timestamp)
-//            .params(getString(R.string.签名str), signData[1])
-//            .params(getString(R.string.签名), signData[0])
     @FormUrlEncoded
     @POST(RequestCons.USER_LOGIN)
     Observable<HttpBean<UserInfo>> login(@Field("phone") String phone, @Field("password") String password, @Field("timestamp") String timestamp

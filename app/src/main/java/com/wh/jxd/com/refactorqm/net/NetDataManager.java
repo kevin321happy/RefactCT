@@ -62,7 +62,6 @@ public class NetDataManager<T extends BaseModel> {
             return tHttpBean.getData();
         }
     }
-
     /**
      * 用户登陆
      */

@@ -50,16 +50,11 @@ public class MainActivity extends BaseMvpActivity<MainPersenter, MainView> imple
     private EnterpriseFragment mEnterpriseFragment;
     private PersonalFragment mPersonalFragment;
     private MainPersenter mMainPersenter;
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         clickMenu(mLlMenuHome);
-
         sendLocation();
-
-
     }
 
     /**
@@ -94,8 +89,15 @@ public class MainActivity extends BaseMvpActivity<MainPersenter, MainView> imple
     }
 
     /**
+     * 隐藏返回键
+     * @return
+     */
+    @Override
+    protected boolean isShowBacking() {
+        return false;
+    }
+    /**
      * 设置显示的Fagment
-     *
      * @param viewId
      * @param ft
      */
