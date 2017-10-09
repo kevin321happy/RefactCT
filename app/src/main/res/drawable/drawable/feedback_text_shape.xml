@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 填充 -->
+    <solid
+        android:color="@color/white"/><!-- 填充的颜色 -->
+
+    <!-- 描边(边线 ) -->
+    <stroke
+        android:width="1px"
+        android:color="@color/enterprise_act_qianhui"/>
+    <corners android:radius="@dimen/space_5"></corners>
+</shape>
