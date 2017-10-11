@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+
+
+    <!--<declare-styleable name="RoundAngleImageView">-->
+    <!--<attr name="roundWidth" format="dimension" />-->
+    <!--<attr name="roundHeight" format="dimension" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="wheelview">
+        <attr name="gravity">
+            <enum name="center" value="17"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textColorOut" format="color"/>
+        <attr name="textColorCenter" format="color"/>
+        <attr name="dividerColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension"/>
+        <attr name="verticalSpacing" format="dimension"/>
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+        <attr name="debugDraw" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean"/>
+        <attr name="layout_horizontalSpacing" format="dimension"/>
+        <attr name="layout_verticalSpacing" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="SlidingMenu">
+        <attr name="menuSpadding" format="dimension"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="ColorArcProgressBar">
+        <attr name="back_color" format="color"/>
+        <attr name="front_color1" format="color"/>
+        <attr name="front_color2" format="color"/>
+        <attr name="front_color3" format="color"/>
+        <attr name="back_width" format="dimension"/>
+        <attr name="front_width" format="dimension"/>
+        <attr name="is_need_title" format="boolean"/>
+        <attr name="is_need_content" format="boolean"/>
+        <attr name="is_need_unit" format="boolean"/>
+        <attr name="is_need_dial" format="boolean"/>
+        <attr name="string_title" format="string"/>
+        <attr name="string_unit" format="string"/>
+        <attr name="total_engle" format="integer"/>
+        <attr name="current_value" format="float"/>
+        <attr name="max_value" format="float"/>
+
+    </declare-styleable>
+    <declare-styleable name="AnimateHorizontalProgressBar">
+        <attr name="ahp_progressColor" format="color|reference"/>
+        <attr name="ahp_backgroundColor" format="color|reference"/>
+        <attr name="ahp_cornerRadius" format="dimension|reference"/>
+    </declare-styleable>
+
+    <!--数值选择器-->
+    <attr name="numberPickerStyle" format="reference"/>
+    <declare-styleable name="NumberPicker">
+        <attr name="np_width" format="dimension"/>
+        <attr name="np_height" format="dimension"/>
+        <attr name="np_dividerColor" format="color"/>
+        <attr name="np_dividerDistance" format="dimension"/>
+        <attr name="np_dividerThickness" format="dimension"/>
+        <attr name="np_formatter" format="string"/>
+        <attr name="np_max" format="integer"/>
+        <attr name="np_min" format="integer"/>
+        <attr name="np_orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+        <attr name="np_textColor" format="color"/>
+        <attr name="np_textSize" format="dimension"/>
+        <attr name="np_typeface" format="string"/>
+        <attr name="np_wheelItemCount" format="integer"/>
+        <attr name="np_wrapSelectorWheel" format="boolean"/>
+    </declare-styleable>
+
+    <!--跑马灯自定义属性-->
+    <declare-styleable name="MarqueeView">
+        <attr name="marqueeInterval" format="integer"/>
+        <attr name="marqueeAnimDuration" format="integer"/>
+        <attr name="marqueeAnimIn" format="reference"/>
+        <attr name="marqueeAnimOut" format="reference"/>
+    </declare-styleable>
+
+    <!--热门课程标签-->
+    <declare-styleable name="LabelView">
+        <!-- 设置文字内容 -->
+        <attr name="lv_text" format="string"/>
+        <!-- 设置文字颜色,默认#ffffff -->
+        <attr name="lv_text_color" format="color"/>
+        <!-- 设置文字大小,默认11sp -->
+        <attr name="lv_text_size" format="dimension"/>
+        <!-- 设置文字是否支持加粗,默认true -->
+        <attr name="lv_text_bold" format="boolean"/>
+        <!-- 设置文字是否支持全部大写,默认true-->
+        <attr name="lv_text_all_caps" format="boolean"/>
+        <!-- 设置背景颜色,默认"#FF4081"-->
+        <attr name="lv_background_color" format="color"/>
+        <!-- 设置LabelView所在矩形最小宽高,默认mFillTriangle?35dp:50dp-->
+        <attr name="lv_min_size" format="dimension"/>
+        <!-- 设置文字上下padding,默认3.5dp,mFillTriangle为true时无效-->
+        <attr name="lv_padding" format="dimension"/>
+        <!-- 设置LabelView方向 -->
+        <attr name="lv_gravity" format="enum">
+            <enum name="TOP_LEFT" value="51"/>
+            <enum name="TOP_RIGHT" value="53"/>
+            <enum name="BOTTOM_LEFT" value="83"/>
+            <enum name="BOTTOM_RIGHT" value="85"/>
+        </attr>
+        <!-- 设置是否填充三角区域,默认false -->
+        <attr name="lv_fill_triangle" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="WaterWaveProgress">
+        <attr name="progressWidth" format="dimension" />
+        <attr name="fontSize" format="dimension" />
+        <attr name="progressColor" format="color" />
+        <attr name="progressBgColor" format="color" />
+        <attr name="waterWaveColor" format="color" />
+        <attr name="waterWaveBgColor" format="color" />
+        <attr name="progress2WaterWidth" format="dimension" />
+        <attr name="showProgress" format="boolean" />
+        <attr name="showNumerical" format="boolean" />
+        <attr name="textColor" format="color" />
+        <attr name="progress" format="integer" />
+        <attr name="maxProgress" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CapCircleprogressView">
+        <attr name="ring_Width" format="dimension" />
+        <attr name="ceter_TextSize" format="dimension" />
+        <attr name="max_Progress" format="integer" />
+        <attr name="ceter_Textcolor" format="color" />
+        <attr name="progress_Color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MultiLineChooseItemTags">
+
+        <attr name="item_backgroundColor" format="reference|color" />
+        <attr name="item_selectedBackgroundColor" format="reference|color" />
+
+        <attr name="item_horizontalSpacing" format="dimension" />
+        <attr name="item_verticalSpacing" format="dimension" />
+        <attr name="item_horizontalPadding" format="dimension" />
+        <attr name="item_verticalPadding" format="dimension" />
+
+        <attr name="item_textColor" format="color" />
+        <attr name="item_selectedTextColor" format="reference|color" />
+        <attr name="item_textSize" format="dimension" />
+
+        <!-- 边框圆角半径-->
+        <attr name="item_radius" format="dimension" />
+        <attr name="item_bottomLeftRadius" format="dimension" />
+        <attr name="item_bottomRightRadius" format="dimension" />
+        <attr name="item_topLeftRadius" format="dimension" />
+        <attr name="item_topRightRadius" format="dimension" />
+        <!-- 边框颜色-->
+        <attr name="item_strokeColor" format="reference|color" />
+        <attr name="item_selectedStrokeColor" format="reference|color" />
+        <!-- 边框宽度-->
+        <attr name="item_strokeWidth" format="dimension" />
+        <!-- 是否多选-->
+        <attr name="item_multiChooseable" format="boolean" />
+        <attr name="item_singleLine" format="boolean" />
+
+        <!--单位dp,为了适应wrap_content用integer-->
+        <attr name="item_width" format="integer|enum">
+            <enum name="wrap_content" value="-2"/>
+            <enum name="match_parent" value="-1"/>
+        </attr>
+        <attr name="item_height" format="integer|enum">
+            <enum name="wrap_content" value="-2"/>
+            <enum name="match_parent" value="-1"/>
+        </attr>
+        <attr name="item_maxEms" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="Themes">
+        <attr name="MultiLineChooseLayoutTagsStyle" format="reference" />
+    </declare-styleable>
+
+    <attr name="position">
+        <enum name="left_top" value="0" />
+        <enum name="left_bottom" value="1" />
+        <enum name="right_top" value="2" />
+        <enum name="right_bottom" value="3" />
+    </attr>
+    <attr name="radius" format="dimension" />
+
+    <declare-styleable name="SateliteMenu">
+        <attr name="position" />
+        <attr name="radius" />
+    </declare-styleable>
+
+    <declare-styleable name="DiscreteScrollView">
+        <attr name="dsv_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>

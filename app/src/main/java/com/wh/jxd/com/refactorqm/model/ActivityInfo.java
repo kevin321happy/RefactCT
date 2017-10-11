@@ -1,13 +1,10 @@
 package com.wh.jxd.com.refactorqm.model;
 
 import java.io.Serializable;
-
 /**
  * 功能：活动信息类
- *
  * @author xiefuqiang
  */
-
 public class ActivityInfo implements Serializable
 {
     private static final long serialVersionUID = 1L;

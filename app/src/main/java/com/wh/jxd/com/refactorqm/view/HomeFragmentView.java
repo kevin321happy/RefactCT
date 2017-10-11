@@ -11,5 +11,10 @@ public interface HomeFragmentView extends BaseView {
     /**
      * 加载首页数据成功
      */
-     void onLoadSuccess(HomeInfo homeInfo);
+    void onLoadSuccess(HomeInfo homeInfo);
+
+    /**
+     * 加载数据失败了
+     */
+    void onLoadFail(String info);
 }

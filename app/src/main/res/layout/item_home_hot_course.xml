@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/px_space_60">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_space_25">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_hotcourse_ima"
+            android:layout_width="@dimen/px_space_448"
+            android:layout_height="@dimen/px_space_255"
+            android:scaleType="fitXY"
+            android:src="@drawable/all_course_head_default"
+            fresco:failureImage="@drawable/all_course_head_default"
+            fresco:failureImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/all_course_head_default"
+            fresco:placeholderImageScaleType="fitXY"
+            fresco:roundAsCircle="false"
+            fresco:roundedCornerRadius="@dimen/px_space_9"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px_space_15"
+            android:layout_marginLeft="@dimen/px_space_25"
+            android:src="@drawable/ic_mianfei"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_hotcourse_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/px_space_30"
+        android:layout_marginTop="@dimen/px_space_30"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="人力资源招聘实物"
+        android:textColor="@color/text__defaulttext"
+        android:textSize="@dimen/px_space_40"/>
+
+</LinearLayout>

@@ -24,6 +24,7 @@ public class HomeFragmentPersenterImpl extends BasePersenterImpl<HomeFragmentVie
     public HomeFragmentPersenterImpl() {
 
     }
+
     /**
      * 加载首页的数据
      */
@@ -40,18 +41,26 @@ public class HomeFragmentPersenterImpl extends BasePersenterImpl<HomeFragmentVie
                         KLog.i("开始请求");
 
                     }
-                }).subscribeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new FilterSubscriber<HomeInfo>() {
                     @Override
                     public void onCompleted() {
                         KLog.i("请求完成了！！！！");
                     }
+
                     @Override
                     public void onNext(HomeInfo data) {
                         if (mHomeFragmentView != null) {
                             mHomeFragmentView.onLoadSuccess(data);
                         }
                         KLog.i("请求成功了！！！！" + data.toString());
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if (mHomeFragmentView != null) {
+                            mHomeFragmentView.onLoadFail(e.toString());
+                        }
+                        KLog.i("请求失败了！！！！" + e.toString());
                     }
                 });
     }

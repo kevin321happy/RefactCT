@@ -1,11 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="裘马"/>
+<com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                      xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                      android:id="@+id/refresh_layout"
+                                                      android:layout_width="match_parent"
+                                                      android:layout_height="match_parent"
+                                                      android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+    <!--第一子层-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/binner"
+            style="@style/BannerDefaultStyle"
+            app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+            app:banner_transitionEffect="defaultEffect"/>
 
-</LinearLayout>
+        <GridView
+            android:id="@+id/gv_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/px_space_56"
+            android:layout_marginTop="@dimen/px_space_56"
+            android:background="@color/white"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="4"
+            android:verticalSpacing="@dimen/px_space_13"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_space_30"
+            android:background="@color/green_dan"/>
+
+        <LinearLayout
+            android:id="@+id/rl_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <!--推荐课程-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    style="@style/style_ll_course_class_title"
+                    android:layout_marginBottom="@dimen/px_space_20"
+                    android:layout_marginTop="@dimen/px_space_70">
+                    <ImageView
+                        style="@style/style_iv_title_left"
+                        android:src="@drawable/ic_lines_right"/>
+
+                    <TextView
+                        style="@style/style_tv_course_class_title"
+                        android:text="推荐课程"/>
+
+                    <ImageView
+                        style="@style/style_iv_title_right"
+                        android:src="@drawable/ic_lines_left"/>
+                    />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_more_recommend_course"
+                    style="@style/style_icon_more"
+                    android:src="@drawable/icon_more"/>
+            </FrameLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recommend_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/px_space_80"
+                android:layout_marginLeft="@dimen/px_space_40"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_space_30"
+                android:background="@color/green_dan"/>
+            <!--热门课程-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    style="@style/style_ll_course_class_title"
+                    android:layout_marginBottom="@dimen/px_space_20"
+                    android:layout_marginTop="@dimen/px_space_70">
+
+                    <ImageView
+                        style="@style/style_iv_title_left"
+                        android:src="@drawable/ic_lines_right"/>
+
+                    <TextView
+                        style="@style/style_tv_course_class_title"
+                        android:text="热门课程"/>
+
+                    <ImageView
+                        style="@style/style_iv_title_right"
+                        android:src="@drawable/ic_lines_left"/>
+                    />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_more_hot_course"
+                    style="@style/style_icon_more"
+                    android:src="@drawable/icon_more"/>
+
+            </FrameLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_hot_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/px_space_60"
+                android:paddingBottom="@dimen/px_space_30"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_space_30"
+                android:background="@color/green_dan"/>
+
+            <!--推荐讲师-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    style="@style/style_ll_course_class_title"
+                    android:layout_marginBottom="@dimen/px_space_20"
+                    android:layout_marginTop="@dimen/px_space_70">
+
+                    <ImageView
+                        style="@style/style_iv_title_left"
+                        android:src="@drawable/ic_lines_right"/>
+
+                    <TextView
+                        style="@style/style_tv_course_class_title"
+                        android:text="推荐讲师"/>
+
+                    <ImageView
+                        style="@style/style_iv_title_right"
+                        android:src="@drawable/ic_lines_left"/>
+                    />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_more_recomment_teacher"
+                    style="@style/style_icon_more"
+                    android:src="@drawable/icon_more"/>
+            </FrameLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recommend_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/px_space_20"
+                android:layout_marginRight="@dimen/px_space_20"
+                android:paddingBottom="@dimen/px_space_30"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_space_30"
+                android:background="@color/green_dan"/>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
