@@ -1,6 +1,7 @@
 package com.wh.jxd.com.refactorqm.net.service;
 
 import com.wh.jxd.com.refactorqm.common.RequestCons;
+import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.HttpBean;
@@ -31,5 +32,9 @@ public interface ApiService {
     Observable<UpLoadLocationBean> uploadLoaction(@Field("userid") String userid, @Field("qmct_token") String qmct_token, @Field("str") String timestamp
             , @Field("company_id") String company_id, @Field("str") String str, @Field("sign") String sign, @Field("lng") String lin, @Field("lat") String lat);
 
-
+    /**
+     * 获取企业信息
+     */
+    @POST(RequestCons.HOME_INFO)
+    Observable<HttpBean<HomeInfo>> getHomeData();
 }

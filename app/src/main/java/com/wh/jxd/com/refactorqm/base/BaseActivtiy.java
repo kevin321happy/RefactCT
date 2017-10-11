@@ -252,7 +252,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         }
         return super.onKeyDown(keyCode, event);
     }
-
     public abstract boolean isSystemBarTranclucent();
 
     @Override
@@ -262,7 +261,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
 
     /**
      * 获得toolbar
-     *
      * @return
      */
     public Toolbar getToolBar() {

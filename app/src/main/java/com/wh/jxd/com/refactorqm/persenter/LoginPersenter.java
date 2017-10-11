@@ -7,8 +7,5 @@ import com.wh.jxd.com.refactorqm.base.BasePersenter;
  */
 
 public interface LoginPersenter extends BasePersenter {
-
     void login(String phone, String passward);
-
-
 }
