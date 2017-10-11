@@ -7,3 +7,10 @@
 /build
 /captures
 .externalNativeBuild
+libs/
+
+/code.style.schemes
+/debugger.renderers.xml
+/debugger.xml
+/ui.lnf.xml
+!/inspection/

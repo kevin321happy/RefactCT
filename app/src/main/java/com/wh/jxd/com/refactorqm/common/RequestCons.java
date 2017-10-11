@@ -18,5 +18,9 @@ public class RequestCons {
     /**
      * 用户登录
      */
-    public static final String USER_LOGIN ="user_login";
+    public static final String USER_LOGIN = "user_login";
+    /**
+     * 获取首页信息
+     */
+    public static final String HOME_INFO = "pub/appIndex";
 }

@@ -43,7 +43,6 @@ public class LoginPersenterImpl extends BasePersenterImpl<LoginView> implements 
         NetDataManager<UserInfo> manager = new NetDataManager();
         Observable<UserInfo> login = manager.login(phone, passward);
         login.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {

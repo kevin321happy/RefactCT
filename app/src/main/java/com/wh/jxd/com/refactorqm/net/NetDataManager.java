@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
+import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.service.ApiService;
@@ -48,7 +49,6 @@ public class NetDataManager<T extends BaseModel> {
 
     /**
      * 过滤数据去掉外壳
-     *
      * @param <T>
      */
     public class ResultFilter<T> implements Func1<HttpBean<T>, T> {
@@ -66,7 +66,7 @@ public class NetDataManager<T extends BaseModel> {
      * 用户登陆
      */
     public Observable<UserInfo> login(String phone, String password) {
-        String psw= Md5Utils.encodeBy32BitMD5(password);
+        String psw = Md5Utils.encodeBy32BitMD5(password);
         //开始登陆
         String timestamp = CommonUtils.getCurrentTimestamp();
         HashMap<String, String> sign = new HashMap<>();
@@ -77,12 +77,17 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<UserInfo>> loginObserable = mService.login(phone, psw, timestamp, signData[1], signData[0]);
         return (Observable<UserInfo>) filterStatus(loginObserable);
     }
-
-
     /**
      * 启动App的时候请求定位
      */
     public void uploadLoaction(String userid, String qm_token, String timestemp, String companyId, String srt, String sign, String lng, String lat) {
         Observable<UpLoadLocationBean> beanObservable = ((ApiService) mService).uploadLoaction(userid, qm_token, timestemp, companyId, srt, sign, lng, lat);
+    }
+    /**
+     * 获取首页信息
+     */
+    public Observable<HomeInfo> getHomeData() {
+        Observable<HttpBean<HomeInfo>> homeData = mService.getHomeData();
+        return (Observable<HomeInfo>) filterStatus(homeData);
     }
 }
