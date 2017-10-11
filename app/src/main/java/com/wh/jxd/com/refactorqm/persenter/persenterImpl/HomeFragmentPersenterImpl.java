@@ -24,7 +24,6 @@ public class HomeFragmentPersenterImpl extends BasePersenterImpl<HomeFragmentVie
     public HomeFragmentPersenterImpl() {
 
     }
-
     /**
      * 加载首页的数据
      */
@@ -47,7 +46,6 @@ public class HomeFragmentPersenterImpl extends BasePersenterImpl<HomeFragmentVie
                     public void onCompleted() {
                         KLog.i("请求完成了！！！！");
                     }
-
                     @Override
                     public void onNext(HomeInfo data) {
                         if (mHomeFragmentView != null) {
