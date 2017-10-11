@@ -66,7 +66,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         netMobile = NetStateUtils.getNetWorkState(this);
         return isNetConnect();
     }
-
     /**
      * 网络变化之后的类型
      */
@@ -146,9 +145,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
                 onBackPressed();
             }
         });
-
     }
-
     /**
      * 获取头部标题的TextView
      *

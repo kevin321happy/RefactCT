@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
-import com.wh.jxd.com.refactorqm.persenter.persenterImpl.LoginPersenterImpl;
+import com.wh.jxd.com.refactorqm.presenter.presenterImpl.LoginPresenterImpl;
 import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 import com.wh.jxd.com.refactorqm.utils.StatusBarUtil;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * Created by kevin321vip on 2017/9/29.
  */
 
-public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView> implements LoginView {
+public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView> implements LoginView {
     @Bind(R.id.ll_back)
     LinearLayout mLlBack;
     @Bind(R.id.et_phone_number)
@@ -41,7 +41,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView
     TextView mTvRegister;
     @Bind(R.id.tv_forgotpwd)
     TextView mTvForgotpwd;
-    private LoginPersenterImpl mLoginPersenter;
+    private LoginPresenterImpl mLoginPersenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,9 +68,9 @@ public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView
     }
 
     @Override
-    public LoginPersenterImpl creatPersenter(Context context) {
+    public LoginPresenterImpl creatPersenter(Context context) {
         if (mLoginPersenter == null) {
-            mLoginPersenter = new LoginPersenterImpl();
+            mLoginPersenter = new LoginPresenterImpl();
         }
         return mLoginPersenter;
     }

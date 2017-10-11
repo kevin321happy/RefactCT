@@ -1,10 +1,11 @@
-package com.wh.jxd.com.refactorqm.persenter.persenterImpl;
+package com.wh.jxd.com.refactorqm.presenter.presenterImpl;
 
 import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.net.FilterSubscriber;
 import com.wh.jxd.com.refactorqm.net.NetDataManager;
+import com.wh.jxd.com.refactorqm.presenter.HomeFragmentPresenter;
 import com.wh.jxd.com.refactorqm.view.HomeFragmentView;
 
 import rx.Observable;
@@ -16,12 +17,12 @@ import rx.schedulers.Schedulers;
  * Created by kevin321vip on 2017/9/30.
  */
 
-public class HomeFragmentPersenterImpl extends BasePersenterImpl<HomeFragmentView> implements HomeFragmentPersenter {
+public class HomeFragmentPresenterImpl extends BasePersenterImpl<HomeFragmentView> implements HomeFragmentPresenter {
 
 
     private HomeFragmentView mHomeFragmentView;
 
-    public HomeFragmentPersenterImpl() {
+    public HomeFragmentPresenterImpl() {
 
     }
 

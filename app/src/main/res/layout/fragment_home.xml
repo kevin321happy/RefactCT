@@ -53,11 +53,9 @@
                     <ImageView
                         style="@style/style_iv_title_left"
                         android:src="@drawable/ic_lines_right"/>
-
                     <TextView
                         style="@style/style_tv_course_class_title"
                         android:text="推荐课程"/>
-
                     <ImageView
                         style="@style/style_iv_title_right"
                         android:src="@drawable/ic_lines_left"/>

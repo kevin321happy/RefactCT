@@ -1,4 +1,4 @@
-package com.wh.jxd.com.refactorqm.persenter;
+package com.wh.jxd.com.refactorqm.presenter.presenterImpl;
 
 import android.content.Context;
 
@@ -10,12 +10,12 @@ import com.wh.jxd.com.refactorqm.view.MainView;
  *  mainActivtiy的Persenter
  */
 
-public class MainPersenter extends BasePersenterImpl<MainView> {
+public class MainPresenter extends BasePersenterImpl<MainView> {
 
     private final MainView mMainView;
     private Context mContext;
 
-    public MainPersenter(Context context) {
+    public MainPresenter(Context context) {
         this.mContext=context;
         mMainView = getView();
     }
@@ -23,8 +23,6 @@ public class MainPersenter extends BasePersenterImpl<MainView> {
      * 发送定位信息
      */
     public void sendLocation(Context context) {
-
-
 
 
     }

@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.wh.jxd.com.refactorqm.R;
-import com.wh.jxd.com.refactorqm.base.BaseFragment;
+import com.wh.jxd.com.refactorqm.base.BaseMvpFragment;
+import com.wh.jxd.com.refactorqm.presenter.presenterImpl.EnterpriseFragmentPresenterImpl;
+import com.wh.jxd.com.refactorqm.view.EnterpriseFragmentView;
 
 /**
  * Created by kevin321vip on 2017/9/28.
  */
 
-public class EnterpriseFragment extends BaseFragment {
+public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresenterImpl, EnterpriseFragmentView> implements EnterpriseFragmentView {
+
+    private EnterpriseFragmentPresenterImpl fragmentPresenter;
+
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
 
@@ -21,13 +26,22 @@ public class EnterpriseFragment extends BaseFragment {
         return R.layout.fragment_enterprise;
     }
 
-//    @Override
-//    protected BaseView creatV() {
-//        return null;
-//    }
-//
-//    @Override
-//    protected BasePersenterImpl creatP() {
-//        return null;
-//    }
+    @Override
+    protected EnterpriseFragmentView creatV() {
+        return this;
+    }
+
+    @Override
+    protected EnterpriseFragmentPresenterImpl creatP() {
+        if (fragmentPresenter == null) {
+            fragmentPresenter = new EnterpriseFragmentPresenterImpl();
+        }
+        return fragmentPresenter;
+    }
+
+    @Override
+    public void onLoadSuccess() {
+
+    }
+
 }

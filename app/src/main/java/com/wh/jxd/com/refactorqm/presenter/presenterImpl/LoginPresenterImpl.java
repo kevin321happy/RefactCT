@@ -1,4 +1,4 @@
-package com.wh.jxd.com.refactorqm.persenter.persenterImpl;
+package com.wh.jxd.com.refactorqm.presenter.presenterImpl;
 
 import android.text.TextUtils;
 
@@ -7,7 +7,7 @@ import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.FilterSubscriber;
 import com.wh.jxd.com.refactorqm.net.NetDataManager;
-import com.wh.jxd.com.refactorqm.persenter.LoginPersenter;
+import com.wh.jxd.com.refactorqm.presenter.LoginPresenter;
 import com.wh.jxd.com.refactorqm.view.LoginView;
 
 import rx.Observable;
@@ -19,10 +19,10 @@ import rx.schedulers.Schedulers;
  * Created by kevin321vip on 2017/9/29.
  */
 
-public class LoginPersenterImpl extends BasePersenterImpl<LoginView> implements LoginPersenter {
+public class LoginPresenterImpl extends BasePersenterImpl<LoginView> implements LoginPresenter {
     private LoginView mLoginView;
 
-    public LoginPersenterImpl() {
+    public LoginPresenterImpl() {
     }
 
     @Override
