@@ -64,6 +64,7 @@
     <!--字体-->
     <color name="text_black">#3d3b3b</color>
     <color name="text_defaulttext">#333333</color>
+    <color name="text__defaulttext">#333333</color>
     <color name="pickerview_timebtn_nor">#DF1E3D</color>
     <color name="pickerview_timebtn_pre">#55DF1E3D</color>
     <!-- 红色选择器

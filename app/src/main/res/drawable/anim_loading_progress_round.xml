@@ -2,7 +2,7 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="false" >
 
-    <item
+    <!--<item
         android:drawable="@drawable/app_loading0"
         android:duration="60"/>
     <item
@@ -32,7 +32,7 @@
     <item
         android:drawable="@drawable/app_loading9"
         android:duration="60"/>
-
+-->
    <!-- <item
     android:drawable="@drawable/p1_1"
     android:duration="20"/>

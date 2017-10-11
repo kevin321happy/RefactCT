@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_recommend_course_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
+
+    <com.wh.jxd.com.refactorqm.view.widget.AutoCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/px_space_4"
+        app:cardElevation="@dimen/px_space_4"
+        app:cardMaxElevation="@dimen/px_space_10"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/px_space_40">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/iv_recommend_course"
+                android:layout_width="@dimen/px_space_300"
+                android:layout_height="@dimen/px_space_200"
+                android:scaleType="fitXY"
+                android:src="@drawable/all_course_head_default"
+                fresco:failureImage="@drawable/all_course_head_default"
+                fresco:failureImageScaleType="fitXY"
+                fresco:placeholderImage="@drawable/all_course_head_default"
+                fresco:placeholderImageScaleType="fitXY"
+                fresco:roundAsCircle="false"
+                fresco:roundedCornerRadius="@dimen/px_space_9"/>
+            <TextView
+                android:id="@+id/tv_recommend_course_name"
+                android:layout_width="@dimen/px_space_300"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/px_space_15"
+                android:layout_marginTop="@dimen/px_space_30"
+                android:singleLine="true"
+                android:text="资管管理"
+                />
+        </LinearLayout>
+    </com.wh.jxd.com.refactorqm.view.widget.AutoCardView>
+</LinearLayout>

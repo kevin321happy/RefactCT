@@ -1,4 +1,4 @@
-package com.fips.huashun.widgets;
+package com.wh.jxd.com.refactorqm.view.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
