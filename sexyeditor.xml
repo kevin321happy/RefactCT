@@ -1,9 +1,0 @@
-<application>
-  <component name="SexyEditor">
-    <option name="configs">
-      <list>
-        <BackgroundConfiguration />
-      </list>
-    </option>
-  </component>
-</application>

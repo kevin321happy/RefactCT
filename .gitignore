@@ -8,10 +8,7 @@
 /captures
 .externalNativeBuild
 libs/
-src/main/java/com/wh/jxd/com/refactorqm/inter/
-src/main/java/com/wh/jxd/com/refactorqm/model/inter/
-src/main/java/com/wh/jxd/com/refactorqm/service/
-src/main/java/com/wh/jxd/com/refactorqm/view/widget/
+
 /code.style.schemes
 /debugger.renderers.xml
 /debugger.xml
