@@ -127,6 +127,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
     private void setFragment(int viewId, FragmentTransaction ft) {
         switch (viewId) {
             case R.id.ll_menu_home:
+                showToolBar();
                 setToolBarTitle("大厅");
                 if (item_search!=null){
                     item_search.setVisible(true);
@@ -139,6 +140,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
                 }
                 break;
             case R.id.ll_menu_enterprise:
+                showToolBar();
                 setToolBarTitle("企业");
                 if (item_search!=null){
                     item_search.setVisible(false);
@@ -153,6 +155,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             case R.id.ll_menu_personal:
                 //如果用户ID为空先跳转到登陆
 //                PreferenceUtils.getUserId() == null
+                hideToolBar();
                 String userId = PreferenceUtils.getUserId();
                 if (userId == null || "".equals(userId)) {
                     startActivity(new Intent(this, LoginActivity.class));

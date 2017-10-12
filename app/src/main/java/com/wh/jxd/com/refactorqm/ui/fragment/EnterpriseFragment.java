@@ -18,6 +18,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        //加载数据
 
     }
 
@@ -43,5 +44,4 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     public void onLoadSuccess() {
 
     }
-
 }

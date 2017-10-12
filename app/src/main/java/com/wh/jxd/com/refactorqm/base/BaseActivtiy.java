@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by kevin321vip on 2017/9/27.
  */
 
-public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBroadcastReceiver.NetEvevt {
+public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroadcastReceiver.NetEvevt {
 
     private static final String TAG = "BaseActivtiy";
 
@@ -66,6 +66,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         netMobile = NetStateUtils.getNetWorkState(this);
         return isNetConnect();
     }
+
     /**
      * 网络变化之后的类型
      */
@@ -146,6 +147,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
             }
         });
     }
+
     /**
      * 获取头部标题的TextView
      *
@@ -196,8 +198,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
     }
 
 
-
-
     /**
      * 双击监听
      *
@@ -241,7 +241,22 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         }
     }
 
+    /**
+     * 显示ToolBarO
+     */
+    public void showToolBar() {
+        Toolbar toolBar = getToolBar();
+        if (toolBar != null) {
+            toolBar.setVisibility(View.VISIBLE);
+        }
 
+    }
+
+    /**
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -249,6 +264,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         }
         return super.onKeyDown(keyCode, event);
     }
+
     public abstract boolean isSystemBarTranclucent();
 
     @Override
@@ -258,6 +274,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
 
     /**
      * 获得toolbar
+     *
      * @return
      */
     public Toolbar getToolBar() {

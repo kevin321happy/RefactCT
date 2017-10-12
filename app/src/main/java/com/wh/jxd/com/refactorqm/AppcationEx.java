@@ -1,10 +1,16 @@
 package com.wh.jxd.com.refactorqm;
 
+import android.Manifest;
 import android.app.Application;
 
+import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.zhy.autolayout.config.AutoLayoutConifg;
+
+import java.io.File;
+
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * Created by kevin321vip on 2017/9/27.
@@ -33,29 +39,28 @@ public class AppcationEx extends Application {
     private void initAutoLayout() {
         AutoLayoutConifg.getInstance().useDeviceSize();
     }
-
     //初始化fresco
     private void initFresco() {
-//        String[] Permissions = new String[]{permission.WRITE_EXTERNAL_STORAGE, permission.READ_EXTERNAL_STORAGE};
-//        boolean hasPermissions = EasyPermissions.hasPermissions(this, Permissions);
-//        File filesDir = this.getFilesDir();
-//        String path = filesDir.toString();
-//        ImagePipelineConfig build = ImagePipelineConfig.newBuilder(this)
-//                .setDownsampleEnabled(true)
-//                .setMainDiskCacheConfig(
-//                        DiskCacheConfig.newBuilder(this)
-//                                .setBaseDirectoryPath(new File(path))
-//                                .build())
-//                .setDownsampleEnabled(true)
-//                .build();
-//        if (hasPermissions) {
-//            Fresco.initialize(this, build);
-//        } else {
+        String[] Permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+        boolean hasPermissions = EasyPermissions.hasPermissions(this, Permissions);
+        File filesDir = this.getFilesDir();
+        String path = filesDir.toString();
+        ImagePipelineConfig build = ImagePipelineConfig.newBuilder(this)
+                .setDownsampleEnabled(true)
+                .setMainDiskCacheConfig(
+                        DiskCacheConfig.newBuilder(this)
+                                .setBaseDirectoryPath(new File(path))
+                                .build())
+                .setDownsampleEnabled(true)
+                .build();
+        if (hasPermissions) {
+            Fresco.initialize(this, build);
+        } else {
             // 没有权限，暂时使用默认配置。
             ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
                     .setDownsampleEnabled(true)
                     .build();
             Fresco.initialize(this, config);
-//        }
+        }
     }
 }

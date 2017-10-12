@@ -49,6 +49,7 @@ public class NetDataManager<T extends BaseModel> {
 
     /**
      * 过滤数据去掉外壳
+     *
      * @param <T>
      */
     public class ResultFilter<T> implements Func1<HttpBean<T>, T> {
@@ -62,6 +63,7 @@ public class NetDataManager<T extends BaseModel> {
             return tHttpBean.getData();
         }
     }
+
     /**
      * 用户登陆
      */
@@ -77,17 +79,33 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<UserInfo>> loginObserable = mService.login(phone, psw, timestamp, signData[1], signData[0]);
         return (Observable<UserInfo>) filterStatus(loginObserable);
     }
+
     /**
      * 启动App的时候请求定位
      */
     public void uploadLoaction(String userid, String qm_token, String timestemp, String companyId, String srt, String sign, String lng, String lat) {
         Observable<UpLoadLocationBean> beanObservable = ((ApiService) mService).uploadLoaction(userid, qm_token, timestemp, companyId, srt, sign, lng, lat);
     }
+
     /**
      * 获取首页信息
      */
     public Observable<HomeInfo> getHomeData() {
         Observable<HttpBean<HomeInfo>> homeData = mService.getHomeData();
         return (Observable<HomeInfo>) filterStatus(homeData);
+    }
+
+    /**
+     * 获取个人用户信息
+     */
+    public Observable<UserInfo> getUserInfo(String userid, String qmct_token) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", userid);
+        sign.put("qmct_token", qmct_token);
+        sign.put("timestamp", timestamp);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        Observable<HttpBean<UserInfo>> userInfo = mService.getUserInfo(userid, qmct_token, timestamp, signData[1], signData[0]);
+        return (Observable<UserInfo>) filterStatus(userInfo);
     }
 }

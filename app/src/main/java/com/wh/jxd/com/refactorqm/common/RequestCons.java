@@ -23,4 +23,8 @@ public class RequestCons {
      * 获取首页信息
      */
     public static final String HOME_INFO = "pub/appIndex";
+    /**
+     * 获取用户个人信息
+     */
+    public static final String USER_USERINFO = "user/userInfo";
 }

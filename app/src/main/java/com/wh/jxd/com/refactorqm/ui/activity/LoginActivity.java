@@ -99,6 +99,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView
                 break;
         }
     }
+
     @Override
     public void onCheckFail(String info) {
         ToastUtils.showLongToast(this, info);
@@ -106,12 +107,14 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView
 
     @Override
     public void onLoginFail(String erro) {
-        ToastUtils.showShortToast(this,"登陆失败了~:"+erro.toString());
+        ToastUtils.showShortToast(this, "登陆失败了~:" + erro.toString());
     }
 
     @Override
     public void onLoginSucesss(UserInfo userInfo) {
         PreferenceUtils.setUserId(userInfo.getId());
+        PreferenceUtils.setQM_Token(userInfo.getQmct_token());
+        PreferenceUtils.setCompanyId(userInfo.getCompany_id());
         finish();
     }
 }

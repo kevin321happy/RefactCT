@@ -14,10 +14,9 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textColor="@color/text_defaulttext"
-        android:text="subtitle"
+        android:text=""
         android:paddingRight="10dp"
-        android:layout_gravity="right" />
-
+        android:layout_gravity="right"/>
     <TextView
         android:id="@+id/toolbar_title"
         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"

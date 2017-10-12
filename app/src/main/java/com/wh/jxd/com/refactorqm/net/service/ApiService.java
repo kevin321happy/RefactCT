@@ -17,6 +17,7 @@ import rx.Observable;
  */
 
 public interface ApiService {
+
     /**
      * 用户登陆
      */
@@ -24,17 +25,22 @@ public interface ApiService {
     @POST(RequestCons.USER_LOGIN)
     Observable<HttpBean<UserInfo>> login(@Field("phone") String phone, @Field("password") String password, @Field("timestamp") String timestamp
             , @Field("str") String str, @Field("sign") String sign);
-
     /**
      * 上报定位信息
      */
     @POST(RequestCons.USER_USERLOGININFO)
-    Observable<UpLoadLocationBean> uploadLoaction(@Field("userid") String userid, @Field("qmct_token") String qmct_token, @Field("str") String timestamp
+    Observable<UpLoadLocationBean> uploadLoaction(@Field("userid") String userid, @Field("qmct_token") String qmct_token, @Field("timestamp") String timestamp
             , @Field("company_id") String company_id, @Field("str") String str, @Field("sign") String sign, @Field("lng") String lin, @Field("lat") String lat);
-
     /**
      * 获取企业信息
      */
     @POST(RequestCons.HOME_INFO)
     Observable<HttpBean<HomeInfo>> getHomeData();
+    /**
+     * 获取个人信息
+     */
+    @FormUrlEncoded
+    @POST(RequestCons.USER_USERINFO)
+    Observable<HttpBean<UserInfo>> getUserInfo(@Field("userid") String userid,@Field("qmct_token") String  qmct_token,@Field("timestamp") String timestamp,@Field("str") String str, @Field("sign") String sign);
+
 }

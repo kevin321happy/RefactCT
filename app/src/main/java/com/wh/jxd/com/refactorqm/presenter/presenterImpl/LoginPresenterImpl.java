@@ -48,7 +48,7 @@ public class LoginPresenterImpl extends BasePersenterImpl<LoginView> implements 
                     public void call() {
                         KLog.i("开始请求");
                     }
-                }).subscribeOn(AndroidSchedulers.mainThread())
+                }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new FilterSubscriber<UserInfo>() {
                     @Override
                     public void onCompleted() {
