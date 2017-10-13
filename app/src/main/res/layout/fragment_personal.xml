@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -31,14 +30,42 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/enterprise_verification_background"
                     app:layout_collapseMode="pin"
-                    app:layout_collapseParallaxMultiplier="0.5" />
+                    app:layout_collapseParallaxMultiplier="0.5"/>
 
                 <com.wh.jxd.com.refactorqm.view.widget.CircleImageView
                     android:id="@+id/iv_head"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/user_head_default" />
+                    android:src="@drawable/user_head_default"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_head"
+                    android:layout_marginTop="@dimen/px_space_40"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/px_space_15"
+                        android:textColor="@color/black"
+                        android:gravity="right"
+                        android:textSize="@dimen/px_space_45"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/tv_leave"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/px_space_15"
+                        android:textColor="@color/red_qian"
+                        android:gravity="left"
+                        android:text="14"
+                        android:textSize="@dimen/px_space_43"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
             </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
@@ -54,7 +81,7 @@
                     android:gravity="center_horizontal"
                     android:text="个人"
                     android:textColor="@color/text_defaulttext"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
 
             </android.support.v7.widget.Toolbar>
 
@@ -78,17 +105,19 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="@color/green_dan" />
+                android:background="@color/green_dan"/>
+
             <com.wh.jxd.com.refactorqm.view.widget.NoScrollListView
                 android:id="@+id/lv_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:divider="@color/line_gary"
                 android:dividerHeight="@dimen/px_space_1"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px_space_25"
-                android:background="@color/green_dan" />
+                android:background="@color/green_dan"/>
 
             <TextView
                 android:id="@+id/tv_login_out"
@@ -99,12 +128,11 @@
                 android:padding="@dimen/px_space_25"
                 android:text="退出登录"
                 android:textColor="@color/bg_red"
-                android:textSize="@dimen/px_space_50" />
-
+                android:textSize="@dimen/px_space_50"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/line_gary" />
+                android:background="@color/line_gary"/>
         </com.zhy.autolayout.AutoLinearLayout>
 
 

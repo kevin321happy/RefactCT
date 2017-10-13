@@ -153,8 +153,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
                 }
                 break;
             case R.id.ll_menu_personal:
+                setImmersionState(getResources().getColor(R.color.transparent));
                 //如果用户ID为空先跳转到登陆
-//                PreferenceUtils.getUserId() == null
+                if (PreferenceUtils.getUserId() == null||"".equals(PreferenceUtils.getUserId())) {
+                    startActivity(new Intent(this, LoginActivity.class));
+
+                }
                 hideToolBar();
                 String userId = PreferenceUtils.getUserId();
                 if (userId == null || "".equals(userId)) {

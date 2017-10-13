@@ -65,4 +65,21 @@ public class PersonalFragmentPresenterImpl extends BasePersenterImpl<PersonalFra
                     }
                 });
     }
+
+    /**
+     * 退出登陆
+     */
+    public void loginOut() {
+        //清除用户信息
+        PreferenceUtils.setUserId("");
+        PreferenceUtils.setQM_Token("");
+        PreferenceUtils.setCompanyId("");
+        PreferenceUtils.setUserInfoBean("");
+        PreferenceUtils.setUser_PSW("");
+        PreferenceUtils.setUser_Phone("");
+        PreferenceUtils.setIs_Teacher(false);
+        if (mPersonalFragmentView != null) {
+            mPersonalFragmentView.clearInfoSuccess();
+        }
+    }
 }

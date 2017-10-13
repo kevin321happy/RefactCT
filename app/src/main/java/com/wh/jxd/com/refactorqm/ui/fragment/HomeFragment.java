@@ -255,8 +255,6 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         ButterKnife.bind(this, rootView);
         return rootView;
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -20,4 +20,8 @@ public interface PersonalFragmentView extends BaseView {
      */
     void onLoadFail(String s);
 
+    /**
+     * 清除了用户信息
+     */
+    void clearInfoSuccess();
 }
