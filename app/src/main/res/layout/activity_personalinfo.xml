@@ -33,7 +33,7 @@
                     android:textColor="@color/grgray"
                     android:textSize="@dimen/px_space_35"/>
 
-                <com.fips.huashun.widgets.CircleImageView
+                <com.wh.jxd.com.refactorqm.view.widget.CircleImageView
                     android:id="@+id/iv_personalhead"
                     android:layout_width="@dimen/px_space_100"
                     android:layout_height="@dimen/px_space_100"

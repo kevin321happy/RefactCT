@@ -47,7 +47,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         init();
         evevt = this;
         inspectNet();
-
         initView();
     }
 
@@ -95,9 +94,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         }
         return false;
     }
-
     protected abstract void initView();
-
     /**
      * 初始化界面操作
      */
@@ -109,7 +106,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         mToolbarSubTitle = (TextView) findViewById(R.id.toolbar_subtitle);
-
         if (mToolbar != null) {
             //将Toolbar显示到界面
             setSupportActionBar(mToolbar);
@@ -132,7 +128,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
             showBack();
         }
     }
-
     /**
      * 显示返回键
      */
@@ -146,7 +141,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
             }
         });
     }
-
     /**
      * 获取头部标题的TextView
      *
@@ -172,7 +166,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
             subTitle1.setText(subTitle);
         }
     }
-
     /**
      * 设置头部标题
      *
@@ -186,26 +179,21 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
             setSupportActionBar(getToolBar());
         }
     }
-
     /**
      * 是否显示后退按钮,默认显示,可在子类重写该方法.
-     *
      * @return
      */
     protected boolean isShowBacking() {
         return true;
     }
 
-
     /**
      * 双击监听
-     *
      * @param res
      */
     public void setImmersionState(int res) {
 
     }
-
     /**
      * APP字体大小，不随系统的字体大小的变化而变化的方法
      */
@@ -220,7 +208,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
 
     /**
      * 检查是否可执行点击操作 防重复点击
-     *
      * @return 返回true则可执行
      */
     protected boolean checkClick(int id) {
@@ -229,7 +216,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         mLastClickTimes.put(id, thisTime);
         return !(lastTime != null && thisTime - lastTime < 800);
     }
-
     /**
      * 隐藏ToolBar
      */
@@ -248,9 +234,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         if (toolBar != null) {
             toolBar.setVisibility(View.VISIBLE);
         }
-
     }
-
     /**
      * @param keyCode
      * @param event
@@ -263,9 +247,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         }
         return super.onKeyDown(keyCode, event);
     }
-
     public abstract boolean isSystemBarTranclucent();
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

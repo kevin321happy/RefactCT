@@ -9,14 +9,12 @@ public class BasePersenterImpl<V extends BaseView> implements BasePersenter {
     public V getView() {
         return mView;
     }
-
     /**
      * P层持有View对象
      * @param view
      */
     public void attachView(V view) {
         this.mView = view;
-
     }
 
     public void detachView() {

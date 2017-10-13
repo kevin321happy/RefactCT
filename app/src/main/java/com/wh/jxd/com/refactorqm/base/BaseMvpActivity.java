@@ -29,6 +29,7 @@ public abstract class BaseMvpActivity<P extends BasePersenterImpl, V extends Bas
             throw new NullPointerException("mView不能为空~");
         }
         mpersenter.attachView(mView);
+        initView();
     }
 
     /**

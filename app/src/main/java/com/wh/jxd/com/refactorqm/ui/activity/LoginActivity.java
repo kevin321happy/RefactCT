@@ -112,6 +112,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView
 
     @Override
     public void onLoginSucesss(UserInfo userInfo) {
+//        AppcationEx.getInstance().setUserInfo(userInfo);
         PreferenceUtils.setUserId(userInfo.getId());
         PreferenceUtils.setQM_Token(userInfo.getQmct_token());
         PreferenceUtils.setCompanyId(userInfo.getCompany_id());

@@ -53,8 +53,6 @@ public class LoginPresenterImpl extends BasePersenterImpl<LoginView> implements 
                     @Override
                     public void onCompleted() {
                         KLog.i("请求完成了！！！！");
-
-
                     }
 
                     @Override
@@ -62,7 +60,6 @@ public class LoginPresenterImpl extends BasePersenterImpl<LoginView> implements 
                         KLog.i("请求成功了！！！！" + userInfo.toString());
                         mLoginView.onLoginSucesss(userInfo);
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);

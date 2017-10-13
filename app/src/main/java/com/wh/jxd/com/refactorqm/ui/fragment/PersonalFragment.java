@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.socks.library.KLog;
+import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpFragment;
 import com.wh.jxd.com.refactorqm.model.GridViewBean;
@@ -37,8 +38,6 @@ import butterknife.OnClick;
  */
 
 public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterImpl, PersonalFragmentView> implements PersonalFragmentView, AdapterView.OnItemClickListener {
-
-
     @Bind(R.id.iv_bg)
     SimpleDraweeView mIvBg;
     @Bind(R.id.iv_head)
@@ -124,6 +123,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         Glide.with(this).load(data.getHead_image()).into(mIvHead);
         mTvLeave.setText(data.getMember_level() == null ? "LV" : "LV" + data.getMember_level());
         mTvName.setText(data.getMember_name() == null ? "" : data.getMember_name());
+        AppcationEx.getInstance().setUserInfo(data);
     }
 
     @Override
@@ -186,6 +186,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
                 break;
         }
     }
+
     @OnClick({R.id.iv_head, R.id.tv_login_out})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -195,19 +196,19 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
                 break;
             case R.id.tv_login_out:
                 //退出登陆
-        new ActionSheetDialog(getActivity())
-                .builder()
-                .setCancelable(false)
-                .setCanceledOnTouchOutside(false)
-                .addSheetItem("退出当前账号", ActionSheetDialog.SheetItemColor.Black,
-                        new ActionSheetDialog.OnSheetItemClickListener() {
-                            @Override
-                            public void onClick(int which) {
-                                if (mFragmentPresenter != null) {
-                                    mFragmentPresenter.loginOut();
-                                }
-                            }
-                        }).show();
+                new ActionSheetDialog(getActivity())
+                        .builder()
+                        .setCancelable(false)
+                        .setCanceledOnTouchOutside(false)
+                        .addSheetItem("退出当前账号", ActionSheetDialog.SheetItemColor.Black,
+                                new ActionSheetDialog.OnSheetItemClickListener() {
+                                    @Override
+                                    public void onClick(int which) {
+                                        if (mFragmentPresenter != null) {
+                                            mFragmentPresenter.loginOut();
+                                        }
+                                    }
+                                }).show();
                 break;
         }
     }
