@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,11 +17,9 @@
             app:expandedTitleMarginEnd="60dp"
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
-
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/iv_bg"
                     android:layout_width="match_parent"
@@ -67,13 +64,12 @@
 
                 </LinearLayout>
             </RelativeLayout>
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:layout_marginTop="@dimen/px_space_30"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
+                android:layout_height="wrap_content"
                 app:layout_collapseMode="pin">
-
                 <TextView
                     android:id="@+id/tv_tool_bar_title"
                     android:layout_width="match_parent"

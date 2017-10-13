@@ -18,25 +18,25 @@
             <LinearLayout
                 android:id="@+id/ll_personalhead"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_48"
-                android:layout_marginTop="@dimen/space_10"
+                android:layout_height="@dimen/px_space_110"
+                android:layout_marginTop="@dimen/px_space_25"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="头像"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <com.fips.huashun.widgets.CircleImageView
                     android:id="@+id/iv_personalhead"
-                    android:layout_width="@dimen/space_40"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_width="@dimen/px_space_100"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_gravity="center"
                     android:src="@drawable/user_head_default"
                     app:border_color="@color/transparent"/>
@@ -50,29 +50,29 @@
             <LinearLayout
                 android:id="@+id/ll_user_name"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_40"
+                android:layout_height="@dimen/px_space_100"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:text="昵称"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <TextView
                     android:id="@+id/tv_user_name"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="7"
                     android:gravity="center_vertical"
                     android:text="qiuma1234"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -88,24 +88,24 @@
             <LinearLayout
                 android:id="@+id/ll_personalname"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_40"
+                android:layout_height="@dimen/px_space_100"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:text="姓名"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <TextView
                     android:id="@+id/tv_truename"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="7"
                     android:gravity="center_vertical"
                     android:text="张三"
@@ -125,29 +125,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_40"
+                android:layout_height="@dimen/px_space_100"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:text="手机号"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <TextView
                     android:id="@+id/tv_phone"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="7"
                     android:gravity="center_vertical"
                     android:text="1822352102"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
             </LinearLayout>
 
@@ -159,29 +159,29 @@
             <LinearLayout
                 android:id="@+id/ll_birthday"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_40"
+                android:layout_height="@dimen/px_space_100"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:text="生日"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <TextView
                     android:id="@+id/tv_birthday"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="7"
                     android:gravity="center_vertical"
                     android:text="1988-01-05"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -197,29 +197,29 @@
             <LinearLayout
                 android:id="@+id/ll_sex"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_40"
+                android:layout_height="@dimen/px_space_100"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
                     android:text="性别"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <TextView
                     android:id="@+id/tv_sex"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/space_40"
+                    android:layout_height="@dimen/px_space_100"
                     android:layout_weight="7"
                     android:gravity="center_vertical"
                     android:text="男"
                     android:textColor="@color/grgray"
-                    android:textSize="@dimen/text_size_14"/>
+                    android:textSize="@dimen/px_space_35"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -235,10 +235,10 @@
             <LinearLayout
                 android:id="@+id/ll_wedlock"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_40"
+                android:layout_height="@dimen/px_space_100"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/space_10"
-                android:paddingRight="@dimen/space_10">
+                android:paddingLeft="@dimen/px_space_25"
+                android:paddingRight="@dimen/px_space_25">
 
                 <TextView
                     android:layout_width="0dp"

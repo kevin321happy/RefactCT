@@ -106,7 +106,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         //设置状态栏颜色
         StatusBarUtil.setStatusBarColor(this, R.color.white);
         StatusBarUtil.StatusBarLightMode(this);
-
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         mToolbarSubTitle = (TextView) findViewById(R.id.toolbar_subtitle);

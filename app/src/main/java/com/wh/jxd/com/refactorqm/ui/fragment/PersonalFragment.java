@@ -72,7 +72,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        //设置状态栏的颜色
+
         if (mFragmentPresenter == null) {
             mFragmentPresenter = creatP();
         }
@@ -186,7 +186,6 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
                 break;
         }
     }
-
     @OnClick({R.id.iv_head, R.id.tv_login_out})
     public void onViewClicked(View view) {
         switch (view.getId()) {
