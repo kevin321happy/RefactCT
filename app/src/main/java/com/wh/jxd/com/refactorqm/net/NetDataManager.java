@@ -5,12 +5,14 @@ import android.content.Context;
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
+import com.wh.jxd.com.refactorqm.model.UpDataUserInfo;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.service.ApiService;
 import com.wh.jxd.com.refactorqm.utils.CommonUtils;
 import com.wh.jxd.com.refactorqm.utils.Md5Utils;
 import com.wh.jxd.com.refactorqm.utils.NetUtils;
+import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 
 import java.util.HashMap;
 
@@ -107,5 +109,20 @@ public class NetDataManager<T extends BaseModel> {
         String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
         Observable<HttpBean<UserInfo>> userInfo = mService.getUserInfo(userid, qmct_token, timestamp, signData[1], signData[0]);
         return (Observable<UserInfo>) filterStatus(userInfo);
+    }
+
+    /**
+     * 修改用户信息
+     */
+    public Observable<UpDataUserInfo> upDataUserInfo(String key, String value) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", PreferenceUtils.getUserId());
+        sign.put("qmct_token", PreferenceUtils.getQM_Token());
+        sign.put("timestamp", timestamp);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        sign.put(key, value);
+        Observable<HttpBean<UpDataUserInfo>> updataUserInfo = mService.updataUserInfo(sign);
+        return (Observable<UpDataUserInfo>) filterStatus(updataUserInfo);
     }
 }

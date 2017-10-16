@@ -91,6 +91,7 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
     public boolean isSystemBarTranclucent() {
         return false;
     }
+
     @Override
     protected PersonalView creatView() {
         return this;
@@ -106,6 +107,7 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
 
     /**
      * 获取用户信息成功
+     *
      * @param userInfo
      */
     @Override
@@ -146,8 +148,6 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         mTvJob.setText(userInfo.getJob_name());
         mTvSignature.setText(userInfo.getSignature());
         mTvBirthday.setText(userInfo.getBirthday() == null ? "未设置" : userInfo.getBirthday());
-//        mImageLoader = ImageLoader.getInstance();
-//        mImageLoader.displayImage(userinfo.getHead_image(), mIvPersonalhead);
         Glide.with(this).load(userInfo.getHead_image()).into(mIvPersonalhead);
     }
 }

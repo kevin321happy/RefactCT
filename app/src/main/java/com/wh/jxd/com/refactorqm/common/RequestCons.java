@@ -27,4 +27,8 @@ public class RequestCons {
      * 获取用户个人信息
      */
     public static final String USER_USERINFO = "user/userInfo";
+    /**
+     * 编辑用户信息
+     */
+    public static final String USER_EDITUSERINFO="user/editUserInfo";
 }
