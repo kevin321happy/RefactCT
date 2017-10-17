@@ -110,7 +110,6 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<UserInfo>> userInfo = mService.getUserInfo(userid, qmct_token, timestamp, signData[1], signData[0]);
         return (Observable<UserInfo>) filterStatus(userInfo);
     }
-
     /**
      * 修改用户信息
      */
@@ -118,11 +117,15 @@ public class NetDataManager<T extends BaseModel> {
         String timestamp = CommonUtils.getCurrentTimestamp();
         HashMap<String, String> sign = new HashMap<>();
         sign.put("userid", PreferenceUtils.getUserId());
-        sign.put("qmct_token", PreferenceUtils.getQM_Token());
+
         sign.put("timestamp", timestamp);
+
         String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
-        sign.put(key, value);
-        Observable<HttpBean<UpDataUserInfo>> updataUserInfo = mService.updataUserInfo(sign);
-        return (Observable<UpDataUserInfo>) filterStatus(updataUserInfo);
+        sign.put(key,value);
+        sign.put("qmct_token", PreferenceUtils.getQM_Token());
+        sign.put("str",signData[1]);
+        sign.put("sign",signData[0]);
+        Observable<UpDataUserInfo> upDataUserInfoObservable = mService.updataUserInfo(sign);
+        return upDataUserInfoObservable;
     }
 }

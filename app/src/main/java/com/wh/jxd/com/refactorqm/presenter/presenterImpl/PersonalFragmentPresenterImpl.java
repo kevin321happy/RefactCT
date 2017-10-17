@@ -38,7 +38,6 @@ public class PersonalFragmentPresenterImpl extends BasePersenterImpl<PersonalFra
                     @Override
                     public void call() {
                         KLog.i("开始");
-
                     }
                 }).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new FilterSubscriber<UserInfo>() {
@@ -49,12 +48,10 @@ public class PersonalFragmentPresenterImpl extends BasePersenterImpl<PersonalFra
 
                     @Override
                     public void onNext(UserInfo data) {
-//                        KLog.i("成功：" + data.toString());
                         if (mPersonalFragmentView != null) {
                             mPersonalFragmentView.onLoadSuccess(data);
                         }
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
@@ -65,7 +62,6 @@ public class PersonalFragmentPresenterImpl extends BasePersenterImpl<PersonalFra
                     }
                 });
     }
-
     /**
      * 退出登陆
      */

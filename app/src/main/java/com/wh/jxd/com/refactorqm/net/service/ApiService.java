@@ -50,10 +50,10 @@ public interface ApiService {
     @POST(RequestCons.USER_USERINFO)
     Observable<HttpBean<UserInfo>> getUserInfo(@Field("userid") String userid, @Field("qmct_token") String qmct_token, @Field("timestamp") String timestamp, @Field("str") String str, @Field("sign") String sign);
 
-    /**
-     * 修改个人信息
-     */
+//    /**
+//     * 修改个人信息
+//     */
     @FormUrlEncoded
     @POST(RequestCons.USER_EDITUSERINFO)
-    Observable<HttpBean<UpDataUserInfo>> updataUserInfo(@FieldMap Map<String, String> options);
+    Observable<UpDataUserInfo> updataUserInfo(@FieldMap Map<String, String> options);
 }

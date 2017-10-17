@@ -1,10 +1,10 @@
 package com.wh.jxd.com.refactorqm.model;
 
 /**
- * Created by kevin321vip on 2017/10/13.
+ * Created by kevin321vip on 2017/10/17.
  */
 
-public class UpDataUserInfo extends BaseModel{
+public class TestModel {
 
     /**
      * status : 1
@@ -13,31 +13,11 @@ public class UpDataUserInfo extends BaseModel{
      * suc : y
      * is_login : 1
      */
-
     private String status;
     private String info;
-    private Object data;
+    private boolean data;
     private String suc;
     private String is_login;
-
-    @Override
-    public String toString() {
-        return "UpDataUserInfo{" +
-                "status='" + status + '\'' +
-                ", info='" + info + '\'' +
-                ", data=" + data +
-                ", suc='" + suc + '\'' +
-                ", is_login='" + is_login + '\'' +
-                '}';
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -47,7 +27,9 @@ public class UpDataUserInfo extends BaseModel{
         this.info = info;
     }
 
-
+    public void setData(boolean data) {
+        this.data = data;
+    }
 
     public void setSuc(String suc) {
         this.suc = suc;
@@ -65,7 +47,9 @@ public class UpDataUserInfo extends BaseModel{
         return info;
     }
 
-
+    public boolean getData() {
+        return data;
+    }
 
     public String getSuc() {
         return suc;

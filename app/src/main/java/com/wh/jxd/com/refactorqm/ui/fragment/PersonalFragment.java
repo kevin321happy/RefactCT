@@ -152,7 +152,6 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
 
     /**
      * 菜单条目的点击事件
-     *
      * @param parent
      * @param view
      * @param position

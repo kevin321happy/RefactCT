@@ -1,8 +1,11 @@
 package com.wh.jxd.com.refactorqm.ui.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,10 +15,14 @@ import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.PersonalPresenterImpl;
+import com.wh.jxd.com.refactorqm.utils.AlertDialogUtils;
+import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.PersonalView;
 import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by kevin321vip on 2017/10/12.
@@ -83,6 +90,7 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         mPersonalPresenter.getUserInfo();
     }
 
+    @Override
     protected void initView() {
         setToolBarTitle("个人信息");
     }
@@ -149,5 +157,116 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         mTvSignature.setText(userInfo.getSignature());
         mTvBirthday.setText(userInfo.getBirthday() == null ? "未设置" : userInfo.getBirthday());
         Glide.with(this).load(userInfo.getHead_image()).into(mIvPersonalhead);
+    }
+
+    @Override
+    public void updataNameSuccess(String name) {
+        //修改名字成功了
+        mTvTruename.setText(name);
+        mPersonalPresenter.getUserInfo();
+        ToastUtils.showShortToast(this, "修改成功了 ：" + name);
+    }
+
+    @Override
+    public void updataNicknameSuccess(String nickname) {
+        mTvUserName.setText(nickname);
+        mPersonalPresenter.getUserInfo();
+    }
+    @Override
+    public void updataBirthDaySuccess(String birthDay) {
+
+    }
+
+    @Override
+    public void updataSexSuccess(String sex) {
+        mTvSex.setText("1".equals(sex) ? "男" : "女");
+
+    }
+
+    @Override
+    public void updataMarrySuccess(String marry) {
+        if ("1".equals(marry)) {
+
+        } else if ("2".equals(marry)) {
+
+        } else {
+            mTvSex.setText("暂未设置");
+        }
+    }
+
+    @Override
+    public void updataSignaTureSuccess(String signature) {
+        mTvSignature.setText(signature);
+
+    }
+
+    @Override
+    public void updataHeadImaSuccess(String headIma) {
+        Glide.with(this).load(headIma).into(mIvPersonalhead);
+
+    }
+
+    @Override
+    public void updataInfoFail(String s) {
+        ToastUtils.showShortToast(this, "修改失败了:" + s);
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.ll_personalhead, R.id.ll_user_name, R.id.ll_personalname, R.id.ll_birthday, R.id.ll_sex, R.id.ll_wedlock, R.id.ll_autograph})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_personalhead:
+                //更换头像
+                break;
+            case R.id.ll_user_name:
+                showEditInfoDialog("nickname", "更换昵称");
+                //用户名
+                break;
+            case R.id.ll_personalname:
+                //真名
+                showEditInfoDialog("member_name", "更换姓名");
+                break;
+            case R.id.ll_birthday:
+                //生日
+                break;
+            case R.id.ll_sex:
+                //性别
+                break;
+            case R.id.ll_wedlock:
+                //婚否
+                break;
+            case R.id.ll_autograph:
+                //个性签名
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 显示编辑信息的对话框
+     * @param title
+     */
+    private void showEditInfoDialog(final String key, String title) {
+        AlertDialogUtils.showTowBtnInputDialog(this, title, "取消", "确定", new AlertDialogUtils.DialogInputInter() {
+            @Override
+            public void leftClick(AlertDialog dialog) {
+                dialog.dismiss();
+            }
+            @Override
+            public void submit(String content, AlertDialog dialog) {
+                dialog.dismiss();
+                if (mPersonalPresenter != null) {
+                    mPersonalPresenter.upDataInfo(key, content);
+                }
+            }
+        }).show();
     }
 }

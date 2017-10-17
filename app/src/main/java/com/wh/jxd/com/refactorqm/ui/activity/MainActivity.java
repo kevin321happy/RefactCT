@@ -55,11 +55,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
     private PersonalFragment mPersonalFragment;
     private MainPresenter mMainPersenter;
     private MenuItem item_search;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        StatusBarUtil.transparencyBar(this);
+//      StatusBarUtil.transparencyBar(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
@@ -185,7 +184,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             default:
                 break;
         }
-
     }
 
     /**
@@ -230,7 +228,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             mTvMenuPersonal.setTextColor(getResources().getColor(R.color.color_999));
         }
     }
-
     @Override
     protected void initView() {
         mFragmentManager = getSupportFragmentManager();
