@@ -1,11 +1,16 @@
 package com.wh.jxd.com.refactorqm.ui.activity;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +24,10 @@ import com.wh.jxd.com.refactorqm.utils.AlertDialogUtils;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.PersonalView;
 import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
+import com.wh.jxd.com.refactorqm.view.widget.SingleChooseDialog;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +38,7 @@ import butterknife.OnClick;
  * 个人信息界面
  */
 public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, PersonalView> implements PersonalView {
+
     @Bind(R.id.toolbar_subtitle)
     TextView mToolbarSubtitle;
     @Bind(R.id.toolbar_title)
@@ -74,6 +84,17 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
     private PersonalPresenterImpl mPersonalPresenter;
     private UserInfo mUserInfo;
     private String mSex;
+    private ArrayList<String> mStrings;
+    private String mMarry;
+    private Object mDateTime;
+
+    private boolean mFired;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+    private static final int DATE_DIALOG_ID = 1;
+    private static final int SHOW_DATAPICK = 0;
+
 
 
     @Override
@@ -126,9 +147,9 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         }
         String birthday = userInfo.getBirthday();
         if (null == birthday || birthday.isEmpty()) {
-//            setDateTime(null);
+            setDateTime(null);
         } else {
-//            setDateTime(birthday);
+            setDateTime(birthday);
         }
         mTvUserName.setText(userInfo.getNickname());
         mTvTruename.setText(userInfo.getUser_name());
@@ -143,12 +164,12 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
             mTvSex.setText("女");
         }
         // 空是未设置，1，未婚 2，已婚
-        String marry = userInfo.getMarry();
+        mMarry = userInfo.getMarry();
         if (TextUtils.isEmpty(mSex)) {
             mTvMarry.setText("未设置");
-        } else if ("1".equals(marry)) {
+        } else if ("1".equals(mMarry)) {
             mTvMarry.setText("未婚");
-        } else if ("2".equals(marry)) {
+        } else if ("2".equals(mMarry)) {
             mTvMarry.setText("已婚");
         }
         mTvWorknum.setText(userInfo.getWork_number());
@@ -172,6 +193,7 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         mTvUserName.setText(nickname);
         mPersonalPresenter.getUserInfo();
     }
+
     @Override
     public void updataBirthDaySuccess(String birthDay) {
 
@@ -179,16 +201,16 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
 
     @Override
     public void updataSexSuccess(String sex) {
+        mSex = sex;
         mTvSex.setText("1".equals(sex) ? "男" : "女");
-
     }
-
     @Override
     public void updataMarrySuccess(String marry) {
+        mMarry = marry;
         if ("1".equals(marry)) {
-
+            mTvMarry.setText("未婚");
         } else if ("2".equals(marry)) {
-
+            mTvMarry.setText("已婚");
         } else {
             mTvSex.setText("暂未设置");
         }
@@ -205,11 +227,17 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         Glide.with(this).load(headIma).into(mIvPersonalhead);
 
     }
+    @Override
+    public void updataSignTureSuccess(String value) {
+        mTvSignature.setText(value);
+    }
 
     @Override
     public void updataInfoFail(String s) {
         ToastUtils.showShortToast(this, "修改失败了:" + s);
     }
+
+
 
 
     @Override
@@ -235,15 +263,28 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
                 break;
             case R.id.ll_birthday:
                 //生日
+                mFired = false;
+                Message msg = new Message();
+                msg.what = SHOW_DATAPICK;
+                PersonalActivity.this.saleHandler.sendMessage(msg);
                 break;
             case R.id.ll_sex:
                 //性别
+                mStrings = new ArrayList<>();
+                mStrings.add("男");
+                mStrings.add("女");
+                showSingleChooseDialog("sex", "性別", mStrings);
                 break;
             case R.id.ll_wedlock:
+                mStrings = new ArrayList<>();
+                mStrings.add("未婚");
+                mStrings.add("已婚");
+                showSingleChooseDialog("marry", "婚恋", mStrings);
                 //婚否
                 break;
             case R.id.ll_autograph:
                 //个性签名
+                showEditInfoDialog("signature", "个性签名");
                 break;
             default:
                 break;
@@ -251,7 +292,38 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
     }
 
     /**
+     * 显示单选对话框
+     */
+    private void showSingleChooseDialog(final String marry, String title, final ArrayList<String> strings) {
+        SingleChooseDialog singleChooseDialog = new SingleChooseDialog(this, title);
+        singleChooseDialog.setListitems(strings);
+        //显示当前的状态
+        if ("marry".equals(marry)) {
+            singleChooseDialog.setCheckedPosition("1".equals(mMarry) ? 0 : 1);
+        } else if ("sex".equals(marry)) {
+            singleChooseDialog.setCheckedPosition("1".equals(mSex) ? 0 : 1);
+        }
+        singleChooseDialog.show();
+        singleChooseDialog.setOnChooseItemClick(new SingleChooseDialog.onChooseItemClick() {
+            @Override
+            public void onItemChoose(int position) {
+                if (mPersonalPresenter == null) {
+                    return;
+                }
+                if (position == 0) {
+                    mPersonalPresenter.upDataInfo(marry, "1");
+                } else if (position == 1) {
+                    mPersonalPresenter.upDataInfo(marry, "2");
+                } else {
+                    mPersonalPresenter.upDataInfo(marry, "0");
+                }
+            }
+        });
+    }
+
+    /**
      * 显示编辑信息的对话框
+     *
      * @param title
      */
     private void showEditInfoDialog(final String key, String title) {
@@ -260,6 +332,7 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
             public void leftClick(AlertDialog dialog) {
                 dialog.dismiss();
             }
+
             @Override
             public void submit(String content, AlertDialog dialog) {
                 dialog.dismiss();
@@ -269,4 +342,91 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
             }
         }).show();
     }
+
+    /**
+     * 功能：初始化日期
+     */
+    private void setDateTime(String birthday) {
+        if (null == birthday) {
+            final Calendar c = Calendar.getInstance();
+            mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+            mDay = c.get(Calendar.DAY_OF_MONTH);
+        } else {
+            String[] birthdayString = birthday.split("-");
+            mYear = Integer.valueOf(birthdayString[0]);
+            mMonth = Integer.valueOf(birthdayString[1]) - 1;
+            mDay = Integer.valueOf(birthdayString[2] == null ? "1" : birthdayString[2]);
+        }
+    }
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                return new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
+            default:
+                break;
+        }
+        return null;
+    }
+
+
+    /**
+     * 更新日期
+     */
+    private void updateDisplay() {
+        String birth = new StringBuilder().append(mYear).append("-").append(
+                (mMonth + 1) < 10 ? "0" + (mMonth + 1) : (mMonth + 1)).append("-").append(
+                (mDay < 10) ? "0" + mDay : mDay).toString();
+        mTvBirthday.setText(birth);
+        if (mPersonalPresenter!=null){
+            mPersonalPresenter.upDataInfo("birthday",birth);
+        }
+    }
+
+
+    /**
+     * 日期控件的事件
+     */
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+            if (!mFired) {
+                mFired = true;
+                updateDisplay();
+            }
+        }
+    };
+
+    @Override
+    protected void onPrepareDialog(int id, Dialog dialog) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                ((DatePickerDialog) dialog).updateDate(mYear, mMonth, mDay);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 处理日期控件的Handler
+     */
+    Handler saleHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+
+                    showDialog(DATE_DIALOG_ID);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
 }

@@ -54,4 +54,10 @@ public interface PersonalView extends BaseView {
      * @param s
      */
     void updataInfoFail(String s);
+
+    /**
+     * 个性签名
+     * @param value
+     */
+    void updataSignTureSuccess(String value);
 }

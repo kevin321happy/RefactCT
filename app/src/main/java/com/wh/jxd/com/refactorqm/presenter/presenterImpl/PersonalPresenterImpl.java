@@ -95,6 +95,9 @@ public class PersonalPresenterImpl extends BasePersenterImpl<PersonalView> imple
                         } else if ("birthday".equals(key)) {
                             userInfo.setBirthday(value);
                             mPersonalView.updataBirthDaySuccess(value);
+                        }else if ("signature".equals(key)){
+                            userInfo.setSignature(value);
+                            mPersonalView.updataSignTureSuccess(value);
                         }
                     }
                     @Override
