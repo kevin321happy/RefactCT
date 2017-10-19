@@ -1,6 +1,7 @@
 package com.wh.jxd.com.refactorqm.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -69,33 +70,27 @@ public class ChangePhoneNumActivity extends BaseMvpActivity<ChangePhonePresenter
 
     @OnClick({R.id.tv_verificationcode, R.id.bt_change_phonenum})
     public void onViewClicked(View view) {
+        if (mChangePhonePresenter == null) {
+            mChangePhonePresenter = creatPersenter(ChangePhoneNumActivity.this);
+        }
         switch (view.getId()) {
             case R.id.tv_verificationcode:
                 mPhone_num = mEtPhoneNumber.getText().toString().trim();
-//                // 获取验证码
                 if (TextUtils.isEmpty(mPhone_num)) {
                     ToastUtils.showShortToast(this, "手机号不能为空！");
-                } else {
-                    mCountDownTimerUtils = new CountDownTimerUtils(mTvVerificationcode, 60000, 1000);
-                    //获取验证码
-                    if (mChangePhonePresenter != null) {
-                        mChangePhonePresenter.getVerificationCode(mPhone_num);
-                    }
+                    return;
                 }
+                mCountDownTimerUtils = new CountDownTimerUtils(mTvVerificationcode, 60000, 1000);
+                //获取验证码
+                mChangePhonePresenter.getVerificationCode(mPhone_num);
                 break;
             case R.id.bt_change_phonenum:
                 String verificationCode = mEtVerificationcode.getText().toString().trim();
-                // 注册
-                if (TextUtils.isEmpty(mPhone_num)) {
-//                    mToastUtil.show("手机号码不能为空");
-                    return;
-                }
-                if (TextUtils.isEmpty(verificationCode)) {
-//                    mToastUtil.show("验证码不能为空");
-                    return;
-                }
-                //更换手机号
+                //校验验证码和手机号
+                mChangePhonePresenter.CheckParameters(verificationCode, mPhone_num);
                 submitNewNum(verificationCode);
+                break;
+            default:
                 break;
         }
     }
@@ -130,6 +125,30 @@ public class ChangePhoneNumActivity extends BaseMvpActivity<ChangePhonePresenter
 
     }
 
+    @Override
+    public void onCheckFail(String s) {
+        ToastUtils.showShortToast(this, s);
+
+    }
+
+    @Override
+    public void oncheckSuccess(String phone_num, String verificationCode) {
+        //开始更换手机号
+        mChangePhonePresenter.submitNewNum(mPhone_num, verificationCode);
+    }
+
+    @Override
+    public void getVerificationCodeSuccess() {
+
+
+    }
+
+    @Override
+    public void changePhoneSuccess() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
     //获取验证码
 //    private void getVerificationCode() {
 //        String timestamp = Utils.getCurrentTimestamp();

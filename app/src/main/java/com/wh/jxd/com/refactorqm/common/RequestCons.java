@@ -35,4 +35,8 @@ public class RequestCons {
      * 获取验证码
      */
     public static final String GET_PHONE_CODE = "getPhoneCode";
+    /**
+     * 更换手机号
+     */
+    public static final String CHANGE_PHONE = "user/changePhone";
 }

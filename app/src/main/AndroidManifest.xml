@@ -52,6 +52,7 @@
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.PersonalActivity"/>
         <activity android:name=".ui.activity.SystemSettingActivity"/>
+        <activity android:name=".ui.activity.ChangePhoneNumActivity"/>
 
     </application>
 

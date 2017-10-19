@@ -110,6 +110,7 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<UserInfo>> userInfo = mService.getUserInfo(userid, qmct_token, timestamp, signData[1], signData[0]);
         return (Observable<UserInfo>) filterStatus(userInfo);
     }
+
     /**
      * 修改用户信息
      */
@@ -117,15 +118,47 @@ public class NetDataManager<T extends BaseModel> {
         String timestamp = CommonUtils.getCurrentTimestamp();
         HashMap<String, String> sign = new HashMap<>();
         sign.put("userid", PreferenceUtils.getUserId());
-
         sign.put("timestamp", timestamp);
-
         String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
-        sign.put(key,value);
+        sign.put(key, value);
         sign.put("qmct_token", PreferenceUtils.getQM_Token());
-        sign.put("str",signData[1]);
-        sign.put("sign",signData[0]);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
         Observable<CommonDataModel> upDataUserInfoObservable = mService.upDataUserInfo(sign);
         return upDataUserInfoObservable;
+    }
+
+    /**
+     * 获取手机验证码
+     */
+    public Observable<CommonDataModel> getVerificationCode(String key, String value, String type) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("timestamp", timestamp);
+        sign.put(key, value);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        // sign.put("qmct_token", PreferenceUtils.getQM_Token());
+        sign.put("type", type);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<CommonDataModel> upDataUserInfoObservable = mService.getVerificationCode(sign);
+        return upDataUserInfoObservable;
+    }
+
+    /**
+     * 更换新的手机号
+     */
+    public Observable<CommonDataModel> updataPhoneNum(String key1, String value1, String key2, String value2) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", PreferenceUtils.getUserId());
+        sign.put("timestamp", timestamp);
+        sign.put(key1, value1);
+        sign.put(key2, value2);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<CommonDataModel> commonDataModelObservable = mService.changePhoneNum(sign);
+        return commonDataModelObservable;
     }
 }

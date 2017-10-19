@@ -7,6 +7,22 @@ import com.wh.jxd.com.refactorqm.base.BaseView;
  */
 
 public interface ChangePhoneView extends BaseView {
+    /**
+     * 校验失败
+     *
+     * @param s
+     */
+    void onCheckFail(String s);
 
+    /**
+     * 校验成功
+     */
+    void oncheckSuccess(String phome,String ver);
 
+    /**
+     * 获取验证码成功
+     */
+    void getVerificationCodeSuccess();
+
+    void changePhoneSuccess();
 }

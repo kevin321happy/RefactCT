@@ -50,14 +50,24 @@ public interface ApiService {
     @POST(RequestCons.USER_USERINFO)
     Observable<HttpBean<UserInfo>> getUserInfo(@Field("userid") String userid, @Field("qmct_token") String qmct_token, @Field("timestamp") String timestamp, @Field("str") String str, @Field("sign") String sign);
 
-//    /**
-//     * 修改个人信息
-//     */
+    /**
+     * 修改个人信息
+     */
     @FormUrlEncoded
-    @POST(RequestCons.GET_PHONE_CODE)
+    @POST(RequestCons.USER_EDITUSERINFO)
     Observable<CommonDataModel> upDataUserInfo(@FieldMap Map<String, String> options);
+
     /**
      * 获取验证码
      */
+    @FormUrlEncoded
+    @POST(RequestCons.GET_PHONE_CODE)
+    Observable<CommonDataModel> getVerificationCode(@FieldMap Map<String, String> options);
 
+    /**
+     * 更换新的手机号
+     */
+    @FormUrlEncoded
+    @POST(RequestCons.CHANGE_PHONE)
+    Observable<CommonDataModel> changePhoneNum(@FieldMap Map<String, String> options);
 }
