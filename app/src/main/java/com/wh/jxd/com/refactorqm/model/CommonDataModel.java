@@ -4,7 +4,7 @@ package com.wh.jxd.com.refactorqm.model;
  * Created by kevin321vip on 2017/10/13.
  */
 
-public class UpDataUserInfo extends BaseModel{
+public class CommonDataModel extends BaseModel{
 
     /**
      * status : 1
@@ -22,7 +22,7 @@ public class UpDataUserInfo extends BaseModel{
 
     @Override
     public String toString() {
-        return "UpDataUserInfo{" +
+        return "CommonDataModel{" +
                 "status='" + status + '\'' +
                 ", info='" + info + '\'' +
                 ", data=" + data +

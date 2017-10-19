@@ -4,7 +4,7 @@ import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
-import com.wh.jxd.com.refactorqm.model.UpDataUserInfo;
+import com.wh.jxd.com.refactorqm.model.CommonDataModel;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.FilterSubscriber;
 import com.wh.jxd.com.refactorqm.net.NetDataManager;
@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers;
 public class PersonalPresenterImpl extends BasePersenterImpl<PersonalView> implements PersonalPresent {
     private PersonalView mPersonalView;
     private NetDataManager<BaseModel> mNetDataManager;
-    //    private NetDataManager<UpDataUserInfo> mInfoNetDataManager;
+    //    private NetDataManager<CommonDataModel> mInfoNetDataManager;
 
     /**
      * 获取用户信息
@@ -39,10 +39,8 @@ public class PersonalPresenterImpl extends BasePersenterImpl<PersonalView> imple
             mPersonalView.getUserInfoSuccess(userInfo);
         }
     }
-
     /**
      * 更新用户信息
-     *
      * @param key
      * @param value
      */
@@ -50,23 +48,22 @@ public class PersonalPresenterImpl extends BasePersenterImpl<PersonalView> imple
         if (mNetDataManager == null) {
             mNetDataManager = new NetDataManager<>();
         }
-        Observable<UpDataUserInfo> upDataUserInfo = mNetDataManager.upDataUserInfo(key, value);
+        Observable<CommonDataModel> upDataUserInfo = mNetDataManager.upDataUserInfo(key, value);
         upDataUserInfo.subscribeOn(Schedulers.io())
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
                     }
                 }).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new FilterSubscriber<UpDataUserInfo>() {
+                .subscribe(new FilterSubscriber<CommonDataModel>() {
                     @Override
                     public void onCompleted() {
 
                     }
                     @Override
-                    public void onNext(UpDataUserInfo data) {
+                    public void onNext(CommonDataModel data) {
                         KLog.i(data.toString());
                         UserInfo userInfo=AppcationEx.getInstance().getUserInfo();
-//                        data.toString().
                         if (!data.getSuc().equals("y")) {
                             return;
                         }
@@ -78,7 +75,7 @@ public class PersonalPresenterImpl extends BasePersenterImpl<PersonalView> imple
                             return;
                         }
                         if ("member_name".equals(key)) {
-                            userInfo.setUser_name(value);
+                            userInfo.setMember_name(value);
                             mPersonalView.updataNameSuccess(value);
                         } else if ("nickname".equals(key)) {
                             userInfo.setNickname(value);
@@ -99,6 +96,7 @@ public class PersonalPresenterImpl extends BasePersenterImpl<PersonalView> imple
                             userInfo.setSignature(value);
                             mPersonalView.updataSignTureSuccess(value);
                         }
+                        AppcationEx.getInstance().setUserInfo(userInfo);
                     }
                     @Override
                     public void onError(Throwable e) {

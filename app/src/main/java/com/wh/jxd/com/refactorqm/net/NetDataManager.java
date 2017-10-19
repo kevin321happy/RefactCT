@@ -5,7 +5,7 @@ import android.content.Context;
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
-import com.wh.jxd.com.refactorqm.model.UpDataUserInfo;
+import com.wh.jxd.com.refactorqm.model.CommonDataModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.service.ApiService;
@@ -113,7 +113,7 @@ public class NetDataManager<T extends BaseModel> {
     /**
      * 修改用户信息
      */
-    public Observable<UpDataUserInfo> upDataUserInfo(String key, String value) {
+    public Observable<CommonDataModel> upDataUserInfo(String key, String value) {
         String timestamp = CommonUtils.getCurrentTimestamp();
         HashMap<String, String> sign = new HashMap<>();
         sign.put("userid", PreferenceUtils.getUserId());
@@ -125,7 +125,7 @@ public class NetDataManager<T extends BaseModel> {
         sign.put("qmct_token", PreferenceUtils.getQM_Token());
         sign.put("str",signData[1]);
         sign.put("sign",signData[0]);
-        Observable<UpDataUserInfo> upDataUserInfoObservable = mService.updataUserInfo(sign);
+        Observable<CommonDataModel> upDataUserInfoObservable = mService.upDataUserInfo(sign);
         return upDataUserInfoObservable;
     }
 }

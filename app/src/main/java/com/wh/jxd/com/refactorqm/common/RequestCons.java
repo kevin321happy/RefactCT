@@ -30,5 +30,9 @@ public class RequestCons {
     /**
      * 编辑用户信息
      */
-    public static final String USER_EDITUSERINFO="user/editUserInfo";
+    public static final String USER_EDITUSERINFO = "user/editUserInfo";
+    /**
+     * 获取验证码
+     */
+    public static final String GET_PHONE_CODE = "getPhoneCode";
 }

@@ -21,6 +21,7 @@ import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.PersonalFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.PersonalActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.SystemSettingActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.PersonalMenuAdapter;
 import com.wh.jxd.com.refactorqm.utils.FrescoUtils;
 import com.wh.jxd.com.refactorqm.view.PersonalFragmentView;
@@ -152,6 +153,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
 
     /**
      * 菜单条目的点击事件
+     *
      * @param parent
      * @param view
      * @param position
@@ -159,6 +161,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent;
         switch (position) {
             case 0:
                 //最近学习
@@ -180,6 +183,8 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
                 break;
             case 6:
                 //系统设置
+                intent = new Intent(getActivity(), SystemSettingActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

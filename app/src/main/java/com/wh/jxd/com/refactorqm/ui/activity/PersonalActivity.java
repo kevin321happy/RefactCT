@@ -133,7 +133,6 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         }
         return mPersonalPresenter;
     }
-
     /**
      * 获取用户信息成功
      *
@@ -152,7 +151,7 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
             setDateTime(birthday);
         }
         mTvUserName.setText(userInfo.getNickname());
-        mTvTruename.setText(userInfo.getUser_name());
+        mTvTruename.setText(userInfo.getMember_name());
         mTvPhone.setText(userInfo.getTel());
         // 空是未设置，1，男 2，女
         mSex = userInfo.getSex();
@@ -184,21 +183,19 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
     public void updataNameSuccess(String name) {
         //修改名字成功了
         mTvTruename.setText(name);
-        mPersonalPresenter.getUserInfo();
+//        mPersonalPresenter.getUserInfo();
         ToastUtils.showShortToast(this, "修改成功了 ：" + name);
     }
-
     @Override
     public void updataNicknameSuccess(String nickname) {
         mTvUserName.setText(nickname);
-        mPersonalPresenter.getUserInfo();
+//        mPersonalPresenter.getUserInfo();
     }
 
     @Override
     public void updataBirthDaySuccess(String birthDay) {
-
+        mTvBirthday.setText(birthDay);
     }
-
     @Override
     public void updataSexSuccess(String sex) {
         mSex = sex;
@@ -215,13 +212,6 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
             mTvSex.setText("暂未设置");
         }
     }
-
-    @Override
-    public void updataSignaTureSuccess(String signature) {
-        mTvSignature.setText(signature);
-
-    }
-
     @Override
     public void updataHeadImaSuccess(String headIma) {
         Glide.with(this).load(headIma).into(mIvPersonalhead);
@@ -369,8 +359,6 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         }
         return null;
     }
-
-
     /**
      * 更新日期
      */
@@ -420,7 +408,6 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-
                     showDialog(DATE_DIALOG_ID);
                     break;
                 default:
@@ -428,5 +415,4 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
             }
         }
     };
-
 }

@@ -40,10 +40,7 @@ public interface PersonalView extends BaseView {
      */
     void updataMarrySuccess(String marry);
 
-    /**
-     * 个性签名
-     */
-    void updataSignaTureSuccess(String signature);
+
     /**
      * 用户头像
      */

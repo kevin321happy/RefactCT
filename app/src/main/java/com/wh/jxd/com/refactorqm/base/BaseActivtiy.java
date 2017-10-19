@@ -38,7 +38,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
      * 网络类型
      */
     private int netMobile;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +48,8 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
         inspectNet();
         initView();
     }
-
     /**
      * 抽象方法获取布局ID
-     *
      * @return
      */
     protected abstract int getLayoutId();
@@ -78,10 +75,8 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
             ToastUtils.showLongToast(this, "当前网络不可用！");
         }
     }
-
     /**
      * 判断有无网络
-     *
      * @return true 有网, false 没有网络.
      */
     public boolean isNetConnect() {

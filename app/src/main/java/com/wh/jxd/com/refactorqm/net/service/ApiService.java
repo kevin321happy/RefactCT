@@ -2,7 +2,7 @@ package com.wh.jxd.com.refactorqm.net.service;
 
 import com.wh.jxd.com.refactorqm.common.RequestCons;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
-import com.wh.jxd.com.refactorqm.model.UpDataUserInfo;
+import com.wh.jxd.com.refactorqm.model.CommonDataModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.HttpBean;
@@ -54,6 +54,10 @@ public interface ApiService {
 //     * 修改个人信息
 //     */
     @FormUrlEncoded
-    @POST(RequestCons.USER_EDITUSERINFO)
-    Observable<UpDataUserInfo> updataUserInfo(@FieldMap Map<String, String> options);
+    @POST(RequestCons.GET_PHONE_CODE)
+    Observable<CommonDataModel> upDataUserInfo(@FieldMap Map<String, String> options);
+    /**
+     * 获取验证码
+     */
+
 }
