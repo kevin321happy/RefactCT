@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
+import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.CommonDataModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
@@ -48,6 +49,7 @@ public class NetDataManager<T extends BaseModel> {
     public Observable<T> filterStatus(Observable observable) {
         return observable.map(new ResultFilter<T>());
     }
+
 
     /**
      * 过滤数据去掉外壳
@@ -160,5 +162,22 @@ public class NetDataManager<T extends BaseModel> {
         sign.put("sign", signData[0]);
         Observable<CommonDataModel> commonDataModelObservable = mService.changePhoneNum(sign);
         return commonDataModelObservable;
+    }
+
+    /**
+     * 获取企业首页的信息
+     */
+    public Observable<EnterpriseDataModel> getEenterprise(String key, String value) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", PreferenceUtils.getUserId());
+        sign.put("timestamp", timestamp);
+        sign.put("qmct_token",PreferenceUtils.getQM_Token());
+        sign.put(key, value);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<HttpBean<EnterpriseDataModel>> enterpriseData = mService.getEnterpriseData(sign);
+        return (Observable<EnterpriseDataModel>) filterStatus(enterpriseData);
     }
 }

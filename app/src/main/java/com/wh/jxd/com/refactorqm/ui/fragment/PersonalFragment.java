@@ -22,6 +22,7 @@ import com.wh.jxd.com.refactorqm.presenter.presenterImpl.PersonalFragmentPresent
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.PersonalActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.SystemSettingActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.WebViewActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.PersonalMenuAdapter;
 import com.wh.jxd.com.refactorqm.utils.FrescoUtils;
 import com.wh.jxd.com.refactorqm.view.PersonalFragmentView;
@@ -68,11 +69,10 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
             , new GridViewBean(R.drawable.ic_record, "全民录课")
             , new GridViewBean(R.drawable.ic_helpback, "帮助反馈")
             , new GridViewBean(R.drawable.my_six, "系统设置")};
-    private PersonalMenuAdapter mPersonalMenuAdapter;
 
+    private PersonalMenuAdapter mPersonalMenuAdapter;
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-
         if (mFragmentPresenter == null) {
             mFragmentPresenter = creatP();
         }
@@ -117,6 +117,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
 
     @Override
     public void onLoadSuccess(UserInfo data) {
+//        ToastUtils.showShortToast(getActivity(), "加载成功了");
         if (data == null) {
             return;
         }
@@ -126,7 +127,10 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         mTvName.setText(data.getMember_name() == null ? "" : data.getMember_name());
         AppcationEx.getInstance().setUserInfo(data);
     }
-
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+}
     @Override
     public void onLoadFail(String s) {
         KLog.i("失败：" + s.toString());
@@ -138,22 +142,32 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
     }
 
     @Override
+    public void onTokenLose() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivityForResult(intent, 99);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 99 && resultCode == 20) {
+           creatP().loadData();
+        }
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
     }
-
     /**
      * 菜单条目的点击事件
-     *
      * @param parent
      * @param view
      * @param position
@@ -180,6 +194,9 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
                 break;
             case 5:
                 //帮助反馈
+                intent = new Intent(getActivity(), WebViewActivity.class);
+                intent.putExtra("key", 18);
+                startActivity(intent);
                 break;
             case 6:
                 //系统设置

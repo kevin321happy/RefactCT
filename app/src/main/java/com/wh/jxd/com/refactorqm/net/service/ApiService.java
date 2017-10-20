@@ -1,6 +1,7 @@
 package com.wh.jxd.com.refactorqm.net.service;
 
 import com.wh.jxd.com.refactorqm.common.RequestCons;
+import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.CommonDataModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
@@ -21,7 +22,6 @@ import rx.Observable;
  */
 
 public interface ApiService {
-
     /**
      * 用户登陆
      */
@@ -36,6 +36,12 @@ public interface ApiService {
     @POST(RequestCons.USER_USERLOGININFO)
     Observable<UpLoadLocationBean> uploadLoaction(@Field("userid") String userid, @Field("qmct_token") String qmct_token, @Field("timestamp") String timestamp
             , @Field("company_id") String company_id, @Field("str") String str, @Field("sign") String sign, @Field("lng") String lin, @Field("lat") String lat);
+
+    /**
+     * 获取企业数据
+     */
+    @POST(RequestCons.GET_COMPANY_INFO)
+    Observable<HttpBean<EnterpriseDataModel>> getEnterpriseData(@FieldMap Map<String, String> options);
 
     /**
      * 获取企业信息

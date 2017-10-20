@@ -39,4 +39,8 @@ public class RequestCons {
      * 更换手机号
      */
     public static final String CHANGE_PHONE = "user/changePhone";
+    /**
+     * 获取企业首页信息
+     */
+    public static final String GET_COMPANY_INFO = "company/companyIndex";
 }

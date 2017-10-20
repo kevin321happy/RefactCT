@@ -51,7 +51,6 @@ public class SystemSettingActivity extends BaseMvpActivity<SystemSettingPresente
     @Bind(R.id.ll_aboutapp)
     LinearLayout mLlAboutapp;
     private SystemSettingPresenter mSystemSettingPresenter;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_system_setting;
@@ -108,10 +107,18 @@ public class SystemSettingActivity extends BaseMvpActivity<SystemSettingPresente
             case R.id.ll_feedback:
                 break;
             case R.id.ll_aboutapp:
+                intent = new Intent(this, WebViewActivity.class);
+                intent.putExtra("key", 14);//关于我们
+                startActivity(intent);
                 break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onTokenLose() {
+
     }
 
     @Override

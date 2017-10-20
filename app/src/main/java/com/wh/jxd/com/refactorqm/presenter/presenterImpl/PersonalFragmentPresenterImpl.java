@@ -45,11 +45,14 @@ public class PersonalFragmentPresenterImpl extends BasePersenterImpl<PersonalFra
                     public void onCompleted() {
                         KLog.i("完成");
                     }
-
                     @Override
                     public void onNext(UserInfo data) {
                         if (mPersonalFragmentView != null) {
-                            mPersonalFragmentView.onLoadSuccess(data);
+                            if (data==null){
+                                mPersonalFragmentView.onTokenLose();
+                            }else {
+                                mPersonalFragmentView.onLoadSuccess(data);
+                            }
                         }
                     }
                     @Override

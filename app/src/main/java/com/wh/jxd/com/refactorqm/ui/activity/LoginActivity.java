@@ -47,6 +47,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
@@ -94,10 +95,17 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView
                 }
                 break;
             case R.id.tv_register:
+
                 break;
             case R.id.tv_forgotpwd:
+
                 break;
         }
+    }
+
+    @Override
+    public void onTokenLose() {
+
     }
 
     @Override
@@ -116,6 +124,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView
         PreferenceUtils.setUserId(userInfo.getId());
         PreferenceUtils.setQM_Token(userInfo.getQmct_token());
         PreferenceUtils.setCompanyId(userInfo.getCompany_id());
+        setResult(20);
         finish();
     }
 }

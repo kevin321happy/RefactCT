@@ -180,6 +180,11 @@ public class PersonalActivity extends BaseMvpActivity<PersonalPresenterImpl, Per
     }
 
     @Override
+    public void onTokenLose() {
+
+    }
+
+    @Override
     public void updataNameSuccess(String name) {
         //修改名字成功了
         mTvTruename.setText(name);

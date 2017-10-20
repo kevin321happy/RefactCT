@@ -48,12 +48,10 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.PersonalActivity"/>
         <activity android:name=".ui.activity.SystemSettingActivity"/>
         <activity android:name=".ui.activity.ChangePhoneNumActivity"/>
-
+        <activity android:name=".ui.activity.WebViewActivity"/>
     </application>
-
 </manifest>

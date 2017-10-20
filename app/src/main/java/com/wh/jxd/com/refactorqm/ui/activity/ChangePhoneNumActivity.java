@@ -132,6 +132,11 @@ public class ChangePhoneNumActivity extends BaseMvpActivity<ChangePhonePresenter
     }
 
     @Override
+    public void onTokenLose() {
+
+    }
+
+    @Override
     public void oncheckSuccess(String phone_num, String verificationCode) {
         //开始更换手机号
         mChangePhonePresenter.submitNewNum(mPhone_num, verificationCode);
@@ -142,13 +147,13 @@ public class ChangePhoneNumActivity extends BaseMvpActivity<ChangePhonePresenter
 
 
     }
-
     @Override
     public void changePhoneSuccess() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
+
     //获取验证码
 //    private void getVerificationCode() {
 //        String timestamp = Utils.getCurrentTimestamp();

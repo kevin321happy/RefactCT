@@ -265,4 +265,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
                 break;
         }
     }
+
+    @Override
+    public void onTokenLose() {
+
+    }
 }

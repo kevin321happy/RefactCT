@@ -24,4 +24,9 @@ public interface PersonalFragmentView extends BaseView {
      * 清除了用户信息
      */
     void clearInfoSuccess();
+
+    /**
+     * Token失效了
+     */
+    void onTokenLose();
 }

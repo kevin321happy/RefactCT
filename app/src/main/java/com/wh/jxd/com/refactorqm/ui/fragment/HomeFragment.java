@@ -219,6 +219,11 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         }
     }
 
+    @Override
+    public void onTokenLose() {
+
+    }
+
     private class MyGridViewAdapter extends BaseAdapter {
         @Override
         public int getCount() {
