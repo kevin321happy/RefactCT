@@ -1,11 +1,16 @@
 package com.wh.jxd.com.refactorqm.presenter.presenterImpl;
 
+import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
+import com.wh.jxd.com.refactorqm.model.EntButtomMenuModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.net.FilterSubscriber;
 import com.wh.jxd.com.refactorqm.net.NetDataManager;
 import com.wh.jxd.com.refactorqm.presenter.EnterpriseFragmentPresenter;
 import com.wh.jxd.com.refactorqm.view.EnterpriseFragmentView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -62,5 +67,28 @@ public class EnterpriseFragmentPresenterImpl extends BasePersenterImpl<Enterpris
                         super.onError(e);
                     }
                 });
+    }
+
+    /**
+     * 获取底部菜单数据
+     */
+    public List<EntButtomMenuModel> getButtomMenuData() {
+        ArrayList<EntButtomMenuModel> infos = new ArrayList<>();
+        infos.add(new EntButtomMenuModel(R.drawable.ic_ent_culture, "企业资讯"));
+        infos.add(new EntButtomMenuModel(R.drawable.ic_ent_examine, "我的考试"));
+        infos.add(new EntButtomMenuModel(R.drawable.ic_ent_pk, "PK榜"));
+        infos.add(new EntButtomMenuModel(R.drawable.ic_ent_more, "更多"));
+        return infos;
+    }
+
+    /**
+     * 讲String类型转化为long
+     */
+    public long formatString2Long(String study_time) {
+        long data = 0;
+        if (study_time != null && !"".equals(study_time)) {
+            data = Long.parseLong(study_time);
+        }
+        return data;
     }
 }

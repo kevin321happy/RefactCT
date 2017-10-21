@@ -2,13 +2,12 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base"></style>
-        <!-- Customize your theme here. -->
+    <!-- Customize your theme here. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
 
 
     <!--MD风格的对话框的样式-->
@@ -87,6 +86,7 @@
         <item name="android:scaleType">fitXY</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
 
     <!--底部弹窗样式-->
     <style name="ActionSheetDialogStyle" parent="android:Theme.Dialog">

@@ -4,13 +4,25 @@ package com.wh.jxd.com.refactorqm.model;
  * Created by kevin321vip on 2017/10/20.
  */
 
-class MemberRankModel extends BaseModel {
+public  class MemberRankModel extends BaseModel {
     private String study_time;//我的学时 秒
     private String study_time_rank; //学时排名
     private String study_time_max; //企业内学时最长的那个屌毛
     private String score_rate; //得分率
     private String score_rate_rank;//得分率排名
     private String total_member;//企业总人数
+
+    @Override
+    public String toString() {
+        return "MemberRankModel{" +
+                "study_time='" + study_time + '\'' +
+                ", study_time_rank='" + study_time_rank + '\'' +
+                ", study_time_max='" + study_time_max + '\'' +
+                ", score_rate='" + score_rate + '\'' +
+                ", score_rate_rank='" + score_rate_rank + '\'' +
+                ", total_member='" + total_member + '\'' +
+                '}';
+    }
 
     public String getTotal_member() {
         return total_member;

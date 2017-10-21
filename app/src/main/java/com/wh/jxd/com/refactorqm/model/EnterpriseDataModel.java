@@ -10,6 +10,18 @@ import java.util.List;
 public class EnterpriseDataModel extends BaseModel {
     // 企业信息
     private EnterpriseInfo enterpriseinfo;
+
+    @Override
+    public String toString() {
+        return "EnterpriseDataModel{" +
+                "enterpriseinfo=" + enterpriseinfo +
+                ", entCourseList=" + entCourseList +
+                ", categoryList=" + categoryList +
+                ", bannerList=" + bannerList +
+                ", member_rank=" + member_rank +
+                '}';
+    }
+
     // 企业课程列表
     private List<CourseInfo> entCourseList;
     private List<CategoryInfo>categoryList;//课程分类的图标

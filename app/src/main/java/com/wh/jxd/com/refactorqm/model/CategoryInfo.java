@@ -4,10 +4,19 @@ package com.wh.jxd.com.refactorqm.model;
  * Created by kevin321vip on 2017/10/20.
  */
 
-class CategoryInfo extends BaseModel{
+public class CategoryInfo extends BaseModel{
     private String category_image;//分类图标的路径
     private String category_name;//匪类条目的名字
     private String class_category_id;//课程分类的id
+
+    @Override
+    public String toString() {
+        return "CategoryInfo{" +
+                "category_image='" + category_image + '\'' +
+                ", category_name='" + category_name + '\'' +
+                ", class_category_id='" + class_category_id + '\'' +
+                '}';
+    }
 
     public CategoryInfo() {
     }

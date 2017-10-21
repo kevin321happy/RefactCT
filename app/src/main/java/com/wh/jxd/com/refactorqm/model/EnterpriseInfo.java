@@ -5,6 +5,19 @@ package com.wh.jxd.com.refactorqm.model;
  */
 
 public class EnterpriseInfo extends BaseModel {
+
+    @Override
+    public String toString() {
+        return "EnterpriseInfo{" +
+                "enid='" + enid + '\'' +
+                ", deptid='" + deptid + '\'' +
+                ", ename='" + ename + '\'' +
+                ", elogo='" + elogo + '\'' +
+                ", enotice='" + enotice + '\'' +
+                ", id='" + id + '\'' +
+                ", live_type='" + live_type + '\'' +
+                '}';
+    }
     //企业id
     private String enid;
     //部门id

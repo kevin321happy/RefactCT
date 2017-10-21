@@ -40,6 +40,7 @@ public interface ApiService {
     /**
      * 获取企业数据
      */
+    @FormUrlEncoded
     @POST(RequestCons.GET_COMPANY_INFO)
     Observable<HttpBean<EnterpriseDataModel>> getEnterpriseData(@FieldMap Map<String, String> options);
 

@@ -142,12 +142,20 @@
     </declare-styleable>
 
 
-    <declare-styleable name="CapCircleprogressView">
+    <!--<declare-styleable name="CapCircleprogressView">
         <attr name="ring_Width" format="dimension" />
         <attr name="ceter_TextSize" format="dimension" />
         <attr name="max_Progress" format="integer" />
         <attr name="ceter_Textcolor" format="color" />
         <attr name="progress_Color" format="color" />
+    </declare-styleable>-->
+    <!--有缺口的圆-->
+    <declare-styleable name="CapCircleprogressView">
+        <attr name="ring_Width" format="dimension"/>
+        <attr name="ceter_TextSize" format="dimension"/>
+        <attr name="max_Progress" format="integer"/>
+        <attr name="ceter_Textcolor" format="color"/>
+        <attr name="progress_Color" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="MultiLineChooseItemTags">

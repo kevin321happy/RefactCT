@@ -46,7 +46,6 @@ public abstract class BaseMvpFragment<P extends BasePersenterImpl, V extends Bas
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initView(view, savedInstanceState);
     }
 
     @Override
@@ -56,9 +55,8 @@ public abstract class BaseMvpFragment<P extends BasePersenterImpl, V extends Bas
             mPersenter.detachView();
         }
     }
-    protected abstract void initView(View view, Bundle savedInstanceState);
-    //获取布局文件ID
-    protected abstract int getLayoutId();
+
+
 
     protected abstract V creatV();
 

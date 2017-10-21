@@ -4,7 +4,15 @@ package com.wh.jxd.com.refactorqm.model;
  * Created by kevin321vip on 2017/10/20.
  */
 
-class EntBannerInfo extends BaseModel {
+public class EntBannerInfo extends BaseModel {
+
+    @Override
+    public String toString() {
+        return "EntBannerInfo{" +
+                "img_url='" + img_url + '\'' +
+                ", jump_url='" + jump_url + '\'' +
+                '}';
+    }
 
     private String img_url;
     private String jump_url;
