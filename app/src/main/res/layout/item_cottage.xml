@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="200px"
 			  android:layout_height="wrap_content"
+			  xmlns:fresco="http://schemas.android.com/apk/res-auto"
 			  android:gravity="center"
 			  android:orientation="vertical"
 			  android:padding="@dimen/px_space_25"
@@ -14,10 +15,17 @@
 		android:visibility="invisible"
 		android:layout_gravity="right"
 		android:src="@drawable/ic_new_course"/>
-	<com.wh.jxd.com.refactorqm.view.widget.CircleImageView
-		android:id="@+id/iv_image"
+	<com.facebook.drawee.view.SimpleDraweeView
+		android:id="@+id/iv_sim_ima"
 		android:layout_width="@dimen/px_space_100"
 		android:layout_height="@dimen/px_space_100"
+		android:scaleType="fitXY"
+		android:src="@drawable/all_course_head_default"
+		fresco:failureImage="@drawable/all_course_head_default"
+		fresco:failureImageScaleType="fitXY"
+		fresco:placeholderImage="@drawable/all_course_head_default"
+		fresco:placeholderImageScaleType="fitXY"
+		fresco:roundAsCircle="true"
 		/>
 	<TextView
 		android:layout_marginTop="@dimen/px_space_20"

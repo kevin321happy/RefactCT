@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,7 +35,6 @@ import com.wh.jxd.com.refactorqm.utils.FrescoUtils;
 import com.wh.jxd.com.refactorqm.view.EnterpriseFragmentView;
 import com.wh.jxd.com.refactorqm.view.widget.CapCircleprogressView;
 import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
-import com.wh.jxd.com.refactorqm.view.widget.MyGridView;
 import com.wh.jxd.com.refactorqm.view.widget.SpringScrollview;
 import com.wh.jxd.com.refactorqm.view.widget.waterwaveprogress.WaterWaveProgress;
 import com.zhy.autolayout.utils.AutoUtils;
@@ -66,7 +66,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     @Bind(R.id.ll_enterprise_notice)
     LinearLayout mLlEnterpriseNotice;
     @Bind(R.id.gv_enterprise_info)
-    MyGridView mGvEnterpriseInfo;
+    GridView mGvEnterpriseInfo;
     @Bind(R.id.cap_study_rank)
     CapCircleprogressView mCapStudyRank;
     @Bind(R.id.tv_studytime_rank)
@@ -128,8 +128,6 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         if (mFragmentPresenter == null) {
             mFragmentPresenter = creatP();
         }
-        mFragmentPresenter.onLoadData();
-
         mGridViewAdapter = new MyGridViewAdapter();
         mGvEnterpriseInfo.setAdapter(mGridViewAdapter);
 //        mGvEnterpriseInfo.setOnItemClickListener(mOnItemClickListener);
@@ -145,6 +143,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         mMenuAdapter.setOnButtomMenuClick(this);
         mRcyBottomMenu.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         mRcyBottomMenu.setAdapter(mMenuAdapter);
+        mFragmentPresenter.onLoadData();
     }
 
     @Override
@@ -167,14 +166,8 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
 
     @Override
     public void onLoadSuccess(EnterpriseDataModel data) {
-        if (data == null) {
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivity(intent);
-            return;
-        }
         showEnterpriseInfo(data);
     }
-
     /**
      * 显示企业信息
      *
@@ -193,9 +186,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         mMember_rank = data.getMember_rank();
         showRankInfo(mMember_rank);
 //        upDataCourseStaus();
-
     }
-
     /**
      * 显示学习排名信息
      * @param member_rank
@@ -205,11 +196,13 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
             return;
         }
         mStudy_time = creatP().formatString2Long(member_rank.getStudy_time());
-        mMax_studytime = creatP().formatString2Long(member_rank.getStudy_time_max());
+        mMax_studytime = creatP().formatString2Long(member_rank.getStudy_time_rank());
+//        mMax_studytime=600;
         if (mMax_studytime == 0) {
             mStudy_time_progress = 0;
         } else {
-            mStudy_time_progress = (int) (mStudy_time * 100 / mMax_studytime);
+//            mStudy_time_progress = (int) (mStudy_time * 100 / mMax_studytime);
+            mStudy_time_progress=100;
         }
         if (mStudy_time < 60) {
             mCapStudyRank.setText("0", "分钟");
@@ -301,7 +294,6 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     public void onMenuClick(int position) {
 
     }
-
     /**
      * 显示课程分类的adapter
      */
@@ -330,7 +322,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
             View view = View.inflate(getActivity(), R.layout.item_cottage, null);
             //自动布局
             AutoUtils.autoSize(view);
-            CircleImageView imagView = (CircleImageView) view.findViewById(R.id.iv_image);
+            SimpleDraweeView imagView = (SimpleDraweeView) view.findViewById(R.id.iv_sim_ima);
             TextView textview = (TextView) view.findViewById(R.id.tv_text);
             ImageView iv_new = (ImageView) view.findViewById(R.id.iv_new);
             int listSize = mCategoryInfos == null ? 0 : mCategoryInfos.size();
@@ -346,8 +338,9 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
                 textview.setText("显示全部");
             } else {
                 if (mCategoryInfos != null && mCategoryInfos.get(position - 1) != null) {
-                    Glide.with(getActivity()).load(mCategoryInfos.get(position - 1)).into(imagView);
-//                    ImageLoader.getInstance().displayImage(mCategoryInfos.get(position - 1).getCategory_image(), imagView);
+                    CategoryInfo categoryInfo = mCategoryInfos.get(position - 1);
+                    String category_image = categoryInfo.getCategory_image();
+                    imagView.setImageURI(category_image);
                     textview.setText(mCategoryInfos.get(position - 1).getCategory_name());
                 }
             }
