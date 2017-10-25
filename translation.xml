@@ -1,6 +1,7 @@
 <application>
   <component name="TranslationSettings">
     <option name="appId" value="" />
+    <option name="disableAppKeyNotification" value="true" />
     <option name="langFrom" value="AUTO" />
     <option name="langTo" value="AUTO" />
   </component>
