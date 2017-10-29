@@ -23,4 +23,24 @@ public class RequestCons {
      * 获取首页信息
      */
     public static final String HOME_INFO = "pub/appIndex";
+    /**
+     * 获取用户个人信息
+     */
+    public static final String USER_USERINFO = "user/userInfo";
+    /**
+     * 编辑用户信息
+     */
+    public static final String USER_EDITUSERINFO = "user/editUserInfo";
+    /**
+     * 获取验证码
+     */
+    public static final String GET_PHONE_CODE = "getPhoneCode";
+    /**
+     * 更换手机号
+     */
+    public static final String CHANGE_PHONE = "user/changePhone";
+    /**
+     * 获取企业首页信息
+     */
+    public static final String GET_COMPANY_INFO = "company/companyIndex";
 }

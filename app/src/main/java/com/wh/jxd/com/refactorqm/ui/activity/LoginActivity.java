@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
-import com.wh.jxd.com.refactorqm.persenter.persenterImpl.LoginPersenterImpl;
+import com.wh.jxd.com.refactorqm.presenter.presenterImpl.LoginPresenterImpl;
 import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 import com.wh.jxd.com.refactorqm.utils.StatusBarUtil;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * Created by kevin321vip on 2017/9/29.
  */
 
-public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView> implements LoginView {
+public class LoginActivity extends BaseMvpActivity<LoginPresenterImpl, LoginView> implements LoginView {
     @Bind(R.id.ll_back)
     LinearLayout mLlBack;
     @Bind(R.id.et_phone_number)
@@ -41,11 +41,12 @@ public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView
     TextView mTvRegister;
     @Bind(R.id.tv_forgotpwd)
     TextView mTvForgotpwd;
-    private LoginPersenterImpl mLoginPersenter;
+    private LoginPresenterImpl mLoginPersenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -68,9 +69,9 @@ public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView
     }
 
     @Override
-    public LoginPersenterImpl creatPersenter(Context context) {
+    public LoginPresenterImpl creatPersenter(Context context) {
         if (mLoginPersenter == null) {
-            mLoginPersenter = new LoginPersenterImpl();
+            mLoginPersenter = new LoginPresenterImpl();
         }
         return mLoginPersenter;
     }
@@ -94,11 +95,19 @@ public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView
                 }
                 break;
             case R.id.tv_register:
+
                 break;
             case R.id.tv_forgotpwd:
+
                 break;
         }
     }
+
+    @Override
+    public void onTokenLose() {
+
+    }
+
     @Override
     public void onCheckFail(String info) {
         ToastUtils.showLongToast(this, info);
@@ -106,12 +115,16 @@ public class LoginActivity extends BaseMvpActivity<LoginPersenterImpl, LoginView
 
     @Override
     public void onLoginFail(String erro) {
-        ToastUtils.showShortToast(this,"登陆失败了~:"+erro.toString());
+        ToastUtils.showShortToast(this, "登陆失败了~:" + erro.toString());
     }
 
     @Override
     public void onLoginSucesss(UserInfo userInfo) {
+//        AppcationEx.getInstance().setUserInfo(userInfo);
         PreferenceUtils.setUserId(userInfo.getId());
+        PreferenceUtils.setQM_Token(userInfo.getQmct_token());
+        PreferenceUtils.setCompanyId(userInfo.getCompany_id());
+        setResult(20);
         finish();
     }
 }

@@ -50,7 +50,6 @@ public class RetrofitHelper {
      * @param
      * @return
      */
-
     public ApiService getService() {
         return mRetrofit.create(ApiService.class);
     }

@@ -27,7 +27,7 @@ import com.wh.jxd.com.refactorqm.model.GridViewBean;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.TeacherCourse;
 import com.wh.jxd.com.refactorqm.model.TopImgInfo;
-import com.wh.jxd.com.refactorqm.persenter.persenterImpl.HomeFragmentPersenterImpl;
+import com.wh.jxd.com.refactorqm.presenter.presenterImpl.HomeFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.adapter.HotCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendTeacherAdapter;
@@ -45,7 +45,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * Created by kevin321vip on 2017/9/28.
  */
 
-public class HomeFragment extends BaseMvpFragment<HomeFragmentPersenterImpl, HomeFragmentView> implements HomeFragmentView {
+public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, HomeFragmentView> implements HomeFragmentView {
     @Bind(R.id.binner)
     BGABanner mBinner;
     @Bind(R.id.gv_view)
@@ -66,7 +66,7 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPersenterImpl, Hom
     LinearLayout mRlOne;
     @Bind(R.id.refresh_layout)
     TwinklingRefreshLayout mRefreshLayout;
-    private HomeFragmentPersenterImpl mHomeFragmentPersenter;
+    private HomeFragmentPresenterImpl mHomeFragmentPersenter;
     private boolean ISREFRESHING;//是否正在刷新中.....
 
     GridViewBean[] mGridViewBeans = {new GridViewBean(R.drawable.ic_all_course, "所有课程")
@@ -148,9 +148,9 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPersenterImpl, Hom
         return this;
     }
     @Override
-    protected HomeFragmentPersenterImpl creatP() {
+    protected HomeFragmentPresenterImpl creatP() {
         if (mHomeFragmentPersenter == null) {
-            mHomeFragmentPersenter = new HomeFragmentPersenterImpl();
+            mHomeFragmentPersenter = new HomeFragmentPresenterImpl();
         }
         return mHomeFragmentPersenter;
     }
@@ -219,6 +219,11 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPersenterImpl, Hom
         }
     }
 
+    @Override
+    public void onTokenLose() {
+
+    }
+
     private class MyGridViewAdapter extends BaseAdapter {
         @Override
         public int getCount() {
@@ -255,8 +260,6 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPersenterImpl, Hom
         ButterKnife.bind(this, rootView);
         return rootView;
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

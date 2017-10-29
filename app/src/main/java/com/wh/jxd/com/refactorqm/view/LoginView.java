@@ -23,8 +23,5 @@ public interface LoginView extends BaseView {
      * @param userInfo
      */
     void onLoginSucesss(UserInfo userInfo);
-    /**
-     * 登陆成功
-     */
 
 }

@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by kevin321vip on 2017/9/27.
  */
 
-public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBroadcastReceiver.NetEvevt {
+public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroadcastReceiver.NetEvevt {
 
     private static final String TAG = "BaseActivtiy";
 
@@ -38,7 +38,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
      * 网络类型
      */
     private int netMobile;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +46,10 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         init();
         evevt = this;
         inspectNet();
-
         initView();
     }
-
     /**
      * 抽象方法获取布局ID
-     *
      * @return
      */
     protected abstract int getLayoutId();
@@ -79,10 +75,8 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
             ToastUtils.showLongToast(this, "当前网络不可用！");
         }
     }
-
     /**
      * 判断有无网络
-     *
      * @return true 有网, false 没有网络.
      */
     public boolean isNetConnect() {
@@ -95,9 +89,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         }
         return false;
     }
-
     protected abstract void initView();
-
     /**
      * 初始化界面操作
      */
@@ -106,11 +98,9 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         //设置状态栏颜色
         StatusBarUtil.setStatusBarColor(this, R.color.white);
         StatusBarUtil.StatusBarLightMode(this);
-
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         mToolbarSubTitle = (TextView) findViewById(R.id.toolbar_subtitle);
-
         if (mToolbar != null) {
             //将Toolbar显示到界面
             setSupportActionBar(mToolbar);
@@ -133,7 +123,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
             showBack();
         }
     }
-
     /**
      * 显示返回键
      */
@@ -146,9 +135,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
                 onBackPressed();
             }
         });
-
     }
-
     /**
      * 获取头部标题的TextView
      *
@@ -174,7 +161,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
             subTitle1.setText(subTitle);
         }
     }
-
     /**
      * 设置头部标题
      *
@@ -188,28 +174,21 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
             setSupportActionBar(getToolBar());
         }
     }
-
     /**
      * 是否显示后退按钮,默认显示,可在子类重写该方法.
-     *
      * @return
      */
     protected boolean isShowBacking() {
         return true;
     }
 
-
-
-
     /**
      * 双击监听
-     *
      * @param res
      */
     public void setImmersionState(int res) {
 
     }
-
     /**
      * APP字体大小，不随系统的字体大小的变化而变化的方法
      */
@@ -224,7 +203,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
 
     /**
      * 检查是否可执行点击操作 防重复点击
-     *
      * @return 返回true则可执行
      */
     protected boolean checkClick(int id) {
@@ -233,7 +211,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         mLastClickTimes.put(id, thisTime);
         return !(lastTime != null && thisTime - lastTime < 800);
     }
-
     /**
      * 隐藏ToolBar
      */
@@ -244,7 +221,20 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         }
     }
 
-
+    /**
+     * 显示ToolBarO
+     */
+    public void showToolBar() {
+        Toolbar toolBar = getToolBar();
+        if (toolBar != null) {
+            toolBar.setVisibility(View.VISIBLE);
+        }
+    }
+    /**
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -253,7 +243,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
         return super.onKeyDown(keyCode, event);
     }
     public abstract boolean isSystemBarTranclucent();
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -261,6 +250,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements  NetBro
 
     /**
      * 获得toolbar
+     *
      * @return
      */
     public Toolbar getToolBar() {

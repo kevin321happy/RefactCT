@@ -54,4 +54,8 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.14.1'
     compile 'com.facebook.fresco:animated-gif:0.12.0'
     compile 'com.github.bumptech.glide:glide:3.6.1'
+    //design包
+    compile 'com.android.support:design:25.3.1'
+    //权限申请库
+    compile 'pub.devrel:easypermissions:0.3.0'
 }

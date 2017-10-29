@@ -4,13 +4,16 @@ import android.content.Context;
 
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
+import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
+import com.wh.jxd.com.refactorqm.model.CommonDataModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.service.ApiService;
 import com.wh.jxd.com.refactorqm.utils.CommonUtils;
 import com.wh.jxd.com.refactorqm.utils.Md5Utils;
 import com.wh.jxd.com.refactorqm.utils.NetUtils;
+import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 
 import java.util.HashMap;
 
@@ -47,8 +50,10 @@ public class NetDataManager<T extends BaseModel> {
         return observable.map(new ResultFilter<T>());
     }
 
+
     /**
      * 过滤数据去掉外壳
+     *
      * @param <T>
      */
     public class ResultFilter<T> implements Func1<HttpBean<T>, T> {
@@ -62,6 +67,7 @@ public class NetDataManager<T extends BaseModel> {
             return tHttpBean.getData();
         }
     }
+
     /**
      * 用户登陆
      */
@@ -77,17 +83,101 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<UserInfo>> loginObserable = mService.login(phone, psw, timestamp, signData[1], signData[0]);
         return (Observable<UserInfo>) filterStatus(loginObserable);
     }
+
     /**
      * 启动App的时候请求定位
      */
     public void uploadLoaction(String userid, String qm_token, String timestemp, String companyId, String srt, String sign, String lng, String lat) {
         Observable<UpLoadLocationBean> beanObservable = ((ApiService) mService).uploadLoaction(userid, qm_token, timestemp, companyId, srt, sign, lng, lat);
     }
+
     /**
      * 获取首页信息
      */
     public Observable<HomeInfo> getHomeData() {
         Observable<HttpBean<HomeInfo>> homeData = mService.getHomeData();
         return (Observable<HomeInfo>) filterStatus(homeData);
+    }
+
+    /**
+     * 获取个人用户信息
+     */
+    public Observable<UserInfo> getUserInfo(String userid, String qmct_token) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", userid);
+        sign.put("qmct_token", qmct_token);
+        sign.put("timestamp", timestamp);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        Observable<HttpBean<UserInfo>> userInfo = mService.getUserInfo(userid, qmct_token, timestamp, signData[1], signData[0]);
+        return (Observable<UserInfo>) filterStatus(userInfo);
+    }
+
+    /**
+     * 修改用户信息
+     */
+    public Observable<CommonDataModel> upDataUserInfo(String key, String value) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", PreferenceUtils.getUserId());
+        sign.put("timestamp", timestamp);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        sign.put(key, value);
+        sign.put("qmct_token", PreferenceUtils.getQM_Token());
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<CommonDataModel> upDataUserInfoObservable = mService.upDataUserInfo(sign);
+        return upDataUserInfoObservable;
+    }
+
+    /**
+     * 获取手机验证码
+     */
+    public Observable<CommonDataModel> getVerificationCode(String key, String value, String type) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("timestamp", timestamp);
+        sign.put(key, value);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        // sign.put("qmct_token", PreferenceUtils.getQM_Token());
+        sign.put("type", type);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<CommonDataModel> upDataUserInfoObservable = mService.getVerificationCode(sign);
+        return upDataUserInfoObservable;
+    }
+
+    /**
+     * 更换新的手机号
+     */
+    public Observable<CommonDataModel> updataPhoneNum(String key1, String value1, String key2, String value2) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", PreferenceUtils.getUserId());
+        sign.put("timestamp", timestamp);
+        sign.put(key1, value1);
+        sign.put(key2, value2);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<CommonDataModel> commonDataModelObservable = mService.changePhoneNum(sign);
+        return commonDataModelObservable;
+    }
+
+    /**
+     * 获取企业首页的信息
+     */
+    public Observable<EnterpriseDataModel> getEenterprise(String key, String value) {
+        String timestamp = CommonUtils.getCurrentTimestamp();
+        HashMap<String, String> sign = new HashMap<>();
+        sign.put("userid", PreferenceUtils.getUserId());
+        sign.put("timestamp", timestamp);
+        sign.put("qmct_token",PreferenceUtils.getQM_Token());
+        sign.put(key, value);
+        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
+        sign.put("str", signData[1]);
+        sign.put("sign", signData[0]);
+        Observable<HttpBean<EnterpriseDataModel>> enterpriseData = mService.getEnterpriseData(sign);
+        return (Observable<EnterpriseDataModel>) filterStatus(enterpriseData);
     }
 }

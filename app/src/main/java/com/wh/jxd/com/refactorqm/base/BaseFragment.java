@@ -17,15 +17,19 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
-        initView(view, savedInstanceState);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        initView(view, savedInstanceState);
+
     }
 
     @Override
@@ -33,7 +37,6 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
 
     }
-
     protected abstract void initView(View view, Bundle savedInstanceState);
 
     //获取布局文件ID
