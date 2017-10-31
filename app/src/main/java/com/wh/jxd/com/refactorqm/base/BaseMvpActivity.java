@@ -12,8 +12,7 @@ public abstract class BaseMvpActivity<P extends BasePersenterImpl, V extends Bas
 
     private P mpersenter;
     private V mView;
-
-    @Override
+@Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (this.mpersenter == null) {

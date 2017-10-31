@@ -27,13 +27,13 @@ import butterknife.ButterKnife;
 public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroadcastReceiver.NetEvevt {
 
     private static final String TAG = "BaseActivtiy";
-
     protected SystemBarTintManager tintManager;
     private SparseArray<Long> mLastClickTimes;
     public static NetBroadcastReceiver.NetEvevt evevt;
     private TextView mToolbarTitle;
     private TextView mToolbarSubTitle;
     private Toolbar mToolbar;
+
     /**
      * 网络类型
      */
@@ -53,8 +53,6 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
      * @return
      */
     protected abstract int getLayoutId();
-
-
     /**
      * 网络监听
      */
