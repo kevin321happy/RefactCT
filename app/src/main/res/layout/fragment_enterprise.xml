@@ -87,7 +87,6 @@
                     android:textColor="@color/color_marquee"
                     android:textSize="@dimen/text_size_15"/>
             </LinearLayout>
-
             <com.wh.jxd.com.refactorqm.view.widget.MyGridView
                 android:id="@+id/gv_enterprise_info"
                 android:layout_width="match_parent"

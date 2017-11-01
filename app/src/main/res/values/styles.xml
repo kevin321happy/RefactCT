@@ -127,4 +127,9 @@
     <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/checkbox_style</item>
     </style>
+<!--table_layout样式-->
+    <style name="style_tabLayout_text">
+        <item name="android:textSize">@dimen/px_space_50</item>
+        <item name="android:textColor">@color/text__defaulttext</item>
+    </style>
 </resources>

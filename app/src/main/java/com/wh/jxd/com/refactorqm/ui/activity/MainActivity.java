@@ -65,7 +65,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
         clickMenu(mLlMenuHome);
         sendLocation();
     }
-
     /**
      * 发送定位信息
      */

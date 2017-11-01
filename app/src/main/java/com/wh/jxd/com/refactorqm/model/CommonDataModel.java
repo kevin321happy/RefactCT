@@ -5,7 +5,6 @@ package com.wh.jxd.com.refactorqm.model;
  */
 
 public class CommonDataModel extends BaseModel{
-
     /**
      * status : 1
      * info : success

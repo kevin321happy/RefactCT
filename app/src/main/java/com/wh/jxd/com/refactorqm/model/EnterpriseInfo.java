@@ -3,9 +3,7 @@ package com.wh.jxd.com.refactorqm.model;
 /**
  * Created by kevin321vip on 2017/10/20.
  */
-
 public class EnterpriseInfo extends BaseModel {
-
     @Override
     public String toString() {
         return "EnterpriseInfo{" +

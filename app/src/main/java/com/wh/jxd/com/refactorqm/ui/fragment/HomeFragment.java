@@ -1,5 +1,6 @@
 package com.wh.jxd.com.refactorqm.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,6 +29,7 @@ import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.TeacherCourse;
 import com.wh.jxd.com.refactorqm.model.TopImgInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.HomeFragmentPresenterImpl;
+import com.wh.jxd.com.refactorqm.ui.activity.CourseDetailActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.HotCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendTeacherAdapter;
@@ -45,7 +47,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * Created by kevin321vip on 2017/9/28.
  */
 
-public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, HomeFragmentView> implements HomeFragmentView {
+public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, HomeFragmentView> implements HomeFragmentView, RecommendCourseAdapter.OnClickListener {
     @Bind(R.id.binner)
     BGABanner mBinner;
     @Bind(R.id.gv_view)
@@ -103,8 +105,9 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
 
         // 推荐课程
         mRecommendAdapter = new RecommendCourseAdapter(getActivity());
-        mRvRecommendCourse.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        mRvRecommendCourse.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mRvRecommendCourse.setAdapter(mRecommendAdapter);
+        mRecommendAdapter.setOnClickListener(this);
         //热门课程
         mHotAdapter = new HotCourseAdapter(getActivity());
         mRvHotCourse.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -147,6 +150,7 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
     protected HomeFragmentView creatV() {
         return this;
     }
+
     @Override
     protected HomeFragmentPresenterImpl creatP() {
         if (mHomeFragmentPersenter == null) {
@@ -211,6 +215,7 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
             e.printStackTrace();
         }
     }
+
     @Override
     public void onLoadFail(String info) {
         if (mRefreshLayout != null && ISREFRESHING == true) {
@@ -222,6 +227,19 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
     @Override
     public void onTokenLose() {
 
+    }
+
+    /**
+     * 点击了推荐课程
+     *
+     * @param position
+     * @param courseId
+     */
+    @Override
+    public void onRecommendCourseClickListener(int position, String courseId) {
+        Intent intent = new Intent(getActivity(), CourseDetailActivity.class);
+        intent.putExtra("course_id", courseId);
+        startActivity(intent);
     }
 
     private class MyGridViewAdapter extends BaseAdapter {
@@ -239,6 +257,7 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         public long getItemId(int position) {
             return 0;
         }
+
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view = View.inflate(parent.getContext(), R.layout.item_categry, null);
@@ -260,6 +279,7 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         ButterKnife.bind(this, rootView);
         return rootView;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

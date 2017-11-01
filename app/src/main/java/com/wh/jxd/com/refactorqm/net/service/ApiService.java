@@ -1,6 +1,7 @@
 package com.wh.jxd.com.refactorqm.net.service;
 
 import com.wh.jxd.com.refactorqm.common.RequestCons;
+import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.CommonDataModel;
@@ -77,4 +78,11 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(RequestCons.CHANGE_PHONE)
     Observable<CommonDataModel> changePhoneNum(@FieldMap Map<String, String> options);
+
+    /**
+     * 获取课程详情
+     */
+    @FormUrlEncoded
+    @POST(RequestCons.GET_CLASSDETAIL)
+    Observable<HttpBean<CourseDetailModel>> getCourseDetail(@FieldMap Map<String, String> options);
 }
