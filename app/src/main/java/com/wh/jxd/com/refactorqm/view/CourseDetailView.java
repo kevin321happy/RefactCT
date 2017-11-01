@@ -10,7 +10,18 @@ import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 public interface CourseDetailView extends BaseView {
     /**
      * 获取课程详情成功了
+     *
      * @param data
      */
     void getCourseDetailSuccess(CourseDetailModel data);
+
+    /**
+     * 开始播放
+     */
+    void onPrepared(String url);
+
+    /**
+     * 暂停播放了
+     */
+    void onStopPlay(String url);
 }
