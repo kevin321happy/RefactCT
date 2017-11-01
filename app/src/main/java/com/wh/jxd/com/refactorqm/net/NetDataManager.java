@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
+import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.CommonDataModel;
@@ -16,6 +17,7 @@ import com.wh.jxd.com.refactorqm.utils.NetUtils;
 import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import rx.Observable;
 import rx.functions.Func1;
@@ -117,16 +119,9 @@ public class NetDataManager<T extends BaseModel> {
      * 修改用户信息
      */
     public Observable<CommonDataModel> upDataUserInfo(String key, String value) {
-        String timestamp = CommonUtils.getCurrentTimestamp();
-        HashMap<String, String> sign = new HashMap<>();
-        sign.put("userid", PreferenceUtils.getUserId());
-        sign.put("timestamp", timestamp);
-        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
-        sign.put(key, value);
-        sign.put("qmct_token", PreferenceUtils.getQM_Token());
-        sign.put("str", signData[1]);
-        sign.put("sign", signData[0]);
-        Observable<CommonDataModel> upDataUserInfoObservable = mService.upDataUserInfo(sign);
+        Map<String, String> baseArgumentMap = getBaseArgumentMap();
+        baseArgumentMap.put(key,value);
+        Observable<CommonDataModel> upDataUserInfoObservable = mService.upDataUserInfo(baseArgumentMap);
         return upDataUserInfoObservable;
     }
 
@@ -151,16 +146,10 @@ public class NetDataManager<T extends BaseModel> {
      * 更换新的手机号
      */
     public Observable<CommonDataModel> updataPhoneNum(String key1, String value1, String key2, String value2) {
-        String timestamp = CommonUtils.getCurrentTimestamp();
-        HashMap<String, String> sign = new HashMap<>();
-        sign.put("userid", PreferenceUtils.getUserId());
-        sign.put("timestamp", timestamp);
-        sign.put(key1, value1);
-        sign.put(key2, value2);
-        String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
-        sign.put("str", signData[1]);
-        sign.put("sign", signData[0]);
-        Observable<CommonDataModel> commonDataModelObservable = mService.changePhoneNum(sign);
+        Map<String, String> baseArgumentMap = getBaseArgumentMap();
+        baseArgumentMap.put(key1,value1);
+        baseArgumentMap.put(key2,value2);
+        Observable<CommonDataModel> commonDataModelObservable = mService.changePhoneNum(baseArgumentMap);
         return commonDataModelObservable;
     }
 
@@ -168,16 +157,32 @@ public class NetDataManager<T extends BaseModel> {
      * 获取企业首页的信息
      */
     public Observable<EnterpriseDataModel> getEenterprise(String key, String value) {
+        Map<String, String> baseArgumentMap = getBaseArgumentMap();
+        baseArgumentMap.put(key, value);
+        Observable<HttpBean<EnterpriseDataModel>> enterpriseData = mService.getEnterpriseData(baseArgumentMap);
+        return (Observable<EnterpriseDataModel>) filterStatus(enterpriseData);
+    }
+    /**
+     * 获取课程详情
+     */
+    public Observable<CourseDetailModel> getCourseDetail(String key, String value) {
+        Map<String, String> baseArgumentMap = getBaseArgumentMap();
+        baseArgumentMap.put(key, value);
+        Observable<HttpBean<CourseDetailModel>> modelObservable = mService.getCourseDetail(baseArgumentMap);
+        return (Observable<CourseDetailModel>) filterStatus(modelObservable);
+    }
+    /**
+     * 获取基本参数的Map
+     */
+    private Map<String, String> getBaseArgumentMap() {
         String timestamp = CommonUtils.getCurrentTimestamp();
         HashMap<String, String> sign = new HashMap<>();
         sign.put("userid", PreferenceUtils.getUserId());
         sign.put("timestamp", timestamp);
-        sign.put("qmct_token",PreferenceUtils.getQM_Token());
-        sign.put(key, value);
+        sign.put("qmct_token", PreferenceUtils.getQM_Token());
         String[] signData = NetUtils.getSignData(AppcationEx.getInstance(), sign);
         sign.put("str", signData[1]);
         sign.put("sign", signData[0]);
-        Observable<HttpBean<EnterpriseDataModel>> enterpriseData = mService.getEnterpriseData(sign);
-        return (Observable<EnterpriseDataModel>) filterStatus(enterpriseData);
+        return sign;
     }
 }

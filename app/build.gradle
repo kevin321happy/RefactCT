@@ -9,6 +9,12 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        ndk {
+            //cpu类型的.so库。
+            //一般其实'armeabi'和'armeabi-v7a'就足够了, 'x86'
+            //abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a','x86'
+            abiFilters 'armeabi-v7a','x86'
+        }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -58,4 +64,8 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     //权限申请库
     compile 'pub.devrel:easypermissions:0.3.0'
+    //视频播放器
+    compile 'com.shuyu:gsyVideoPlayer-java:2.1.1'
+    compile 'com.shuyu:gsyVideoPlayer-ex_so:2.1.1'
+
 }

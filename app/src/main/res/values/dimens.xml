@@ -182,6 +182,7 @@
   <dimen name="px_space_482">482.0px</dimen>
   <dimen name="px_space_500">500.0px</dimen>
   <dimen name="px_space_505">505.0px</dimen>
+  <dimen name="px_space_550">550.0px</dimen>
   <dimen name="px_space_600">600.0px</dimen>
   <dimen name="px_space_660">660.0px</dimen>
   <dimen name="px_space_700">700.0px</dimen>

@@ -43,4 +43,8 @@ public class RequestCons {
      * 获取企业首页信息
      */
     public static final String GET_COMPANY_INFO = "company/companyIndex";
+    /**
+     * 获取课程详情
+     */
+    public static final String GET_CLASSDETAIL="class/classDetail";
 }

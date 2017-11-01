@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.model.CourseInfo;
 import com.zhy.autolayout.AutoLinearLayout;
@@ -38,21 +39,22 @@ public class RecommendCourseAdapter extends RecyclerView.Adapter {
         View itemView = View.inflate(parent.getContext(), R.layout.item_recommend_course, null);
         AutoUtils.autoSize(itemView);
         return new ViewHodler(itemView);
-
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-
         ViewHodler hodler = (ViewHodler) holder;
         final CourseInfo courseInfo = mListItems.get(position);
-        if (courseInfo == null) return;
+        if (courseInfo == null) {
+            return;
+        }
         hodler.iv_recommend_course.setImageURI(courseInfo.getCourseImage() == null ? "" : courseInfo.getCourseImage());
         hodler.tv_course_name.setText(courseInfo.getCourseName() == null ? "" : courseInfo.getCourseName());
         hodler.ll_recommend_course_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnClickListener != null) {
+//                    KLog.i("课程的值："+courseInfo.toString());
                     mOnClickListener.onRecommendCourseClickListener(position, courseInfo.getCourseId());
                 }
             }
@@ -80,6 +82,7 @@ public class RecommendCourseAdapter extends RecyclerView.Adapter {
             ll_recommend_course_item = (AutoLinearLayout) itemView.findViewById(R.id.ll_recommend_course_item);
         }
     }
+
     public interface OnClickListener {
         void onRecommendCourseClickListener(int position, String courseId);
     }
