@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_marginLeft="@dimen/px_space_25"
+            android:id="@+id/cb_section_check"
+            style="@style/CustomCheckboxTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    <!--    android:background="@drawable/activity_tabs_shape"
+        android:padding="@dimen/space_2"
+        android:text="PDF"
+        android:textSize="@dimen/text_size_10"-->
+        <ImageView
+            android:id="@+id/iv_course_section_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:src="@drawable/ic_vedio_course"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_course_section_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_10"
+                android:singleLine="true"
+                android:textColor="@color/text_title"
+                android:text="1、企业组织架构的绘制"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_course_section_progress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:layout_marginTop="@dimen/px_space_5"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_title"
+                    android:text="学习进度：100%"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_course_section_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_title"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:layout_marginRight="@dimen/space_10"
+                    android:text=""/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/space_10"
+            android:background="@color/transparent">
+            <TextView
+                android:id="@+id/tv_course_section_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:padding="@dimen/space_2"
+                android:text="下载"
+                android:textColor="@color/enterprise_act__text"
+                android:textSize="@dimen/text_size_10"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/iv_course_section_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/can_d"/>
+        </FrameLayout>
+    </LinearLayout>
+    <com.wh.jxd.com.refactorqm.view.widget.CustomDashedLineView
+        android:id="@+id/course_section_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+</LinearLayout>

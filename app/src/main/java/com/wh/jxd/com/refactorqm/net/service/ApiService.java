@@ -1,6 +1,8 @@
 package com.wh.jxd.com.refactorqm.net.service;
 
 import com.wh.jxd.com.refactorqm.common.RequestCons;
+import com.wh.jxd.com.refactorqm.model.ChapterInfo;
+import com.wh.jxd.com.refactorqm.model.ChapterListModel;
 import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
@@ -9,6 +11,7 @@ import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.HttpBean;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.http.Field;
@@ -85,4 +88,11 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(RequestCons.GET_CLASSDETAIL)
     Observable<HttpBean<CourseDetailModel>> getCourseDetail(@FieldMap Map<String, String> options);
+
+    /**
+     * 获取课程目录的接口
+     */
+    @FormUrlEncoded
+    @POST(RequestCons.GET_CLASSCHAPTERLIST)
+    Observable<ChapterListModel> getChapterList(@FieldMap Map<String, String> options);
 }

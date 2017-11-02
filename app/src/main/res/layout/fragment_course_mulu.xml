@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_download_manage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/space_40"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/space_25"
+            android:text="下载管理"
+            android:textColor="@color/text_hui"
+            android:textSize="@dimen/px_space_35"/>
+
+        <TextView
+            android:id="@+id/tv_left_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px_space_25"
+            android:text="可用空间7.2G"
+            android:textColor="@color/color_999"
+            android:textSize="@dimen/px_space_35"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/transparent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/px_space_25"
+            android:src="@drawable/arrow_right"/>
+    </LinearLayout>
+
+    <ExpandableListView
+        android:id="@+id/ex_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:childDivider="@color/transparent"
+        android:divider="@color/transparent"
+        android:listSelector="@drawable/bt_click_selector"
+        android:paddingBottom="@dimen/px_space_60"
+        android:scrollbars="none"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_space_126">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tv_collect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/dian_zan"
+                    android:drawablePadding="@dimen/px_space_15"
+                    android:gravity="center"
+                    android:text="收藏"
+                    android:textColor="@color/text__defaulttext"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_buy_course"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/color_999"
+                android:gravity="center"
+                android:enabled="false"
+                android:text="免费"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -47,4 +47,8 @@ public class RequestCons {
      * 获取课程详情
      */
     public static final String GET_CLASSDETAIL="class/classDetail";
+    /**
+     * 获取课程目录
+     */
+    public static final String  GET_CLASSCHAPTERLIST="classChapterList";
 }

@@ -132,4 +132,17 @@
         <item name="android:textSize">@dimen/px_space_50</item>
         <item name="android:textColor">@color/text__defaulttext</item>
     </style>
+
+    <style name="evaluateRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/evaluate_ratingbar</item>
+        <item name="android:minHeight">@dimen/space_21</item>
+        <item name="android:maxHeight">@dimen/space_21</item>
+    </style>
+
+    <style name="view_indecate_style">
+        <item name="android:layout_width">@dimen/px_space_16</item>
+        <item name="android:layout_height">@dimen/px_space_52</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@color/title_color</item>
+    </style>
 </resources>

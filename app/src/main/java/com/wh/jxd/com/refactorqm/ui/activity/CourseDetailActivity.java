@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -23,8 +24,15 @@ import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.CourseInfo;
 import com.wh.jxd.com.refactorqm.model.SectionInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.CourseDetailPresenter;
+import com.wh.jxd.com.refactorqm.ui.adapter.CourseDetailPagerAdapter;
+import com.wh.jxd.com.refactorqm.ui.fragment.CourseDetailFragment;
+import com.wh.jxd.com.refactorqm.ui.fragment.CourseMuLuFragment;
+import com.wh.jxd.com.refactorqm.ui.fragment.RecommendCourseFragment;
 import com.wh.jxd.com.refactorqm.view.CourseDetailView;
 import com.wh.jxd.com.refactorqm.view.widget.CourseVedioPlay;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,6 +72,8 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
     private ImageView mImageView;
     private String mVedio_url;
     private OrientationUtils orientationUtils;
+    private List<Fragment> mFragments;
+    private CourseDetailPagerAdapter mPagerAdapter;
 
     /**
      * 重复登陆了
@@ -104,8 +114,34 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         if (mCustomGSYVideoPlayer == null) {
             return;
         }
+        if (mFragments == null) {
+            mFragments = new ArrayList<>();
+        }
+        mFragments.clear();
+        mFragments.add(setArgument(new CourseDetailFragment(), mCourse_id));
+        mFragments.add(setArgument(new CourseMuLuFragment(), mCourse_id));
+        mFragments.add(setArgument(new RecommendCourseFragment(), mCourse_id));
+
+        mPagerAdapter = new CourseDetailPagerAdapter(getSupportFragmentManager(), (ArrayList<Fragment>) mFragments);
+        mViewpager.setAdapter(mPagerAdapter);
+        mViewpager.setCurrentItem(1);
+        mTabLayout.setupWithViewPager(mViewpager);
+        //设置指示器的宽度
+        mCourseDetailPresenter.setIndicator(mTabLayout, 25, 25);
+
+
         mCourseDetailPresenter.initCourseVedioCongif(this, mCustomGSYVideoPlayer);
         mCourseDetailPresenter.getCourseDetail(mCourse_id);
+    }
+
+    /**
+     * 给fragment传递参数
+     */
+    private Fragment setArgument(Fragment fragment, String argument) {
+        Bundle args = new Bundle();
+        args.putString(getString(R.string.课程id), argument);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -127,6 +163,7 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         mItem_share.setVisible(true);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -136,6 +173,7 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void getCourseDetailSuccess(CourseDetailModel data) {
         CourseInfo coursr_detail = data.getCoursr_detail();
@@ -148,6 +186,7 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         mCustomGSYVideoPlayer.setUp(mVedio_url, false, "");
         showCourseInfo();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -163,11 +202,13 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
     public void onStopPlay(String url) {
 
     }
+
     /**
      * 显示课程信息
      */
     private void showCourseInfo() {
     }
+
     @OnClick(R.id.btn_start_study)
     public void onViewClicked() {
         if (mFlMask != null) {

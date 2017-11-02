@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/px_space_44"
+              android:paddingTop="@dimen/px_space_40">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_course_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="如何提高分析问题能力"
+            android:textColor="#3a3a3a"
+            android:textSize="@dimen/px_space_42"/>
+        <TextView
+            android:id="@+id/tv_course_prise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/px_space_44"
+            android:text="$1000"
+            android:textColor="@color/theme_orange"
+            android:textSize="@dimen/px_space_44"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_space_40"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_class_hour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="共计3课时"
+            android:textColor="#414141"
+            android:textSize="@dimen/px_space_38"/>
+        <TextView
+            android:id="@+id/tv_study_count"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/px_space_44"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_five_star"
+            android:gravity="center_vertical"
+            android:text="2056人参加了学习"
+            android:textColor="@color/color_999"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="@dimen/px_space_40"
+        android:id="@+id/tv_course_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#979797"
+        android:textSize="@dimen/px_space_40"
+        android:lineSpacingExtra="@dimen/px_space_5"
+        android:text="如何根据问题根源做出问题分析时的情绪控制,如何使用脑力激荡法去分析问题解决问题管控好情绪"/>
+    <TextView
+        android:id="@+id/tv_reward_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_space_40"
+        android:textSize="@dimen/px_space_32"
+        android:textColor="#80cfdb"
+        android:text="小提示学习完课程,通关后奖励2积分"/>
+    <LinearLayout
+        android:layout_marginTop="@dimen/px_space_62"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/px_space_60"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="@dimen/px_space_20"
+            style="@style/view_indecate_style"/>
+        <TextView
+            android:layout_marginLeft="@dimen/px_space_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text__defaulttext"
+            android:textSize="@dimen/px_space_44"
+            android:text="评论专区"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_no_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="暂无评论"
+            android:visibility="gone" />
+        <include layout="@layout/item_course_evaluate" />
+    </RelativeLayout>
+
+</LinearLayout>

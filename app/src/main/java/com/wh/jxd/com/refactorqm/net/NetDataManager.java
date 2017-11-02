@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.wh.jxd.com.refactorqm.AppcationEx;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
+import com.wh.jxd.com.refactorqm.model.ChapterInfo;
+import com.wh.jxd.com.refactorqm.model.ChapterListModel;
 import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
@@ -17,6 +19,7 @@ import com.wh.jxd.com.refactorqm.utils.NetUtils;
 import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import rx.Observable;
@@ -120,7 +123,7 @@ public class NetDataManager<T extends BaseModel> {
      */
     public Observable<CommonDataModel> upDataUserInfo(String key, String value) {
         Map<String, String> baseArgumentMap = getBaseArgumentMap();
-        baseArgumentMap.put(key,value);
+        baseArgumentMap.put(key, value);
         Observable<CommonDataModel> upDataUserInfoObservable = mService.upDataUserInfo(baseArgumentMap);
         return upDataUserInfoObservable;
     }
@@ -147,8 +150,8 @@ public class NetDataManager<T extends BaseModel> {
      */
     public Observable<CommonDataModel> updataPhoneNum(String key1, String value1, String key2, String value2) {
         Map<String, String> baseArgumentMap = getBaseArgumentMap();
-        baseArgumentMap.put(key1,value1);
-        baseArgumentMap.put(key2,value2);
+        baseArgumentMap.put(key1, value1);
+        baseArgumentMap.put(key2, value2);
         Observable<CommonDataModel> commonDataModelObservable = mService.changePhoneNum(baseArgumentMap);
         return commonDataModelObservable;
     }
@@ -162,6 +165,7 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<EnterpriseDataModel>> enterpriseData = mService.getEnterpriseData(baseArgumentMap);
         return (Observable<EnterpriseDataModel>) filterStatus(enterpriseData);
     }
+
     /**
      * 获取课程详情
      */
@@ -171,6 +175,16 @@ public class NetDataManager<T extends BaseModel> {
         Observable<HttpBean<CourseDetailModel>> modelObservable = mService.getCourseDetail(baseArgumentMap);
         return (Observable<CourseDetailModel>) filterStatus(modelObservable);
     }
+    /**
+     * 获取课程章节信息
+     */
+    public Observable<ChapterListModel> getChapterLists(String key, String value) {
+        Map<String, String> baseArgumentMap = getBaseArgumentMap();
+        baseArgumentMap.put(key, value);
+        Observable<ChapterListModel> chapterList = mService.getChapterList(baseArgumentMap);
+        return chapterList;
+    }
+
     /**
      * 获取基本参数的Map
      */
