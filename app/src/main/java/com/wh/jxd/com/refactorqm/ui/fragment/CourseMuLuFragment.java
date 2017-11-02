@@ -106,22 +106,23 @@ public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, M
             return;
         }
         String company_id = chapterInfos.get(0).getCompany_id();
-        if ("0".equals(company_id)) {
-            //非企业课程
-            mIsEnterpriseCourse = false;
-            //下载管理不可见
-           mLlDownloadManage .setVisibility(View.GONE);
-        } else {
+//        if ("0".equals(company_id)) {
+//            //非企业课程
+//            mIsEnterpriseCourse = false;
+//            //下载管理不可见
+//           mLlDownloadManage .setVisibility(View.GONE);
+//        } else {
             //企业课程
-            mIsEnterpriseCourse = true;
+//            mIsEnterpriseCourse = true;
             mLlDownloadManage.setVisibility(View.VISIBLE);
             //保存到数据库
-            try {
-               // saveToDb(chapterInfos);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//            try {
+                muLuFragmentPresenter.saveToDb(chapterInfos);
+//                saveToDb(chapterInfos);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         for (ChapterInfo chapterInfo : chapterInfos) {
             List<SectionInfo> chapterList = chapterInfo.getChapterList();
             String seesion_name = chapterInfo.getSession_name();

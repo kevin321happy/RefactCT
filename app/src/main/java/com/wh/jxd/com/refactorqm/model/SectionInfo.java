@@ -26,6 +26,24 @@ public  class SectionInfo extends BaseModel{
   private String is_playing;//是否正在播放,"1"表示正在播放,"0",表示非播放状态
   private String is_latest;//是否是最近一次看的章節
   private String watch_history_time;//之前的觀看時長
+  private String local_path;
+  private String progress;
+
+  public String getLocal_path() {
+    return local_path;
+  }
+
+  public void setLocal_path(String local_path) {
+    this.local_path = local_path;
+  }
+
+  public String getProgress() {
+    return progress;
+  }
+
+  public void setProgress(String progress) {
+    this.progress = progress;
+  }
 
   public String getIs_latest() {
     return is_latest;

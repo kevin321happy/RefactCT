@@ -3,6 +3,7 @@ package com.wh.jxd.com.refactorqm.presenter.presenterImpl;
 import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
 import com.wh.jxd.com.refactorqm.base.BaseView;
+import com.wh.jxd.com.refactorqm.db.ChaptersDao;
 import com.wh.jxd.com.refactorqm.model.BaseModel;
 import com.wh.jxd.com.refactorqm.model.ChapterInfo;
 import com.wh.jxd.com.refactorqm.model.ChapterListModel;
@@ -27,9 +28,11 @@ import rx.schedulers.Schedulers;
 public class MuLuFragmentPresenter extends BasePersenterImpl<MuLuFragmentView> {
 
     private MuLuFragmentView mMuLuFragmentView;
+    private ChaptersDao mChaptersDao;
 
     /**
      * 获取章节数据
+     *
      * @param courseId
      */
     public void getChapterData(String courseId) {
@@ -48,31 +51,56 @@ public class MuLuFragmentPresenter extends BasePersenterImpl<MuLuFragmentView> {
                     public void onCompleted() {
 
                     }
+
                     @Override
                     public void onNext(ChapterListModel data) {
-                        if (data==null){
+                        if (data == null) {
                             mMuLuFragmentView.onTokenLose();
                             return;
                         }
-                        List<ChapterInfo> chapterInfos =  data.getData();
-                        if (chapterInfos.size()>0){
+                        List<ChapterInfo> chapterInfos = data.getData();
+                        if (chapterInfos.size() > 0) {
                             for (ChapterInfo chapterInfo : chapterInfos) {
-                                KLog.d("章节信息："+chapterInfo.toString());
+                                KLog.d("章节信息：" + chapterInfo.toString());
                             }
                         }
-                        if (chapterInfos!=null&&chapterInfos.size()>0){
+                        if (chapterInfos != null && chapterInfos.size() > 0) {
                             mMuLuFragmentView.onLoadSuccess(chapterInfos);
-                        }else {
+                        } else {
                             mMuLuFragmentView.onLoadFail("对象空了啊~");
                         }
 
                     }
+
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-                        KLog.d("章节信息失败："+e.toString());
+                        KLog.d("章节信息失败：" + e.toString());
 //                        mMuLuFragmentView.onLoadFail(e.toString());
                     }
                 });
+    }
+
+    /**
+     * 保存数据到数据库中
+     *
+     * @param chapterInfos
+     */
+    public void saveToDb(final List<ChapterInfo> chapterInfos) {
+        if (mChaptersDao == null) {
+            mChaptersDao = new ChaptersDao();
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (ChapterInfo chapterInfo : chapterInfos) {
+                    List<SectionInfo> chapterList = chapterInfo.getChapterList();
+                    for (SectionInfo sectionInfo : chapterList) {
+                        mChaptersDao.insertOneChapter(sectionInfo);
+                    }
+                }
+            }
+        }).start();
+
     }
 }

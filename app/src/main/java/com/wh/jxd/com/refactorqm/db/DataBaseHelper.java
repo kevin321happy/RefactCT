@@ -13,8 +13,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "QMCT";
     //字段名
     public static final String TABLE_NAME_COURSE_CHAPTERS = "course_chapters";
-    private static final String ID = "id";
-    private static final String UID = "uid";
+    public static final String ID = "id";
+    public static final String UID = "uid";
     public static final String SECTIONID = "sectionId";
     public static final String SECTION_NAME = "sectionname";
     public static final String SECTION_URL = "sectionUrl";
@@ -41,9 +41,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             + COURSEID + " TEXT, "
             + CHAPTERID + " TEXT, "
             + CHAPTERNAME + " TEXT, "
-            + FILETYPE + " TEXT, "
+            + FILETYPE +" TEXT, "
             + FILESIZE + " TEXT, "
-            + PROGRESS + " TEXT, ";
+            + PROGRESS + " TEXT)";
 
 
     public DataBaseHelper(Context context) {
@@ -66,6 +66,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     /**
      * 执行更新表操作
+     *
      * @param db
      * @param i
      */
