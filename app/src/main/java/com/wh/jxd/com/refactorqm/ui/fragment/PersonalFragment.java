@@ -21,6 +21,7 @@ import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.PersonalFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.PersonalActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.RecentStudyActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.SystemSettingActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.WebViewActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.PersonalMenuAdapter;
@@ -71,6 +72,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
             , new GridViewBean(R.drawable.my_six, "系统设置")};
 
     private PersonalMenuAdapter mPersonalMenuAdapter;
+
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         if (mFragmentPresenter == null) {
@@ -127,10 +129,12 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         mTvName.setText(data.getMember_name() == null ? "" : data.getMember_name());
         AppcationEx.getInstance().setUserInfo(data);
     }
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-}
+    }
+
     @Override
     public void onLoadFail(String s) {
         KLog.i("失败：" + s.toString());
@@ -154,11 +158,12 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         ButterKnife.bind(this, rootView);
         return rootView;
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 99 && resultCode == 20) {
-           creatP().loadData();
+            creatP().loadData();
         }
     }
 
@@ -166,6 +171,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
     public void onDestroyView() {
         super.onDestroyView();
     }
+
     /**
      * 菜单条目的点击事件
      * @param parent
@@ -179,6 +185,8 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         switch (position) {
             case 0:
                 //最近学习
+                intent = new Intent(getActivity(), RecentStudyActivity.class);
+                startActivity(intent);
                 break;
             case 1:
                 //我的收藏

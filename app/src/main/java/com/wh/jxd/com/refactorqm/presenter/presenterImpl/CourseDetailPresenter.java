@@ -12,11 +12,15 @@ import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
 import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.base.BasePersenterImpl;
+import com.wh.jxd.com.refactorqm.db.RecentStudyDao;
 import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
+import com.wh.jxd.com.refactorqm.model.CourseInfo;
+import com.wh.jxd.com.refactorqm.model.RecentStudyEntity;
 import com.wh.jxd.com.refactorqm.net.FilterSubscriber;
 import com.wh.jxd.com.refactorqm.net.NetDataManager;
 import com.wh.jxd.com.refactorqm.ui.activity.CourseDetailActivity;
 import com.wh.jxd.com.refactorqm.utils.CommonUtils;
+import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.CourseDetailView;
 import com.wh.jxd.com.refactorqm.view.widget.CourseVedioPlay;
 
@@ -38,6 +42,7 @@ public class CourseDetailPresenter extends BasePersenterImpl<CourseDetailView> {
     private long mStartTime;
     private boolean isPlay;
     private CourseVedioPlay mCustomGSYVideoPlayer;
+    private RecentStudyDao mRecentStudyDao;
 
     public CourseDetailPresenter() {
     }
@@ -133,6 +138,7 @@ public class CourseDetailPresenter extends BasePersenterImpl<CourseDetailView> {
             public void onClickBlankFullscreen(String url, Object... objects) {
 
             }
+
             //开始播放
             @Override
             public void onPrepared(String url, Object... objects) {
@@ -238,6 +244,7 @@ public class CourseDetailPresenter extends BasePersenterImpl<CourseDetailView> {
             public void onTouchScreenSeekLight(String url, Object... objects) {
 
             }
+
             @Override
             public void onPlayError(String url, Object... objects) {
                 KLog.i("播放错误，路径：" + url);
@@ -245,6 +252,7 @@ public class CourseDetailPresenter extends BasePersenterImpl<CourseDetailView> {
             }
         });
     }
+
     /**
      * 释放播放器
      */
@@ -259,6 +267,7 @@ public class CourseDetailPresenter extends BasePersenterImpl<CourseDetailView> {
 
     /**
      * 设置指示器的宽度
+     *
      * @param tabs
      * @param leftDip
      * @param rightDip
@@ -296,6 +305,31 @@ public class CourseDetailPresenter extends BasePersenterImpl<CourseDetailView> {
             params.rightMargin = right;
             child.setLayoutParams(params);
             child.invalidate();
+        }
+    }
+
+    /**
+     * 添加一条学习记录
+     *
+     * @param coursr_detail
+     */
+    public void addStudyRecord(CourseInfo coursr_detail) {
+        if (mRecentStudyDao == null) {
+            mRecentStudyDao = new RecentStudyDao();
+        }
+
+        RecentStudyEntity entity = new RecentStudyEntity();
+        entity.setCourse_Id(coursr_detail.getCourseId());
+        entity.setCourse_Ima(coursr_detail.getCourseImage());
+        entity.setCourse_name(coursr_detail.getCourseName());
+        entity.setLast_Study_Time("2017年11月3日");
+        entity.setIs_Task("1");
+        boolean b = mRecentStudyDao.insertOneRecentStudy(entity);
+        if (b) {
+            KLog.i(entity.toString());
+            mCourseDetailView.insertRecordSuccess();
+        } else {
+            mCourseDetailView.insertRecordFail();
         }
     }
 }
