@@ -22,14 +22,17 @@ import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
 import com.wh.jxd.com.refactorqm.db.ChaptersDao;
+import com.wh.jxd.com.refactorqm.db.RecentStudyDao;
 import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.CourseInfo;
+import com.wh.jxd.com.refactorqm.model.RecentStudyEntity;
 import com.wh.jxd.com.refactorqm.model.SectionInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.CourseDetailPresenter;
 import com.wh.jxd.com.refactorqm.ui.adapter.CourseDetailPagerAdapter;
 import com.wh.jxd.com.refactorqm.ui.fragment.CourseDetailFragment;
 import com.wh.jxd.com.refactorqm.ui.fragment.CourseMuLuFragment;
 import com.wh.jxd.com.refactorqm.ui.fragment.RecommendCourseFragment;
+import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.CourseDetailView;
 import com.wh.jxd.com.refactorqm.view.widget.CourseVedioPlay;
 
@@ -76,6 +79,8 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
     private OrientationUtils orientationUtils;
     private List<Fragment> mFragments;
     private CourseDetailPagerAdapter mPagerAdapter;
+    private RecentStudyDao mRecentStudyDao;
+    private CourseInfo mCoursr_detail;
 
     /**
      * 重复登陆了
@@ -172,10 +177,14 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         switch (item.getItemId()) {
             //分享课程
             case R.id.action_share:
-                ArrayList<SectionInfo> sectionInfos = chaptersDao.queryAllSectionByCourseID(mCourse_id);
-                for (SectionInfo sectionInfo : sectionInfos) {
-                    KLog.d("该课程下的章节的信息：" + sectionInfo.toString());
+                List<RecentStudyEntity> studyEntities = new RecentStudyDao().queryRecentStudy();
+                for (RecentStudyEntity studyEntity : studyEntities) {
+                    KLog.d("studyEntity", studyEntities.toString());
                 }
+//                ArrayList<SectionInfo> sectionInfos = chaptersDao.queryAllSectionByCourseID(mCourse_id);
+//                for (SectionInfo sectionInfo : sectionInfos) {
+//                    KLog.d("该课程下的章节的信息：" + sectionInfo.toString());
+//                }
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -183,11 +192,11 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
 
     @Override
     public void getCourseDetailSuccess(CourseDetailModel data) {
-        CourseInfo coursr_detail = data.getCoursr_detail();
+        mCoursr_detail = data.getCoursr_detail();
         SectionInfo first_chapter = data.getFirst_chapter();
         mVedio_url = first_chapter.getUrl();
         mIvTvBg.setVisibility(View.VISIBLE);
-        String courseImage = coursr_detail.getCourseImage();
+        String courseImage = mCoursr_detail.getCourseImage();
         Glide.with(this).load(courseImage).into(mIvTvBg);
         mCustomGSYVideoPlayer.getBackButton().setVisibility(View.INVISIBLE);
         mCustomGSYVideoPlayer.setUp(mVedio_url, false, "");
@@ -210,6 +219,16 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
 
     }
 
+    @Override
+    public void insertRecordSuccess() {
+
+    }
+
+    @Override
+    public void insertRecordFail() {
+        ToastUtils.showShortToast(this, "学习记录插入失败了");
+    }
+
     /**
      * 显示课程信息
      */
@@ -222,5 +241,6 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
             mFlMask.setVisibility(View.GONE);
         }
         mCustomGSYVideoPlayer.startPlayLogic();
+        mCourseDetailPresenter.addStudyRecord(mCoursr_detail);
     }
 }

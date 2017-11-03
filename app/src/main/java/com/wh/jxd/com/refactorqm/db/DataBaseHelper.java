@@ -27,6 +27,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String FILETYPE = "fileType";
     public static final String FILESIZE = "fileSize";
     public static final String PROGRESS = "progress";
+    public static final String COURSE_ID = "course_id";
     public static final String COURSE_NAME = "course_name";
     public static final String LAST_STUDY_TIME = "last_Study_Time";//最近一次的学习时间
     public static final String IS_TASK = "is_Task";//是否是任务课程
@@ -54,12 +55,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String sql_recent_study = "CREATE TABLE IF NOT EXISTS "
             + TABLE_NAME_RECENT_STUDY + " ("
             + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COURSEID + " TEXT, "
+            + COURSE_ID + " TEXT, "
             + COURSE_NAME + " TEXT, "
             + COURSE_IMA + " TEXT, "
             + LAST_STUDY_TIME + " TEXT, "
             + IS_TASK + " TEXT)";
-
 
     public DataBaseHelper(Context context) {
         super(context, DB_NAME, null, version);
