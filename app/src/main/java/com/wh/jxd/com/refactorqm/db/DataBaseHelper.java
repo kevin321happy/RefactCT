@@ -32,6 +32,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String LAST_STUDY_TIME = "last_Study_Time";//最近一次的学习时间
     public static final String IS_TASK = "is_Task";//是否是任务课程
     public static final String COURSE_IMA = "course_Ima";//课程图片
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c22091971c9b5fd4b877abe5fa5f8371743a21e
     //数据库版本
     private static final int version = 1;
     //创建章节表的语句

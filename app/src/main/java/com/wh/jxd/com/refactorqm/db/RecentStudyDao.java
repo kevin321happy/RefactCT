@@ -46,6 +46,10 @@ public class RecentStudyDao {
         }
         return insert != (-1);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c22091971c9b5fd4b877abe5fa5f8371743a21e
     /**
      * 查询最近学习数据
      */
