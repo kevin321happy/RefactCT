@@ -18,8 +18,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
+import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
+import com.wh.jxd.com.refactorqm.db.ChaptersDao;
 import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.CourseInfo;
 import com.wh.jxd.com.refactorqm.model.SectionInfo;
@@ -166,9 +168,14 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        ChaptersDao chaptersDao = new ChaptersDao();
         switch (item.getItemId()) {
             //分享课程
             case R.id.action_share:
+                ArrayList<SectionInfo> sectionInfos = chaptersDao.queryAllSectionByCourseID(mCourse_id);
+                for (SectionInfo sectionInfo : sectionInfos) {
+                    KLog.d("该课程下的章节的信息：" + sectionInfo.toString());
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
