@@ -13,10 +13,13 @@ import com.wh.jxd.com.refactorqm.base.BaseMvpFragment;
 import com.wh.jxd.com.refactorqm.model.ChapterInfo;
 import com.wh.jxd.com.refactorqm.model.CourseMuluTitle;
 import com.wh.jxd.com.refactorqm.model.SectionInfo;
+import com.wh.jxd.com.refactorqm.model.event.SectionClickEvent;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.MuLuFragmentPresenter;
 import com.wh.jxd.com.refactorqm.ui.adapter.CourseMuluAdapter;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.MuLuFragmentView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,7 +35,7 @@ import butterknife.ButterKnife;
  * Created by kevin321vip on 2017/11/1.
  */
 
-public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, MuLuFragmentView> implements MuLuFragmentView {
+public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, MuLuFragmentView> implements MuLuFragmentView, CourseMuluAdapter.OnSectionItemClickListener {
 
     @Bind(R.id.tv_left_room)
     TextView mTvLeftRoom;
@@ -54,13 +57,13 @@ public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, M
     private Map<String, List<SectionInfo>> mMap;
 
 
-
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         mMuluAdapter = new CourseMuluAdapter(getActivity());
-        mGroup=new ArrayList<>();
-        mMap=new HashMap<>();
+        mMuluAdapter.setOnSectionItemClickListener(this);
+        mGroup = new ArrayList<>();
+        mMap = new HashMap<>();
 
         if (arguments != null) {
             courseId = getArguments().getString(getString(R.string.课程id));
@@ -105,24 +108,11 @@ public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, M
         if (null == chapterInfos || chapterInfos.size() == 0) {
             return;
         }
-        String company_id = chapterInfos.get(0).getCompany_id();
-//        if ("0".equals(company_id)) {
-//            //非企业课程
-//            mIsEnterpriseCourse = false;
-//            //下载管理不可见
-//           mLlDownloadManage .setVisibility(View.GONE);
-//        } else {
-            //企业课程
+        //企业课程
 //            mIsEnterpriseCourse = true;
-            mLlDownloadManage.setVisibility(View.VISIBLE);
-            //保存到数据库
-//            try {
-                muLuFragmentPresenter.saveToDb(chapterInfos);
-//                saveToDb(chapterInfos);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
+        mLlDownloadManage.setVisibility(View.VISIBLE);
+        //保存到数据库
+        muLuFragmentPresenter.saveToDb(chapterInfos);
         for (ChapterInfo chapterInfo : chapterInfos) {
             List<SectionInfo> chapterList = chapterInfo.getChapterList();
             String seesion_name = chapterInfo.getSession_name();
@@ -137,15 +127,13 @@ public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, M
             //取消自带的指示器
             mExListview.setGroupIndicator(null);
             //默认展开所有的列表
-            if (mGroup == null || mGroup.size() == 0){
+            if (mGroup == null || mGroup.size() == 0) {
                 return;
             }
             for (int i = 0; i < mGroup.size(); i++) {
                 mExListview.expandGroup(i);
             }
-//            showRecentWatch(chapterInfos);
         }
-
     }
 
     @Override
@@ -160,5 +148,20 @@ public class CourseMuLuFragment extends BaseMvpFragment<MuLuFragmentPresenter, M
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    /**
+     * 当点击了课程章节
+     * @param groupPosition
+     * @param childPosition
+     */
+    @Override
+    public void onSectionItemClick(int groupPosition, int childPosition) {
+        SectionInfo sectionInfo = mMuluAdapter.getChild(groupPosition, childPosition);
+        SectionClickEvent sectionClickEvent = new SectionClickEvent();
+        sectionClickEvent.setSectionId(sectionInfo.getSession_id());
+        sectionClickEvent.setSectionName(sectionInfo.getChapter_name());
+        sectionClickEvent.setSectionUrl(sectionInfo.getUrl());
+        EventBus.getDefault().post(sectionClickEvent);
     }
 }

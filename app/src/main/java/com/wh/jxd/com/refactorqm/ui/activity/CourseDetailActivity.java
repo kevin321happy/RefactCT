@@ -3,6 +3,8 @@ package com.wh.jxd.com.refactorqm.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -27,6 +29,7 @@ import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.CourseInfo;
 import com.wh.jxd.com.refactorqm.model.RecentStudyEntity;
 import com.wh.jxd.com.refactorqm.model.SectionInfo;
+import com.wh.jxd.com.refactorqm.model.event.SectionClickEvent;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.CourseDetailPresenter;
 import com.wh.jxd.com.refactorqm.ui.adapter.CourseDetailPagerAdapter;
 import com.wh.jxd.com.refactorqm.ui.fragment.CourseDetailFragment;
@@ -35,6 +38,10 @@ import com.wh.jxd.com.refactorqm.ui.fragment.RecommendCourseFragment;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.CourseDetailView;
 import com.wh.jxd.com.refactorqm.view.widget.CourseVedioPlay;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +89,7 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
     private RecentStudyDao mRecentStudyDao;
     private CourseInfo mCoursr_detail;
 
+
     /**
      * 重复登陆了
      */
@@ -90,7 +98,6 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
-
 
     @Override
     protected CourseDetailView creatView() {
@@ -161,6 +168,9 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -202,11 +212,22 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         mCustomGSYVideoPlayer.setUp(mVedio_url, false, "");
         showCourseInfo();
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSectionClickEvent(SectionClickEvent event) {
+        if (mFlMask != null) {
+            mFlMask.setVisibility(View.GONE);
+        }
+        String sectionUrl = event.getSectionUrl();
+        String sectionName = event.getSectionName();
+        mCustomGSYVideoPlayer.setUp(sectionUrl, false, sectionName);
+        mCustomGSYVideoPlayer.startPlayLogic();
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mCourseDetailPresenter.releaseVedio();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
