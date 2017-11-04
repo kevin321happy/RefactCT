@@ -7,6 +7,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -281,6 +284,8 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         ButterKnife.bind(this, rootView);
         return rootView;
     }
+
+
 
     @Override
     public void onDestroyView() {

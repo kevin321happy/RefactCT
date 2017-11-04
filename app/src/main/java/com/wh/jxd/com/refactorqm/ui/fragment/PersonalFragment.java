@@ -28,6 +28,7 @@ import com.wh.jxd.com.refactorqm.ui.activity.SystemSettingActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.WebViewActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.PersonalMenuAdapter;
 import com.wh.jxd.com.refactorqm.utils.FrescoUtils;
+import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.PersonalFragmentView;
 import com.wh.jxd.com.refactorqm.view.widget.AppBarStateChangeListener;
 import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
@@ -160,6 +161,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        EventBus.getDefault().register(this);
     }
 
 
@@ -170,17 +172,18 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         ButterKnife.bind(this, rootView);
         return rootView;
     }
+
     /**
      * 收到EvenBus的消息
+     *
      * @param event
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMianEvent(MainEvent event){
-        if ("3".equals(event.getType())){
+    public void onMianEvent(MainEvent event) {
+        if ("3".equals(event.getType())) {
             mFragmentPresenter.loadData();
         }
     }
-
 
 
     @Override
@@ -190,13 +193,20 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode==333){
+        if (requestCode == 333) {
             mFragmentPresenter.loadData();
         }
     }
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onMainEvent(MainEvent event) {
+//        ToastUtils.showShortToast(getActivity(), event.getType());
+//    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+//        EventBus.getDefault().unregister(this);
     }
 
     /**

@@ -117,6 +117,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
         // TODO Auto-generated method stub
         switch (item.getItemId()) {
             case R.id.action_search:
+                MainEvent mainEvent = new MainEvent();
+                mainEvent.setType("我收到了消息啊");
+                EventBus.getDefault().post(mainEvent);
                 break;
 
         }
