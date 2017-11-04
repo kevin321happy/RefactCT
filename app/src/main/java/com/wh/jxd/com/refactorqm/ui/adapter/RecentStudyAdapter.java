@@ -23,7 +23,6 @@ public class RecentStudyAdapter extends RecyclerView.Adapter {
     public void setOnCourseItemClickListener(onCourseItemClickListener onCourseItemClickListener) {
         mOnCourseItemClickListener = onCourseItemClickListener;
     }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = View.inflate(parent.getContext(), R.layout.item_course_record, null);
@@ -51,7 +50,6 @@ public class RecentStudyAdapter extends RecyclerView.Adapter {
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return mStudyEntities == null ? 0 : mStudyEntities.size();

@@ -70,15 +70,8 @@ public class RecentStudyActivity extends BaseActivtiy implements RecentStudyAdap
     @Override
     public void onCourseItemClick(String course_id) {
         ToastUtils.showShortToast(this,"这门课的ID:"+course_id);
-
         Intent intent = new Intent(this, CourseDetailActivity.class);
         intent.putExtra("course_id", course_id);
         startActivity(intent);
-//        Intent intent = new Intent(this, CourseDetailActivity.class);
-//        intent.putExtra("course_id", course_id);
-//        startActivity(intent);
-//        Intent intent = new Intent(RecentStudyActivity.this, CourseDetailActivity.class);
-//        intent.putExtra("course_id", course_id);
-//        startActivity(intent);
     }
 }

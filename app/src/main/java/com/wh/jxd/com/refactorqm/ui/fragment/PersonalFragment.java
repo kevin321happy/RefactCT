@@ -2,6 +2,7 @@ package com.wh.jxd.com.refactorqm.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpFragment;
 import com.wh.jxd.com.refactorqm.model.GridViewBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
+import com.wh.jxd.com.refactorqm.model.event.MainEvent;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.PersonalFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.PersonalActivity;
@@ -31,6 +33,10 @@ import com.wh.jxd.com.refactorqm.view.widget.AppBarStateChangeListener;
 import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
 import com.wh.jxd.com.refactorqm.view.widget.NoScrollListView;
 import com.wh.jxd.com.refactorqm.view.widget.dialog.ActionSheetDialog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -148,8 +154,14 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
     @Override
     public void onTokenLose() {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivityForResult(intent, 99);
+        startActivityForResult(intent, 333);
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -158,22 +170,38 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         ButterKnife.bind(this, rootView);
         return rootView;
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 99 && resultCode == 20) {
-            creatP().loadData();
+    /**
+     * 收到EvenBus的消息
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMianEvent(MainEvent event){
+        if ("3".equals(event.getType())){
+            mFragmentPresenter.loadData();
         }
     }
+
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==333){
+            mFragmentPresenter.loadData();
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     /**
      * 菜单条目的点击事件
+     *
      * @param parent
      * @param view
      * @param position

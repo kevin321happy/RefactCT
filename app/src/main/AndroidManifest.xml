@@ -54,6 +54,5 @@
         <activity android:name=".ui.activity.ChangePhoneNumActivity" />
         <activity android:name=".ui.activity.WebViewActivity" />
         <activity android:name=".ui.activity.RecentStudyActivity" />
-
     </application>
 </manifest>

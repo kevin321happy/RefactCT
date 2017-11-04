@@ -15,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.socks.library.KLog;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpActivity;
+import com.wh.jxd.com.refactorqm.model.event.MainEvent;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.MainPresenter;
 import com.wh.jxd.com.refactorqm.ui.fragment.EnterpriseFragment;
 import com.wh.jxd.com.refactorqm.ui.fragment.HomeFragment;
@@ -24,6 +26,8 @@ import com.wh.jxd.com.refactorqm.ui.fragment.PersonalFragment;
 import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.MainView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -55,6 +59,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
     private PersonalFragment mPersonalFragment;
     private MainPresenter mMainPersenter;
     private MenuItem item_search;
+    private EventBus mEventBus;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
         clickMenu(mLlMenuHome);
         sendLocation();
     }
+
     /**
      * 发送定位信息
      */
@@ -95,6 +102,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
         setFragment(viewId, ft);
         ft.commit();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -107,7 +115,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // TODO Auto-generated method stub
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_search:
                 break;
 
@@ -117,14 +125,17 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
 
     /**
      * 隐藏返回键
+     *
      * @return
      */
     @Override
     protected boolean isShowBacking() {
         return false;
     }
+
     /**
      * 设置显示的Fagment
+     *
      * @param viewId
      * @param ft
      */
@@ -133,7 +144,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             case R.id.ll_menu_home:
                 showToolBar();
                 setToolBarTitle("大厅");
-                if (item_search!=null){
+                if (item_search != null) {
                     item_search.setVisible(true);
                 }
                 if (mHomeFragment == null) {
@@ -146,7 +157,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             case R.id.ll_menu_enterprise:
                 showToolBar();
                 setToolBarTitle("企业");
-                if (item_search!=null){
+                if (item_search != null) {
                     item_search.setVisible(false);
                 }
                 if (mEnterpriseFragment == null) {
@@ -159,7 +170,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             case R.id.ll_menu_personal:
                 setImmersionState(getResources().getColor(R.color.transparent));
                 //如果用户ID为空先跳转到登陆
-                if (PreferenceUtils.getUserId() == null||"".equals(PreferenceUtils.getUserId())) {
+                if (PreferenceUtils.getUserId() == null || "".equals(PreferenceUtils.getUserId())) {
                     startActivity(new Intent(this, LoginActivity.class));
 
                 }
@@ -170,7 +181,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
                 }
                 ToastUtils.showShortToast(this, "用户ID:" + userId);
                 setToolBarTitle("个人");
-                if (item_search!=null){
+                if (item_search != null) {
                     item_search.setVisible(false);
                 }
                 if (mPersonalFragment == null) {
@@ -201,6 +212,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             ft.hide(mPersonalFragment);
         }
     }
+
     private void setMenuStyle(int vID) {
         // 首页
         if (vID == R.id.ll_menu_home) {
@@ -227,6 +239,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
             mTvMenuPersonal.setTextColor(getResources().getColor(R.color.color_999));
         }
     }
+
     @Override
     protected void initView() {
         mFragmentManager = getSupportFragmentManager();
@@ -264,6 +277,28 @@ public class MainActivity extends BaseMvpActivity<MainPresenter, MainView> imple
                 break;
         }
     }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        mEventBus = EventBus.getDefault();
+//        MainEvent mainEvent = new MainEvent();
+//        switch (requestCode) {
+//            case 111:
+//                mainEvent.setType("1");
+//                mEventBus.post(mainEvent);
+//                break;
+//            case 222:
+//                mainEvent.setType("2");
+//                mEventBus.post(mainEvent);
+//                break;
+//            case 333:
+//                mainEvent.setType("3");
+//                mEventBus.post(mainEvent);
+//                break;
+//            default:
+//                break;
+//
+//        }
+//    }
 
     @Override
     public void onTokenLose() {

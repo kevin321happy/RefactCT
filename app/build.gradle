@@ -67,5 +67,7 @@ dependencies {
     //视频播放器
     compile 'com.shuyu:gsyVideoPlayer-java:2.1.1'
     compile 'com.shuyu:gsyVideoPlayer-ex_so:2.1.1'
+    //EvenBus
+    compile 'org.greenrobot:eventbus:3.0.0'
 
 }

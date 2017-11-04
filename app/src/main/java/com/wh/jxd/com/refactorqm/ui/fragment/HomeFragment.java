@@ -30,6 +30,7 @@ import com.wh.jxd.com.refactorqm.model.TeacherCourse;
 import com.wh.jxd.com.refactorqm.model.TopImgInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.HomeFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.CourseDetailActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.HotCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendTeacherAdapter;
@@ -226,7 +227,8 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
 
     @Override
     public void onTokenLose() {
-
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivityForResult(intent,111);
     }
 
     /**
