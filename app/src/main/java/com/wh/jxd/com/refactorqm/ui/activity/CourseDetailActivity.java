@@ -180,7 +180,6 @@ public class CourseDetailActivity extends BaseMvpActivity<CourseDetailPresenter,
         mItem_share.setVisible(true);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         ChaptersDao chaptersDao = new ChaptersDao();

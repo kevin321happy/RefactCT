@@ -51,7 +51,6 @@ public class MuLuFragmentPresenter extends BasePersenterImpl<MuLuFragmentView> {
                     public void onCompleted() {
 
                     }
-
                     @Override
                     public void onNext(ChapterListModel data) {
                         if (data == null) {
@@ -69,9 +68,7 @@ public class MuLuFragmentPresenter extends BasePersenterImpl<MuLuFragmentView> {
                         } else {
                             mMuLuFragmentView.onLoadFail("对象空了啊~");
                         }
-
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);

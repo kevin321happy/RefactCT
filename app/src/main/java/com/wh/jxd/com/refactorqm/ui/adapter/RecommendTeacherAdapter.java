@@ -51,7 +51,9 @@ public class RecommendTeacherAdapter extends Adapter {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final TeacherCourse teacherInfo = mListItems.get(position);
-        if (teacherInfo == null) return;
+        if (teacherInfo == null) {
+            return;
+        }
         ViewHodler hodler = (ViewHodler) holder;
         Glide.with(mContext).load(teacherInfo.getTeacherPhoto()).into(hodler.iv_teacher_ima);
         hodler.tv_teacher_name.setText(teacherInfo.getTeacherName() + "");
