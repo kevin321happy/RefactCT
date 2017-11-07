@@ -7,6 +7,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -30,6 +33,7 @@ import com.wh.jxd.com.refactorqm.model.TeacherCourse;
 import com.wh.jxd.com.refactorqm.model.TopImgInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.HomeFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.CourseDetailActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.HotCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendTeacherAdapter;
@@ -226,7 +230,8 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
 
     @Override
     public void onTokenLose() {
-
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivityForResult(intent,111);
     }
 
     /**
@@ -279,6 +284,8 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         ButterKnife.bind(this, rootView);
         return rootView;
     }
+
+
 
     @Override
     public void onDestroyView() {

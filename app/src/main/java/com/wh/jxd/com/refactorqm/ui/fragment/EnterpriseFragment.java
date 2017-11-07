@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -27,6 +28,7 @@ import com.wh.jxd.com.refactorqm.model.EntBannerInfo;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseInfo;
 import com.wh.jxd.com.refactorqm.model.MemberRankModel;
+import com.wh.jxd.com.refactorqm.model.event.MainEvent;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.EnterpriseFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.WebViewActivity;
@@ -38,6 +40,10 @@ import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
 import com.wh.jxd.com.refactorqm.view.widget.SpringScrollview;
 import com.wh.jxd.com.refactorqm.view.widget.waterwaveprogress.WaterWaveProgress;
 import com.zhy.autolayout.utils.AutoUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,6 +128,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         }
     };
 
+
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         //加载数据
@@ -168,6 +175,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     public void onLoadSuccess(EnterpriseDataModel data) {
         showEnterpriseInfo(data);
     }
+
     /**
      * 显示企业信息
      *
@@ -187,12 +195,14 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         showRankInfo(mMember_rank);
 //        upDataCourseStaus();
     }
+
     /**
      * 显示学习排名信息
+     *
      * @param member_rank
      */
     private void showRankInfo(MemberRankModel member_rank) {
-        if (member_rank == null){
+        if (member_rank == null) {
             return;
         }
         mStudy_time = creatP().formatString2Long(member_rank.getStudy_time());
@@ -202,7 +212,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
             mStudy_time_progress = 0;
         } else {
 //            mStudy_time_progress = (int) (mStudy_time * 100 / mMax_studytime);
-            mStudy_time_progress=100;
+            mStudy_time_progress = 100;
         }
         if (mStudy_time < 60) {
             mCapStudyRank.setText("0", "分钟");
@@ -216,7 +226,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         String total_member = member_rank.getTotal_member();
         mTvStudytimeRank.setText(member_rank.getStudy_time_rank() + "名/" + total_member + "人");
         mTvScoreRank.setText(member_rank.getScore_rate_rank() + "名/" + total_member + "人");
-        mScore_rate=creatP().formatString2Long(member_rank.getScore_rate());
+        mScore_rate = creatP().formatString2Long(member_rank.getScore_rate());
         mHandler.sendEmptyMessageDelayed(START, 100);
         mHandler.sendEmptyMessageDelayed(WAVE_START, 100);
     }
@@ -286,7 +296,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     @Override
     public void onTokenLose() {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 222);
 
     }
 
@@ -294,6 +304,7 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     public void onMenuClick(int position) {
 
     }
+
     /**
      * 显示课程分类的adapter
      */
@@ -349,6 +360,11 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
@@ -356,9 +372,22 @@ public class EnterpriseFragment extends BaseMvpFragment<EnterpriseFragmentPresen
         return rootView;
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==222){
+            mFragmentPresenter.onLoadData();
+        }
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

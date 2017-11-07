@@ -2,6 +2,7 @@ package com.wh.jxd.com.refactorqm.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,18 +19,25 @@ import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.base.BaseMvpFragment;
 import com.wh.jxd.com.refactorqm.model.GridViewBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
+import com.wh.jxd.com.refactorqm.model.event.MainEvent;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.PersonalFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.PersonalActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.RecentStudyActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.SystemSettingActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.WebViewActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.PersonalMenuAdapter;
 import com.wh.jxd.com.refactorqm.utils.FrescoUtils;
+import com.wh.jxd.com.refactorqm.utils.ToastUtils;
 import com.wh.jxd.com.refactorqm.view.PersonalFragmentView;
 import com.wh.jxd.com.refactorqm.view.widget.AppBarStateChangeListener;
 import com.wh.jxd.com.refactorqm.view.widget.CircleImageView;
 import com.wh.jxd.com.refactorqm.view.widget.NoScrollListView;
 import com.wh.jxd.com.refactorqm.view.widget.dialog.ActionSheetDialog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -71,6 +79,7 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
             , new GridViewBean(R.drawable.my_six, "系统设置")};
 
     private PersonalMenuAdapter mPersonalMenuAdapter;
+
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         if (mFragmentPresenter == null) {
@@ -127,10 +136,12 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         mTvName.setText(data.getMember_name() == null ? "" : data.getMember_name());
         AppcationEx.getInstance().setUserInfo(data);
     }
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-}
+    }
+
     @Override
     public void onLoadFail(String s) {
         KLog.i("失败：" + s.toString());
@@ -144,8 +155,15 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
     @Override
     public void onTokenLose() {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivityForResult(intent, 99);
+        startActivityForResult(intent, 333);
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        EventBus.getDefault().register(this);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -154,20 +172,46 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         ButterKnife.bind(this, rootView);
         return rootView;
     }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 99 && resultCode == 20) {
-           creatP().loadData();
+
+    /**
+     * 收到EvenBus的消息
+     *
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMianEvent(MainEvent event) {
+        if ("3".equals(event.getType())) {
+            mFragmentPresenter.loadData();
         }
     }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 333) {
+            mFragmentPresenter.loadData();
+        }
+    }
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void onMainEvent(MainEvent event) {
+//        ToastUtils.showShortToast(getActivity(), event.getType());
+//    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+//        EventBus.getDefault().unregister(this);
+    }
+
     /**
      * 菜单条目的点击事件
+     *
      * @param parent
      * @param view
      * @param position
@@ -179,6 +223,8 @@ public class PersonalFragment extends BaseMvpFragment<PersonalFragmentPresenterI
         switch (position) {
             case 0:
                 //最近学习
+                intent = new Intent(getActivity(), RecentStudyActivity.class);
+                startActivity(intent);
                 break;
             case 1:
                 //我的收藏

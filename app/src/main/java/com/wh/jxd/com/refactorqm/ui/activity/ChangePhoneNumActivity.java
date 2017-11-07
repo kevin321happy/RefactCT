@@ -181,7 +181,7 @@ public class ChangePhoneNumActivity extends BaseMvpActivity<ChangePhonePresenter
 //                        if (NetUtils.isRight(s)) {
 //                            mToastUtil.show("验证码已发送，请查收!");
 //                            if (mCountDownTimerUtils != null) {
-//                                mCountDownTimerUtils.start();
+//                                mCountDownTimerUtils.bg_start();
 //                            }
 //                        } else {
 //                            mToastUtil.show(statusInfo.getData());

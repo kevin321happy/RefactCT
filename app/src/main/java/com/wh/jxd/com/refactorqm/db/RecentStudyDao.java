@@ -62,13 +62,11 @@ public class RecentStudyDao {
             String course_ima = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COURSE_IMA));
             String last_study_time = cursor.getString(cursor.getColumnIndex(DataBaseHelper.LAST_STUDY_TIME));
             String is_task = cursor.getString(cursor.getColumnIndex(DataBaseHelper.IS_TASK));
-
             entity.setCourse_Id(course_id);
             entity.setCourse_name(course_name);
             entity.setCourse_Ima(course_ima);
             entity.setIs_Task(is_task);
             entity.setLast_Study_Time(last_study_time);
-
             studyEntities.add(entity);
         }
         cursor.close();

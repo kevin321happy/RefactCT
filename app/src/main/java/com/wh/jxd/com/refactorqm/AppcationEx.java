@@ -2,6 +2,7 @@ package com.wh.jxd.com.refactorqm;
 
 import android.Manifest;
 import android.app.Application;
+import android.app.IntentService;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
+import com.wh.jxd.com.refactorqm.service.InitializeService;
 import com.wh.jxd.com.refactorqm.utils.PreferenceUtils;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
@@ -41,13 +43,8 @@ public class AppcationEx extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        initAutoLayout();
+        InitializeService.start(this);
         initFresco();
-    }
-
-    //初始化百分比布局
-    private void initAutoLayout() {
-        AutoLayoutConifg.getInstance().useDeviceSize();
     }
 
     //初始化fresco
@@ -74,10 +71,8 @@ public class AppcationEx extends Application {
             Fresco.initialize(this, config);
         }
     }
-
     /**
      * 保存用户信息到本地
-     *
      * @param userInfo
      */
     public void setUserInfo(UserInfo userInfo) {
@@ -103,5 +98,4 @@ public class AppcationEx extends Application {
             return null;
         }
     }
-
 }

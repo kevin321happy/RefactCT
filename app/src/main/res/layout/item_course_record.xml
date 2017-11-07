@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:id="@+id/ll_item"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="@dimen/px_space_25"
+    android:paddingLeft="@dimen/px_space_25"
+    android:paddingTop="@dimen/px_space_25">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/SimpleDraweeView"
+        android:layout_width="@dimen/px_space_450"
+        android:layout_height="@dimen/px_space_250"
+        android:scaleType="fitXY"
+        android:src="@drawable/all_course_head_default"
+        fresco:failureImage="@drawable/all_course_head_default"
+        fresco:failureImageScaleType="fitXY"
+        fresco:placeholderImage="@drawable/all_course_head_default"
+        fresco:placeholderImageScaleType="fitXY"
+        fresco:roundAsCircle="false"
+        fresco:roundedCornerRadius="@dimen/px_space_9" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/cottage_item_shape_course"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/px_space_25">
+
+        <TextView
+            android:id="@+id/tv_course_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="2016最新企业人力资源管理"
+            android:textColor="@color/text__defaulttext"
+            android:textSize="@dimen/px_space_50" />
+
+        <TextView
+            android:id="@+id/tv_is_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px_space_10"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/theme_blue"
+            android:textSize="@dimen/px_space_45" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px_space_15"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="最近学习时间："
+            android:textColor="@color/enterprise_act_qianhui"
+            android:textSize="@dimen/px_space_35" />
+
+        <TextView
+            android:id="@+id/tv_last_study_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px_space_10"
+            android:text="2016年10月20日"
+            android:textColor="@color/theme_orange"
+            android:textSize="@dimen/px_space_39" />
+    </LinearLayout>
+</LinearLayout>

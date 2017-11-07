@@ -39,10 +39,7 @@ public class CourseMuluAdapter extends BaseExpandableListAdapter {
     List<CourseMuluTitle> mGroup = new ArrayList<>();
     Map<String, List<SectionInfo>> mMap = new HashMap<>();
     private Context mContext;
-//    private ImageLoader imageLoader = ImageLoader.getInstance();
     private boolean isDel = false;
-//    private CourseNameDao mCourseNameDao;
-//    private SectionDownloadDao mSectionDownloadDao;
     private OnSectionItemClickListener mOnSectionItemClickListener;
     private int playing_parent;
     private int playing_child;
