@@ -80,7 +80,6 @@ public class HotCourseAdapter extends Adapter {
       ll_item= (LinearLayout) itemView.findViewById(R.id.ll_item);
     }
   }
-
   public interface OnClickListener{
     void onHotCourseClickListener(int position, String courseId);
 

@@ -10,6 +10,7 @@ import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.CommonDataModel;
+import com.wh.jxd.com.refactorqm.model.TeacherListModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.service.ApiService;
@@ -34,6 +35,7 @@ public class NetDataManager<T extends BaseModel> {
 
     private ApiService mService;
     private Context mContext;
+
 
     /**
      * 泛型设置获取Service对象
@@ -183,6 +185,15 @@ public class NetDataManager<T extends BaseModel> {
         baseArgumentMap.put(key, value);
         Observable<ChapterListModel> chapterList = mService.getChapterList(baseArgumentMap);
         return chapterList;
+    }
+    /**
+     * 获取讲师列表
+     */
+    public Observable<TeacherListModel> getTeacherList(String key,String value){
+        HashMap<String, String> map = new HashMap<>();
+        map.put(key,value);
+        Observable<TeacherListModel> teacherDatas = mService.getTeacherDatas(map);
+        return teacherDatas;
     }
 
     /**

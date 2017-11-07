@@ -20,5 +20,7 @@ public class SplashActivity extends AutoLayoutActivity {
         super.onCreate(savedInstanceState);
         //点击安装包进行安装，安装结束后不点击完成，而是点击打开应用，应用启动后，再回到桌面，从桌面点击应用图标会造成反复重启应用的现象。
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
+
 }

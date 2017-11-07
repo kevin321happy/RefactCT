@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.wh.jxd.com.refactorqm.R;
 import com.wh.jxd.com.refactorqm.receive.NetBroadcastReceiver;
+import com.wh.jxd.com.refactorqm.utils.AppManager;
 import com.wh.jxd.com.refactorqm.utils.NetStateUtils;
 import com.wh.jxd.com.refactorqm.utils.StatusBarUtil;
 import com.wh.jxd.com.refactorqm.utils.ToastUtils;
@@ -42,6 +43,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(getLayoutId());
+        AppManager.getAppManager().addActivity(this);
         ButterKnife.bind(this);
         init();
         evevt = this;
@@ -244,6 +246,7 @@ public abstract class BaseActivtiy extends AutoLayoutActivity implements NetBroa
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
     }
 
     /**

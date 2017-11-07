@@ -23,7 +23,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-         android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme">
         <!--百分比布局-->
         <!--宽-->
         <meta-data
@@ -33,6 +33,7 @@
         <meta-data
             android:name="design_height"
             android:value="1920"></meta-data>
+
         <activity
             android:name=".ui.activity.SplashActivity"
             android:launchMode="singleTask"
@@ -50,10 +51,6 @@
             android:name=".ui.activity.MainActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden|adjustPan">
-            <!-- <intent-filter>
-                 <action android:name="android.intent.action.MAIN"/>
-                 <category android:name="android.intent.category.LAUNCHER"/>
-             </intent-filter>-->
         </activity>
         <!--网络变化的监听器-->
         <receiver android:name=".receive.NetBroadcastReceiver">
@@ -72,6 +69,7 @@
         <activity android:name=".ui.activity.RecentStudyActivity"/>
         <!--    app的启动初始化的服务-->
         <service android:name=".service.InitializeService"/>
+        <activity android:name=".ui.activity.LecturerDetailActivity"/>
 
     </application>
 </manifest>

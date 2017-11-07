@@ -33,6 +33,7 @@ import com.wh.jxd.com.refactorqm.model.TeacherCourse;
 import com.wh.jxd.com.refactorqm.model.TopImgInfo;
 import com.wh.jxd.com.refactorqm.presenter.presenterImpl.HomeFragmentPresenterImpl;
 import com.wh.jxd.com.refactorqm.ui.activity.CourseDetailActivity;
+import com.wh.jxd.com.refactorqm.ui.activity.LecturerDetailActivity;
 import com.wh.jxd.com.refactorqm.ui.activity.LoginActivity;
 import com.wh.jxd.com.refactorqm.ui.adapter.HotCourseAdapter;
 import com.wh.jxd.com.refactorqm.ui.adapter.RecommendCourseAdapter;
@@ -51,7 +52,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * Created by kevin321vip on 2017/9/28.
  */
 
-public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, HomeFragmentView> implements HomeFragmentView, RecommendCourseAdapter.OnClickListener {
+public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, HomeFragmentView> implements HomeFragmentView, RecommendCourseAdapter.OnClickListener, HotCourseAdapter.OnClickListener, RecommendTeacherAdapter.onClickListener {
     @Bind(R.id.binner)
     BGABanner mBinner;
     @Bind(R.id.gv_view)
@@ -79,7 +80,6 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
             , new GridViewBean(R.drawable.ic_all_teacher, "所有讲师"),
             new GridViewBean(R.drawable.ic_activity_zone, "活动专区")
             , new GridViewBean(R.drawable.ic_teacher_replay, "申请合作")};
-
     private RecommendCourseAdapter mRecommendAdapter;//推荐课程
     private HotCourseAdapter mHotAdapter;
     private RecommendTeacherAdapter mTeacherAdapter;
@@ -106,7 +106,6 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         //设置下拉监听
         mRefreshLayout.setOnRefreshListener(mRefreshListenerAdapter);
         mGvView.setAdapter(new MyGridViewAdapter());
-
         // 推荐课程
         mRecommendAdapter = new RecommendCourseAdapter(getActivity());
         mRvRecommendCourse.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -116,11 +115,14 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         mHotAdapter = new HotCourseAdapter(getActivity());
         mRvHotCourse.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mRvHotCourse.setAdapter(mHotAdapter);
+        mHotAdapter.setOnClickListener(this);
+
         //推荐讲师
         mTeacherAdapter = new RecommendTeacherAdapter(getActivity());
         mRvRecommendTeacher.setLayoutManager(
                 new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mRvRecommendTeacher.setAdapter(mTeacherAdapter);
+        mTeacherAdapter.setOnClickListener(this);
 
     }
 
@@ -231,7 +233,7 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
     @Override
     public void onTokenLose() {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivityForResult(intent,111);
+        startActivityForResult(intent, 111);
     }
 
     /**
@@ -245,6 +247,33 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         Intent intent = new Intent(getActivity(), CourseDetailActivity.class);
         intent.putExtra("course_id", courseId);
         startActivity(intent);
+    }
+
+    /**
+     * 热门课程
+     *
+     * @param position
+     * @param courseId
+     */
+    @Override
+    public void onHotCourseClickListener(int position, String courseId) {
+        Intent intent = new Intent(getActivity(), CourseDetailActivity.class);
+        intent.putExtra("course_id", courseId);
+        startActivity(intent);
+    }
+
+    /**
+     * 推荐讲师
+     *
+     * @param position
+     * @param teacherid
+     */
+    @Override
+    public void onTeacherItemClick(int position, int teacherid) {
+        Intent intent = new Intent(getActivity(), LecturerDetailActivity.class);
+        intent.putExtra(getString(R.string.讲师id), teacherid);
+        startActivity(intent);
+
     }
 
     private class MyGridViewAdapter extends BaseAdapter {
@@ -284,7 +313,6 @@ public class HomeFragment extends BaseMvpFragment<HomeFragmentPresenterImpl, Hom
         ButterKnife.bind(this, rootView);
         return rootView;
     }
-
 
 
     @Override

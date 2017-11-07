@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <include layout="@layout/toolbar_layout"/>
+
+    <com.wh.jxd.com.refactorqm.view.DiscreteScrollView.DiscreteScrollView
+        android:id="@+id/dis_teacher_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_teacher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px_space_40"
+        android:text="宁文娟"
+        android:textColor="@color/text__defaulttext"
+        android:textSize="@dimen/px_space_50"/>
+
+    <TextView
+        android:id="@+id/tv_teacher_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/px_space_120"
+        android:layout_marginRight="@dimen/px_space_120"
+        android:layout_marginTop="@dimen/px_space_40"
+        android:lineSpacingExtra="@dimen/px_space_20"
+        android:lines="4"
+        android:text="武汉华顺人力资源有限公司似懂非懂收复失地范德萨范德萨范德萨范德萨"
+        android:textColor="@color/color_999"
+        android:textSize="@dimen/px_space_40"/>
+
+    <TextView
+        android:id="@+id/tv_teacher_labe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/px_space_120"
+        android:layout_marginRight="@dimen/px_space_120"
+        android:lines="2"
+        android:text="教练技术、劳资咨询、精益创业"
+        android:textColor="@color/theme_orange"
+        android:textSize="@dimen/px_space_38"/>
+
+    <Button
+        android:id="@+id/btn_enter_study"
+        android:layout_width="@dimen/px_space_600"
+        android:layout_height="@dimen/px_space_120"
+        android:layout_marginTop="@dimen/px_space_40"
+        android:background="@drawable/selected_enter_study"
+        android:text="进入学习"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px_space_40"/>
+    </LinearLayout>
+
+</LinearLayout>
