@@ -7,6 +7,7 @@ import com.wh.jxd.com.refactorqm.model.CourseDetailModel;
 import com.wh.jxd.com.refactorqm.model.EnterpriseDataModel;
 import com.wh.jxd.com.refactorqm.model.HomeInfo;
 import com.wh.jxd.com.refactorqm.model.CommonDataModel;
+import com.wh.jxd.com.refactorqm.model.TeacherListModel;
 import com.wh.jxd.com.refactorqm.model.UpLoadLocationBean;
 import com.wh.jxd.com.refactorqm.model.UserInfo;
 import com.wh.jxd.com.refactorqm.net.HttpBean;
@@ -95,4 +96,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(RequestCons.GET_CLASSCHAPTERLIST)
     Observable<ChapterListModel> getChapterList(@FieldMap Map<String, String> options);
+
+    /**
+     * 获取讲师数据的接口
+     */
+    @FormUrlEncoded
+    @POST(RequestCons.GET_TEACHER_DETAIL)
+    Observable<TeacherListModel> getTeacherDatas(@FieldMap Map<String, String> options);
+
 }
