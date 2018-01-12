@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="历史" />
+      <item value="选择" />
       <item value="问卷" />
       <item value="step" />
       <item value="调研" />
