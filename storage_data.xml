@@ -1,6 +1,9 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="字母" />
+      <item value="字幕" />
+      <item value="模式" />
       <item value="属性" />
       <item value="增加" />
       <item value="间距" />
