@@ -1,6 +1,10 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="贝赛尔" />
+      <item value="被萨尔" />
+      <item value="贝塞尔" />
+      <item value="l贝塞尔" />
       <item value="展开" />
       <item value="平滑" />
       <item value="平移" />
@@ -47,8 +51,6 @@
       <item value="状态" />
       <item value="你好" />
       <item value="武汉" />
-      <item value="上海" />
-      <item value="wuhan" />
     </histories>
   </component>
 </application>
