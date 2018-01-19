@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="平滑" />
       <item value="平移" />
       <item value="平滑移动" />
       <item value="侧滑" />
