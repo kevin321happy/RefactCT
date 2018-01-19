@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="平移" />
+      <item value="平滑移动" />
       <item value="侧滑" />
       <item value="侧拉菜单" />
       <item value="生成二维码" />
