@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="describe" />
+      <item value="描述" />
       <item value="奖金" />
       <item value="模型" />
       <item value="Flage" />
@@ -49,8 +51,6 @@
       <item value="动感" />
       <item value="半径" />
       <item value="环形" />
-      <item value="历史" />
-      <item value="选择" />
     </histories>
   </component>
 </application>
