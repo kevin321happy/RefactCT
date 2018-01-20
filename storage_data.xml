@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="Flage" />
       <item value="任务" />
       <item value="允许" />
       <item value="下拉粘性" />
@@ -50,7 +51,6 @@
       <item value="历史" />
       <item value="选择" />
       <item value="问卷" />
-      <item value="step" />
     </histories>
   </component>
 </application>
