@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="角度" />
+      <item value="切线" />
       <item value="calculate" />
       <item value="计算" />
       <item value="低阶" />
@@ -49,8 +51,6 @@
       <item value="新建题目" />
       <item value="题目" />
       <item value="第一步" />
-      <item value="空白问卷" />
-      <item value="december" />
     </histories>
   </component>
 </application>
