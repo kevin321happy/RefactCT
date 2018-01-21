@@ -1,11 +1,13 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="中间" />
+      <item value="边距" />
+      <item value="角度" />
+      <item value="切线" />
       <item value="回弹" />
       <item value="相差" />
       <item value="控制" />
-      <item value="角度" />
-      <item value="切线" />
       <item value="calculate" />
       <item value="计算" />
       <item value="低阶" />
@@ -49,8 +51,6 @@
       <item value="属性" />
       <item value="增加" />
       <item value="间距" />
-      <item value="默认" />
-      <item value="指示器" />
     </histories>
   </component>
 </application>
