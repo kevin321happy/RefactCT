@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="进度盘" />
       <item value="campaign" />
       <item value="三角" />
       <item value="第二" />
@@ -50,7 +51,6 @@
       <item value="雷达" />
       <item value="字母" />
       <item value="字幕" />
-      <item value="模式" />
     </histories>
   </component>
 </application>
