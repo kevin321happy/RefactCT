@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="刻度" />
       <item value="分" />
       <item value="长度" />
       <item value="最大角度" />
@@ -50,7 +51,6 @@
       <item value="筛选" />
       <item value="企业" />
       <item value="j渐变" />
-      <item value="扫描" />
     </histories>
   </component>
 </application>
