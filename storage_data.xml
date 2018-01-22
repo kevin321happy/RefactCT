@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="描边" />
       <item value="刻度" />
       <item value="分" />
       <item value="长度" />
@@ -42,7 +43,6 @@
       <item value="班" />
       <item value="内训" />
       <item value="圆形" />
-      <item value="描边" />
       <item value="圆滑" />
       <item value="圆角" />
       <item value="j讲师" />
