@@ -1,9 +1,11 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="描边" />
+      <item value="实心" />
+      <item value="hollow" />
       <item value="测评" />
       <item value="扫描" />
-      <item value="描边" />
       <item value="刻度" />
       <item value="分" />
       <item value="长度" />
@@ -49,8 +51,6 @@
       <item value="圆角" />
       <item value="j讲师" />
       <item value="·" />
-      <item value="裁切" />
-      <item value="筛选" />
     </histories>
   </component>
 </application>
