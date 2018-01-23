@@ -1,6 +1,13 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="圆心" />
+      <item value="V" />
+      <item value="ValueAnimator" />
+      <item value="圆盘" />
+      <item value="饼" />
+      <item value="盘" />
+      <item value="刻度" />
       <item value="选项" />
       <item value="选择题" />
       <item value="题目类型" />
@@ -10,7 +17,6 @@
       <item value="hollow" />
       <item value="测评" />
       <item value="扫描" />
-      <item value="刻度" />
       <item value="分" />
       <item value="长度" />
       <item value="最大角度" />
@@ -45,12 +51,6 @@
       <item value="平滑" />
       <item value="平移" />
       <item value="平滑移动" />
-      <item value="侧滑" />
-      <item value="侧拉菜单" />
-      <item value="生成二维码" />
-      <item value="班" />
-      <item value="内训" />
-      <item value="圆形" />
     </histories>
   </component>
 </application>
