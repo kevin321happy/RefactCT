@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="测评" />
       <item value="扫描" />
       <item value="描边" />
       <item value="刻度" />
@@ -50,7 +51,6 @@
       <item value="·" />
       <item value="裁切" />
       <item value="筛选" />
-      <item value="企业" />
     </histories>
   </component>
 </application>
