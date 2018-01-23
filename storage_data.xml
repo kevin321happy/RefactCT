@@ -1,6 +1,9 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="轨迹" />
+      <item value="华为天气" />
+      <item value="仿" />
       <item value="透明" />
       <item value="校验" />
       <item value="规范" />
@@ -48,9 +51,6 @@
       <item value="下拉弹性" />
       <item value="贝赛尔" />
       <item value="被萨尔" />
-      <item value="贝塞尔" />
-      <item value="l贝塞尔" />
-      <item value="展开" />
     </histories>
   </component>
 </application>
