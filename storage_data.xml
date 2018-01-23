@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="校验" />
+      <item value="规范" />
       <item value="刻度" />
       <item value="圆心" />
       <item value="V" />
@@ -49,8 +51,6 @@
       <item value="l贝塞尔" />
       <item value="展开" />
       <item value="平滑" />
-      <item value="平移" />
-      <item value="平滑移动" />
     </histories>
   </component>
 </application>
