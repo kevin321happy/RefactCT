@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="透明" />
       <item value="校验" />
       <item value="规范" />
       <item value="刻度" />
@@ -50,7 +51,6 @@
       <item value="贝塞尔" />
       <item value="l贝塞尔" />
       <item value="展开" />
-      <item value="平滑" />
     </histories>
   </component>
 </application>
