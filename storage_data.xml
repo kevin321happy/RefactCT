@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="课程回顾" />
       <item value="直播" />
       <item value="轨迹" />
       <item value="华为天气" />
@@ -50,7 +51,6 @@
       <item value="允许" />
       <item value="下拉粘性" />
       <item value="下拉弹性" />
-      <item value="贝赛尔" />
     </histories>
   </component>
 </application>
