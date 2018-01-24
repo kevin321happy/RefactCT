@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="提醒" />
       <item value="预告" />
       <item value="透明圆角" />
       <item value="预告直播" />
@@ -50,7 +51,6 @@
       <item value="奖金" />
       <item value="模型" />
       <item value="Flage" />
-      <item value="任务" />
     </histories>
   </component>
 </application>
