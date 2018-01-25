@@ -1,6 +1,10 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="descent" />
+      <item value="实际" />
+      <item value="到达" />
+      <item value="水平" />
       <item value="课件" />
       <item value="截取" />
       <item value="封面" />
@@ -47,10 +51,6 @@
       <item value="第二" />
       <item value="中间" />
       <item value="边距" />
-      <item value="角度" />
-      <item value="切线" />
-      <item value="回弹" />
-      <item value="相差" />
     </histories>
   </component>
 </application>
