@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="课件" />
       <item value="截取" />
       <item value="封面" />
       <item value="发起" />
@@ -50,7 +51,6 @@
       <item value="切线" />
       <item value="回弹" />
       <item value="相差" />
-      <item value="控制" />
     </histories>
   </component>
 </application>
