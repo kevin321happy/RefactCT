@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="封面" />
       <item value="发起" />
       <item value="sticky" />
       <item value="stacky" />
@@ -50,7 +51,6 @@
       <item value="相差" />
       <item value="控制" />
       <item value="calculate" />
-      <item value="计算" />
     </histories>
   </component>
 </application>
