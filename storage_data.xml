@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="sticky" />
+      <item value="stacky" />
       <item value="晚上时间" />
       <item value="早上时间" />
       <item value="内边距" />
@@ -49,8 +51,6 @@
       <item value="calculate" />
       <item value="计算" />
       <item value="低阶" />
-      <item value="describe" />
-      <item value="描述" />
     </histories>
   </component>
 </application>
