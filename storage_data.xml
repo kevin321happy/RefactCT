@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="上传" />
       <item value="参数" />
       <item value="b" />
       <item value="拼接" />
@@ -50,7 +51,6 @@
       <item value="长度" />
       <item value="最大角度" />
       <item value="进度盘" />
-      <item value="campaign" />
     </histories>
   </component>
 </application>
