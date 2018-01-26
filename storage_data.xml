@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="拼接" />
       <item value="学员" />
       <item value="descent" />
       <item value="实际" />
@@ -50,7 +51,6 @@
       <item value="campaign" />
       <item value="三角" />
       <item value="第二" />
-      <item value="中间" />
     </histories>
   </component>
 </application>
