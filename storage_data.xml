@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="圆心" />
+      <item value="距离" />
       <item value="圆环" />
       <item value="上传" />
       <item value="参数" />
@@ -33,7 +35,6 @@
       <item value="校验" />
       <item value="规范" />
       <item value="刻度" />
-      <item value="圆心" />
       <item value="V" />
       <item value="ValueAnimator" />
       <item value="圆盘" />
@@ -50,7 +51,6 @@
       <item value="扫描" />
       <item value="分" />
       <item value="长度" />
-      <item value="最大角度" />
     </histories>
   </component>
 </application>
