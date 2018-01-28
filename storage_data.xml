@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="背景" />
       <item value="环" />
       <item value="圆心" />
       <item value="距离" />
@@ -50,7 +51,6 @@
       <item value="hollow" />
       <item value="测评" />
       <item value="扫描" />
-      <item value="分" />
     </histories>
   </component>
 </application>
