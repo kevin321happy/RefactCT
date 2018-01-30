@@ -2,6 +2,7 @@
   <component name="AppStorage">
     <histories>
       <item value="椭圆" />
+      <item value="方框" />
       <item value="椭圆、" />
       <item value="距离、" />
       <item value="距离" />
@@ -50,7 +51,6 @@
       <item value="刻度" />
       <item value="V" />
       <item value="ValueAnimator" />
-      <item value="圆盘" />
     </histories>
   </component>
 </application>
