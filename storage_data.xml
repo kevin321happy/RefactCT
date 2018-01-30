@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="距离、" />
+      <item value="距离" />
       <item value="曲线" />
       <item value="圆形" />
       <item value="矩形" />
@@ -12,7 +14,6 @@
       <item value="背景" />
       <item value="环" />
       <item value="圆心" />
-      <item value="距离" />
       <item value="圆环" />
       <item value="上传" />
       <item value="参数" />
@@ -50,7 +51,6 @@
       <item value="圆盘" />
       <item value="饼" />
       <item value="盘" />
-      <item value="选项" />
     </histories>
   </component>
 </application>
