@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="图案的类型" />
       <item value="斜边" />
       <item value="偏移角度" />
       <item value="位置" />
@@ -50,7 +51,6 @@
       <item value="题目类型" />
       <item value="reference" />
       <item value="描边" />
-      <item value="实心" />
     </histories>
   </component>
 </application>
