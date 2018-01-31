@@ -1,6 +1,9 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="框架" />
+      <item value="基础" />
+      <item value="基础项目" />
       <item value="控制的弹窗" />
       <item value="撤销" />
       <item value="方向" />
@@ -48,9 +51,6 @@
       <item value="课程回顾" />
       <item value="直播" />
       <item value="轨迹" />
-      <item value="华为天气" />
-      <item value="仿" />
-      <item value="透明" />
     </histories>
   </component>
 </application>
