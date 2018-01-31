@@ -1,11 +1,11 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="撤销" />
       <item value="方向" />
       <item value="水平" />
       <item value="垂直" />
       <item value="弹出" />
-      <item value="撤销" />
       <item value="椭圆" />
       <item value="方框" />
       <item value="椭圆、" />
