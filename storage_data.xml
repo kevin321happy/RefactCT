@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="压缩视频" />
+      <item value="压缩" />
       <item value="类型" />
       <item value="控件" />
       <item value="画板" />
@@ -49,8 +51,6 @@
       <item value="早上时间" />
       <item value="内边距" />
       <item value="提醒" />
-      <item value="预告" />
-      <item value="透明圆角" />
     </histories>
   </component>
 </application>
