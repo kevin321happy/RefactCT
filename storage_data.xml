@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="控件" />
+      <item value="画板" />
       <item value="tracker" />
       <item value="框架" />
       <item value="基础" />
@@ -49,8 +51,6 @@
       <item value="预告" />
       <item value="透明圆角" />
       <item value="预告直播" />
-      <item value="课程回顾" />
-      <item value="直播" />
     </histories>
   </component>
 </application>
