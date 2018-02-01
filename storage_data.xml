@@ -1,6 +1,9 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="斑点" />
+      <item value="十字" />
+      <item value="轨迹" />
       <item value="检查病毒" />
       <item value="压缩视频" />
       <item value="压缩" />
@@ -48,9 +51,6 @@
       <item value="发起" />
       <item value="sticky" />
       <item value="stacky" />
-      <item value="晚上时间" />
-      <item value="早上时间" />
-      <item value="内边距" />
     </histories>
   </component>
 </application>
