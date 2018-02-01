@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="检查病毒" />
       <item value="压缩视频" />
       <item value="压缩" />
       <item value="类型" />
@@ -50,7 +51,6 @@
       <item value="晚上时间" />
       <item value="早上时间" />
       <item value="内边距" />
-      <item value="提醒" />
     </histories>
   </component>
 </application>
