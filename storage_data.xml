@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="无" />
+      <item value="抽屉" />
       <item value="重绘" />
       <item value="斑点" />
       <item value="十字" />
@@ -49,8 +51,6 @@
       <item value="课件" />
       <item value="截取" />
       <item value="封面" />
-      <item value="发起" />
-      <item value="sticky" />
     </histories>
   </component>
 </application>
