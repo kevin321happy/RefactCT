@@ -1,6 +1,10 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="不依附" />
+      <item value="依附" />
+      <item value="衣服" />
+      <item value="j解除" />
       <item value="保护" />
       <item value="已登录" />
       <item value="已登陆" />
@@ -47,10 +51,6 @@
       <item value="上传" />
       <item value="参数" />
       <item value="b" />
-      <item value="拼接" />
-      <item value="学员" />
-      <item value="descent" />
-      <item value="实际" />
     </histories>
   </component>
 </application>
