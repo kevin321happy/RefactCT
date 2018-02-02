@@ -1,6 +1,10 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="保护" />
+      <item value="已登录" />
+      <item value="已登陆" />
+      <item value="未登陆" />
       <item value="无" />
       <item value="抽屉" />
       <item value="重绘" />
@@ -47,10 +51,6 @@
       <item value="学员" />
       <item value="descent" />
       <item value="实际" />
-      <item value="到达" />
-      <item value="课件" />
-      <item value="截取" />
-      <item value="封面" />
     </histories>
   </component>
 </application>
