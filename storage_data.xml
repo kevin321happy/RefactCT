@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="测评" />
       <item value="不依附" />
       <item value="依附" />
       <item value="衣服" />
@@ -50,7 +51,6 @@
       <item value="圆环" />
       <item value="上传" />
       <item value="参数" />
-      <item value="b" />
     </histories>
   </component>
 </application>
