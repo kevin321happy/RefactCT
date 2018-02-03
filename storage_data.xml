@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="下拉菜单" />
       <item value="参与人数" />
       <item value="测评" />
       <item value="不依附" />
@@ -50,7 +51,6 @@
       <item value="环" />
       <item value="圆心" />
       <item value="圆环" />
-      <item value="上传" />
     </histories>
   </component>
 </application>
