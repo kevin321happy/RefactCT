@@ -1,7 +1,9 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="背景" />
       <item value="分割" />
+      <item value="分割线" />
       <item value="下拉菜单" />
       <item value="参与人数" />
       <item value="测评" />
@@ -48,9 +50,7 @@
       <item value="斜边" />
       <item value="偏移角度" />
       <item value="位置" />
-      <item value="背景" />
       <item value="环" />
-      <item value="圆心" />
     </histories>
   </component>
 </application>
