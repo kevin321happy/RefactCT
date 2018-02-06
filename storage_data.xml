@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="极光" />
       <item value="背景" />
       <item value="分割" />
       <item value="分割线" />
@@ -50,7 +51,6 @@
       <item value="斜边" />
       <item value="偏移角度" />
       <item value="位置" />
-      <item value="环" />
     </histories>
   </component>
 </application>
