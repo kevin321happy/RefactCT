@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="can" />
       <item value="参数" />
       <item value="验证码" />
       <item value="极光" />
@@ -50,7 +51,6 @@
       <item value="矩形" />
       <item value="直线" />
       <item value="图案的类型" />
-      <item value="斜边" />
     </histories>
   </component>
 </application>
