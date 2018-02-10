@@ -2,6 +2,7 @@
   <component name="AppStorage">
     <histories>
       <item value="岗位" />
+      <item value="筛选" />
       <item value="岗位Id" />
       <item value="参数" />
       <item value="can" />
@@ -50,7 +51,6 @@
       <item value="距离" />
       <item value="曲线" />
       <item value="圆形" />
-      <item value="矩形" />
     </histories>
   </component>
 </application>
