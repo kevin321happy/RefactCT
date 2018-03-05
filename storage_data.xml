@@ -1,6 +1,7 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="跳转" />
       <item value="爱好" />
       <item value="岗位" />
       <item value="筛选" />
@@ -50,7 +51,6 @@
       <item value="椭圆、" />
       <item value="距离、" />
       <item value="距离" />
-      <item value="曲线" />
     </histories>
   </component>
 </application>
