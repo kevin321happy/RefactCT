@@ -1,6 +1,8 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="Charon" />
+      <item value="Profile" />
       <item value="跳转" />
       <item value="爱好" />
       <item value="岗位" />
@@ -49,8 +51,6 @@
       <item value="椭圆" />
       <item value="方框" />
       <item value="椭圆、" />
-      <item value="距离、" />
-      <item value="距离" />
     </histories>
   </component>
 </application>
