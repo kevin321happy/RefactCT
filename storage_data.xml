@@ -1,6 +1,11 @@
 <application>
   <component name="AppStorage">
     <histories>
+      <item value="attach" />
+      <item value="attachh" />
+      <item value="detach" />
+      <item value="解除" />
+      <item value="接触" />
       <item value="Charon" />
       <item value="Profile" />
       <item value="跳转" />
@@ -46,11 +51,6 @@
       <item value="撤销" />
       <item value="方向" />
       <item value="水平" />
-      <item value="垂直" />
-      <item value="弹出" />
-      <item value="椭圆" />
-      <item value="方框" />
-      <item value="椭圆、" />
     </histories>
   </component>
 </application>
